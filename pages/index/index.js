@@ -32,13 +32,13 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     // const scene = decodeURIComponent(options.scene);
     // console.log(scene + '88888');
     var _this = this;
     // 获取用户的基本信息
     wx.getUserInfo({
-      success:function(res){
+      success: function(res) {
         console.log(JSON.stringify(res));
       }
     })
@@ -49,6 +49,8 @@ Page({
         console.log(res)
         var openid = res.data;
         app.globalData.openid = openid; //存全局变量，用于其他页面使用
+        // 自动登录
+        _this.userLogin();
       },
       fail(res) {
         console.log(res)
@@ -136,6 +138,32 @@ Page({
         wx.setStorage({
           key: 'openid',
           data: response.data.openid
+        })
+      } else {
+        // 数据返回失败
+        wx.showToast({
+          title: '数据获取失败' || '',
+          icon: 'none'
+        })
+      }
+    })
+  },
+  // 用户登录
+  userLogin: function() {
+    wx.getUserInfo({
+      success: function(res) {
+
+      }
+    })
+    var _this = this;
+    var params = {
+      pages: '1'
+    }
+    app.fetch('/hone/applet/banner/list', params).then((response) => {
+      // 数据返回成功
+      if (response.errorCode == '0') {
+        _this.setData({
+          bannerImg: response.data.bannersList
         })
       } else {
         // 数据返回失败
