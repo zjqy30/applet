@@ -1,0 +1,125 @@
+/* pages/mine/mineindex/mineindex.wxss */
+
+page {
+  background: #f2f2f2;
+}
+
+.hover {
+  background: #f2f2f2;
+}
+.hidden{
+  display: none;
+}
+.show{
+  display: block;
+}
+
+.wx-top {
+  height: 314rpx;
+  background: #FF4E4E;
+  overflow: hidden;
+  position: relative;
+  display: table-cell;
+  vertical-align: middle;
+  width: 100vw;
+}
+
+.wx-headpic {
+  float: left;
+  width: 150rpx;
+  height: 150rpx;
+  margin-left: 30rpx;
+  margin-right: 40rpx;
+
+}
+
+.wx-headpic image {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 75rpx;
+}
+
+.wx-login {
+  float: left;
+  margin-top: 30rpx;
+}
+
+.wx-login text {
+  display: block;
+  color: #fff;
+  font-size: 30rpx;
+}
+
+.wx-login .wx-logininfo {
+  font-size: 22rpx;
+  margin-top: 10rpx;
+}
+
+.wx-function {
+  margin-top: 24rpx;
+  background: #fff;
+  overflow: hidden;
+}
+
+.wx-each {
+  overflow: hidden;
+  color: #858585;
+  font-size: 26rpx;
+  padding: 28rpx 28rpx;
+  position: relative;
+}
+
+.wx-each image {
+  width: 32rpx;
+  height: 32rpx;
+  float: left;
+  margin-top: 4rpx;
+  margin-right: 20rpx;
+}
+
+.wx-each text {
+  float: left;
+}
+
+.wx-each::after {
+  content: '';
+  width: 14rpx;
+  height: 22rpx;
+  position: absolute;
+  right: 20rpx;
+  margin: auto 0;
+  top: 0;
+  bottom: 0;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAWCAYAAAAb+hYkAAAA5klEQVQ4T5XUvQrCMBAA4EtD1aU42MnJUUcXRycnUfCRDlr68yAidBd8l24O4uDgpvQgJykoim2S3hq+S7jLnSiKQpZlOSOiKyLewCFEFEUzKeWSmYmIToh4sTmRZdlQKbUDgIErFDprkiQjANi4whp1hR/UBf4gV/iHXGAjssFWZIJG9IbMvBVC9HUfgyDYW1GaphMAWDGzZOZHGIYHI/oGAPCsquqo/2cragP6yY3IBBqRDfwhF/CDXMEHdQE1yvN8rJRa6z58l9U0vSKO44XneXNXUN+EiD3f96dEdEbEu20/6PMXJRYBszgdYCsAAAAASUVORK5CYII=) no-repeat center;
+  background-size: 100% 100%;
+}
+
+.wx-each {
+  border-bottom: 2rpx solid #f2f2f2;
+}
+
+.wx-icon image {
+  width: 32rpx!important;
+  height: 32rpx!important;
+  margin-top:4rpx;
+}
+
+/* 去除button的默认样式 */
+button{
+  padding:0;
+  text-align: left;
+  font-size: 26rpx;
+  background: #fff;
+  color: #858585;
+  height: 40rpx;
+line-height: 40rpx;
+}
+button::after{
+  padding: 0;
+  border:0;
+  border-radius: 0;
+
+}
+.btn-hover{
+   background: none;
+}

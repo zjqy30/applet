@@ -1,0 +1,19 @@
+/**app.wxss**/
+/* 公共样式的引入 */
+/* @import "pages/common/aard.wxss";@import "pages/common/cu_bar.wxss";@import "pages/common/cu_list.wxss";@import "pages/common/cu_avatar.wxss";@import "pages/common/cu_tag.wxss";@import "pages/common/cu_text.wxss";@import "pages/common/cu_margin.wxss";@import "pages/common/cu_padding.wxss";@import "pages/common/cu_but.wxss";@import "pages/common/cu_layout.wxss";@import "pages/common/cu_bg.wxss";@import "pages/common/cu_swiper.wxss";@import "pages/common/cu_modal.wxss";@import "pages/common/cu_form.wxss";@import "pages/common/cu_cord.wxss";@import "pages/common/test_seek.wxss";@import "pages/common/test_admin.wxss";@import "pages/common/icon.wxss"; */
+/* @font-face{
+  font-family: "X-songti";
+  src:url("X-songti.eot");
+  font-weight: normal;
+  font-style: normal;
+} */
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 

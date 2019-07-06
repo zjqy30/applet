@@ -1,0 +1,98 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"coverView": true,
+		"autoAudits": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.7.2",
+	"appid": "wx38ca48e91da0acf9",
+	"projectname": "%E7%BA%A2%E8%85%95new1",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 5,
+			"list": [
+				{
+					"id": -1,
+					"name": "网红大厅首页",
+					"pathName": "pages/hall/celebrityhall/celebrityhall",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "首页",
+					"pathName": "pages/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 2,
+					"name": "订单大厅",
+					"pathName": "pages/hall/businesshall/businesshall",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "网红详情页",
+					"pathName": "pages/hall/whdetail/whdetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的首页",
+					"pathName": "pages/mine/mineindex/mineindex",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "关于我们",
+					"pathName": "pages/mine/abortus/abortus",
+					"query": "",
+					"scene": null
+				}
+			]
+		}
+	}
+}

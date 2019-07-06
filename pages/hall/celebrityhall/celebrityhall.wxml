@@ -1,0 +1,94 @@
+<!--网红大厅-->
+<view class="wx-container">
+  <!-- 头部的筛选 -->
+  <view class="wx-top-tab">
+    <view class="wx-each-tab" bindtap="clickSelect" data-type='1' data-hidden='0'>
+      <text class="{{stationType == '1' && isShow ? 'wx-font-red':''}}">平台({{selectedNum}})</text>
+      <image src="{{stationType == '1' && isShow ? '../../image/wx-up-red.png':'../../image/wx-down.png'}}"></image>
+    </view>
+    <view class="wx-each-tab" bindtap="clickSelect" data-type='2'>
+      <text class="{{stationType == '2' && isShow ? 'wx-font-red':''}}">性别</text>
+      <image src="{{stationType == '2' && isShow ? '../../image/wx-up-red.png':'../../image/wx-down.png'}}"></image>
+    </view>
+    <view class="wx-each-tab wx-each-fans" bindtap="clickSelect" data-type='3'>
+      <text class="{{stationType == '3' ? 'wx-font-red':''}}">粉丝排序</text>
+      <view class="wx-right-icon">
+        <image src="{{stationType == '3' && selectOrder == 'desc' ? '../../image/wx-up-red.png':'../../image/wx-up.png'}}"></image>
+        <image src="{{stationType == '3' && selectOrder == 'asc'? '../../image/wx-down.png':'../../image/wx-down.png'}}"></image>
+      </view>
+
+    </view>
+    <view class="wx-each-tab" bindtap="clickSelect" data-type='4'>
+      <text class="{{stationType == '4' && isShow ? 'wx-font-red':''}}">更多</text>
+      <image src="{{stationType == '4' && isShow ? '../../image/wx-up-red.png':'../../image/wx-down.png'}}"></image>
+    </view>
+  </view>
+
+  <!-- 网红列表 -->
+  <view class="wx-list">
+    <view class="wx-each" hover-class="hover" wx:for='{{whList}}' wx:key='index' bindtap="skipDetail" data-userid="{{item.userId}}">
+      <image class="wx-more" src="../../image/wx-more.png"></image>
+      <view class="wx-left">
+        <image class="wx-big" src="{{item.headPic}}"></image>
+        <image class="wx-small" src="{{item.dictPic}}"></image>
+      </view>
+      <view class="wx-right">
+        <view class="wx-name-top">
+          <text class="wx-name">{{item.wxName}}</text>
+          <image class="wx-sex" src="{{item.sex == '1'?'../../image/wx-man.png':'../../image/wx-woman.png'}}"></image>
+        </view>
+        <view class="wx-label-mini">
+          <text wx:for='{{item.tagArr}}' wx:for-item='tagArr' wx:key='index' wx:if='{{index < 4}}'>{{tagArr}}</text>
+          <!-- <text>音乐</text> -->
+          <!-- <text>生活技巧</text> -->
+        </view>
+        <view class="wx-data">
+          <text class="wx-fans-num">粉丝数量<text class="wx-red">{{item.fansNum}}</text>万</text>
+          <text class="wx-great-num">点赞数<text class="wx-red">{{item.thumbUpNums}}</text>万</text>
+        </view>
+      </view>
+    </view>
+    <!-- <view class="wx-nodata {{!hasData?'hidden':''}}">暂无数据</view> -->
+  </view>
+
+  <!-- 平台筛选 -->
+  <view class="wx-station {{stationType == '1' && isShow ? 'isShow':'hidden'}}">
+    <view class="wx-label">
+      <text class="{{stationArray[index].status == '1' ? 'wx-red-bg':''}}" wx:for='{{stationArray}}' wx:key='index' bindtap="clickStation" data-id='{{item.id}}' data-status='{{item.status}}'>{{item.dictValue}}</text>
+    </view>
+    <view class="wx-btns">
+      <button class="wx-clear" bindtap="clearAll">重置</button>
+      <button class="wx-sure" bindtap="sureStation">确定</button>
+    </view>
+  </view>
+
+  <!-- 性别 -->
+  <view class="wx-sex-select {{stationType == '2' && isShow ? 'isShow':'hidden'}}">
+    <radio-group class="radio-group" bindchange="radioChange">
+      <label class="radio" wx:for="{{radioArray}}" wx:key="{{index}}">
+        <text>{{item.name}}</text>
+        <radio value="{{item.value}}" color="#fff" />
+      </label>
+    </radio-group>
+  </view>
+
+  <!-- 粉丝排序 -->
+  <!-- 更多 -->
+  <!-- 标签筛选 -->
+  <view class="wx-station {{stationType == '4' && isShow ? 'isShow':'hidden'}}">
+    <text class="wx-lable-title">网红标签</text>
+    <view class="wx-label">
+      <!-- <text class="" data-labelType="0" bindtap="clickLabel">全部</text> -->
+      <text class="{{labelArray[index].status == '1' ? 'wx-red-bg':''}}" wx:for='{{labelArray}}' wx:key='index' bindtap="clickLabel" data-id='{{item.id}}' data-status='{{item.status}}'>{{item.dictValue}}</text>
+    </view>
+    <view class="wx-btns">
+      <button class="wx-clear" bindtap="clearAll">重置</button>
+      <button class="wx-sure" bindtap="sureLabel">确定</button>
+    </view>
+  </view>
+
+
+
+
+  <view class="zhezhao {{isShow && (stationType != '3')?'isShow' : 'hidden'}}"></view>
+</view>

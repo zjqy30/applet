@@ -1,0 +1,133 @@
+<!-- 网红详情页面 -->
+<view class="container">
+  <view class="mh-box">
+    <image class="mh-img" mode="aspectFill" src="{{userBasicInfo.avatarUrl || ''}}"></image>
+    <view class="mask-layer"></view>
+  </view>
+  <view class="info-box">
+    <head-plat-cmp containerSize="167" headImg="{{userBasicInfo.avatarUrl}}" myClass="head-plat-class" platId="{{platformId}}" platSize="47"></head-plat-cmp>
+    <view class="nickname">{{userBasicInfo.wxName ||'网红'}}</view>
+    <!-- <view class="plat-info">{{user.terrace}}:</view> -->
+    <view class="param-box">
+      <resources-cmp account="{{user.terrace==null?'--':user.terrace}}" classies_name="平台" downClass="down-class" upClass="up-class"></resources-cmp>
+      <resources-cmp account="{{stsj.baseInfo.follower_quantity==null?user.bind_fss:stsj.baseInfo.follower_quantity}}" classies_name="粉丝" downClass="down-class" upClass="up-class"></resources-cmp>
+    </view>
+  </view>
+  <view class="personal-info panel">
+    <view class="top">
+      <view class="basic">
+        <resources-cmp account="{{stsj.baseInfo.resign==null?'--':stsj.baseInfo.resign}}" classies_name="城市" containerClass="con-info-class" downClass="down-info-class" upClass="up-info-class"></resources-cmp>
+        <resources-cmp account="{{stsj.baseInfo.age==null?'--':stsj.baseInfo.age}}" classies_name="年龄" containerClass="con-info-class" downClass="down-info-class" upClass="up-info-class"></resources-cmp>
+        <resources-cmp account="{{user.users.gender==-1||user.users.gender==null?'--':user.users.gender=='1'?'男':'女'}}" classies_name="性别" containerClass="con-info-class" downClass="down-info-class" upClass="up-info-class"></resources-cmp>
+      </view>
+      <!-- <button open-type='share' class="share-btn">
+        <text class="share-icon lg icon-share"></text> 分享
+      </button> -->
+    </view>
+    <view class="bottom">
+      <view class="labels">
+        <view class="label-item" wx:for="{{user.whtag}}" wx:key="{{tag}}">{{item}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="anchor-data panel">
+    <view class="item bottom-border">
+      <view class="img-box">
+        <text class="flag-icon icon-shop lg text-gray"></text>
+      </view>
+      <view class="lead-name">店铺</view>
+      <view class="amount"></view>
+      <view class="mean">{{user.hasshop?'有商铺':'暂无'}}</view>
+    </view>
+    <view class="item bottom-border">
+      <view class="img-box">
+        <text class="flag-icon icon-appreciate lg text-gray"></text>
+      </view>
+      <view class="lead-name">点赞</view>
+      <view class="amount"></view>
+      <view class="mean">{{stsj.baseInfo.receivepraise_num_user==0?'未填写':stsj.baseInfo.receivepraise_num_user}}</view>
+    </view>
+    <view class="item">
+      <view class="img-box">
+        <text class="flag-icon icon-news lg text-gray"></text>
+      </view>
+      <view class="lead-name">作品</view>
+      <view class="amount"></view>
+      <view class="mean">{{stsj.baseInfo.feed_num_all}}</view>
+    </view>
+  </view>
+  <!-- 粉丝画像 -->
+  <view class="data-box">
+    <view class="label">
+      <view class="line"></view>
+      <view class="txt">粉丝画像-（每周更新）</view>
+    </view>
+    <view wx:if='{{fshx}}'>
+      <view class="navs">
+        <view class="item {{active_tab==index?'active':''}}" wx:for="{{tabMenu}}" data-chart="{{item}}" data-tab="{{index}}" style="width: {{item.length>=4?'auto' : item.length>=2 ? '96rpx':'56rpx'}}; margin-right: {{index == tabMenu.length-1 ? '0' : '40rpx'}};"
+          wx:key bindtap="onSwitchChart" data-id="{{index}}">
+          {{item}}
+        </view>
+      </view>
+      <!-- index== 城市 -->
+      <view class="cavas_baba" wx:if='{{active_tab==0 && stsj.citys.length!=0}}'>
+        <ff-canvas id="guage-dom" canvas-id="guage" opts="{{cvCity}}"></ff-canvas>
+      </view>
+      <!-- index== 性别 -->
+      <view class="cavas_baba" wx:elif='{{active_tab==1 && stsj.genders.length!=0}}'>
+        <ff-canvas id="column-dom" canvas-id="column" opts="{{genderCur}}"></ff-canvas>
+      </view>
+      <!-- index== 年龄 -->
+      <view class="cavas_baba" wx:elif='{{active_tab==2 && stsj.ages.length!=0}}'>
+        <ff-canvas id="column-dom" canvas-id="column" opts="{{cvAge}}"></ff-canvas>
+      </view>
+      <!-- index== 星座 -->
+      <view class="cavas_baba" wx:elif='{{active_tab==3 && stsj.constellations.length!=0}}'>
+        <ff-canvas id="guage-dom" canvas-id="guage" opts="{{mapConstellations}}"></ff-canvas>
+      </view>
+    </view>
+    <view class='test_tip1' wx:if='{{stsj.ages.length==0||load==null}}'>
+      <text style='color:#888; font-size: 30rpx; margin-top: 100rpx;'>暂无数据</text>
+    </view>
+  </view>
+  <!-- 用户的照片 -->
+  <view class="data-box">
+    <view class="label">
+      <view class="line"></view>
+      <view class="txt">形象展示</view>
+    </view>
+    <view class='grid col-2 padding-sm' wx:if="{{user.whImages.length}}">
+      <view bindtap='load_images' data-imgs='{{user.whImages}}' id='{{index}}' class='padding-sm' wx:for='{{user.whImages}}' wx:key='photos'>
+        <image class="bg-img padding-bottom-xl test_img" src="{{item}}"></image>
+      </view>
+    </view>
+    <!-- 如果没有结果 -->
+    <view class="empty" wx:else>
+      暂无形象照片
+    </view>
+  </view>
+</view>
+<view class='cu-bar border shop' hidden='{{ckHtight}}'></view>
+<!-- 绝对定位 -->
+<view class='test-kb-1' />
+<view class="cu-bar bg-white post tabbar border shop" hidden='{{ckHtight}}'>
+  <button class="test_line action baise" open-type='share'>
+    <view style='font-size:40rpx;' class='padding-bottom-xs icon-share baise'>
+    </view>
+    分享Ta
+  </button>
+  <button class="action test_line baise" open-type='contact'>
+    <view style='font-size:40rpx;' class='padding-bottom-xs icon-service baise'>
+    </view>
+    在线客服
+  </button>
+  <form style='width:20%;' bindsubmit="doCollect">
+    <button class="action {{isCollected?'text-red':'baise'}}" form-type='submit'>
+      <view style='font-size:40rpx;' class='padding-bottom-xs icon-likefill  '></view>
+      {{isCollected?'取消':'收藏'}}
+    </button>
+  </form>
+  <button class='bg-red submit' bindtap='callkf'>
+    <view class='icon-dianhua padding'></view>
+    联系经纪</button>
+</view>

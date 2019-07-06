@@ -1,0 +1,53 @@
+<view class='margin-xl bg-white padding-lg radius shadow-lg'>
+<view class='test'>
+  <image src='../../image/logo_back.png' class='test_icon'style='margin-bottom: 20rpx;' mode='widthFix'></image>
+</view>
+<!-- bindtap='gouser'  -->
+ <!-- bindlongtap='go_admin'  -->
+    <view class="pure" style='height: {{autohight}}rpx;'>
+      <view class="album-date" animation="{{albumSwitchAnimation}}">
+        <!-- 隐藏的空间 -->
+        <view class='hide_space' wx:if='{{autohight == 688}}'>
+          <view class='ml-sm'>
+            <text class='iconfont icon-titles danger-text'></text>
+            <text class='text-lg ml-xs'>温馨提示：</text>
+          </view>
+          <view class='ml-sm diytip'>
+            如果您是误触打开本界面，请点击上方{{shop_Name}}LOGO，退出该功能，对您造成的误解，深表歉意。此功能仅供系统管理员使用。
+          </view>             
+          <!-- 表单组件 -->     
+          <form bindsubmit="formSubmit">
+            <view class="user">
+              <view class="user-top">
+                <view class="user-img">
+                  <image src="{{user_admin}}" class='radius'></image>
+                </view>
+                <view class="user-text">
+                  <view class="item">
+                    <view>账号：</view>
+                    <input class="input line shadow-lg solid-bottom" type='number' adjust-position='ture' name="Account_number" placeholder="输入账号..." />
+                    <view>密码：</view>
+                    <input class="input line shadow-lg solid-bottom" password='ture' name="Password" placeholder="输入密码..." />
+                  </view>
+                </view>
+              </view>
+              <view class='user-bg' style='background-image:url({{user_bg}})'>
+              </view>
+            </view>
+            <button form-type="submit" class='cu-btn warning btn ml-sm diy_but button-hover'>登录</button>
+          </form>
+        </view>
+        <!-- 隐藏空间结束 -->
+      </view>
+    </view>
+  <!-- <view class='text-center margin-bottom text-lg  text-grey'></view> -->
+  <view class='text-content'>
+    <view class='margin-top-sm'>红腕，是一个能让自媒体人与企业（商家和MCN）更快速、更安全进行交易的平台。</view>
+    <view class='margin-top-sm'>红腕的服务理念：让自媒体人不再担心变现，让企业不再担心分销，让MCN不再担心招募。</view>
+    <view class='margin-top-sm'>红腕平台包括微信公众号：红腕（微信号HongOnew）、微信小程序：红腕</view>
+    <view class='margin-top-sm'>在红腕平台，自媒体人可以尽情展示自己所擅长的领域，企业可针对感兴趣的自媒体人直接下单；企业可以精准发布自身的合作需求，红腕会根据企业需求向符合要求的自媒体人进行精准推送，极速完成企业需求，同时满足自媒体人的变现需求。</view>
+    <view class='margin-top-sm'>更重要的是，红腕会对平台上的每一次合作交易进行监督，保证各方利益</view>
+    <view class='margin-top-sm'>您对红腕有任何问题或建议可直接点击“我的”-“联系我们”与客服进行沟通。您的问题我们会以尽快解决；您的建议我们将从善如流，尽快改进。我们希望，红腕能带给您更好的服务体验。</view>
+  </view>
+
+</view>

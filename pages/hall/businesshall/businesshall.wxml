@@ -1,0 +1,85 @@
+<!--订单大厅-->
+<view class="wx-container">
+  <!-- 头部的筛选 -->
+  <view class="wx-top-tab">
+    <view class="wx-each-tab" bindtap="clickSelect" data-type='1' data-hidden='0'>
+      <text class="{{stationType == '1' && isShow ? 'wx-font-red':''}}">需求平台({{selectedNum}})</text>
+      <image src="{{stationType == '1' && isShow ? '../../image/wx-up-red.png':'../../image/wx-down.png'}}"></image>
+    </view>
+    <view class="wx-each-tab wx-each-fans" bindtap="clickSelect" data-type='2'>
+      <text class="{{stationType == '2' ? 'wx-font-red':''}}">粉丝要求</text>
+      <view class="wx-right-icon">
+        <image src="{{stationType == '2' && selectFans == 'desc' ? '../../image/wx-up-red.png':'../../image/wx-up.png'}}"></image>
+        <image src="{{stationType == '2' && selectFans == 'asc'? '../../image/wx-down.png':'../../image/wx-down.png'}}"></image>
+      </view>
+    </view>
+    <view class="wx-each-tab wx-each-fans" bindtap="clickSelect" data-type='3'>
+      <text class="{{stationType == '3' ? 'wx-font-red':''}}">价格排序</text>
+      <view class="wx-right-icon">
+        <image src="{{stationType == '3' && selectOrder == 'desc' ? '../../image/wx-up-red.png':'../../image/wx-up.png'}}"></image>
+        <image src="{{stationType == '3' && selectOrder == 'asc'? '../../image/wx-down.png':'../../image/wx-down.png'}}"></image>
+      </view>
+
+    </view>
+    <view class="wx-each-tab" bindtap="clickSelect" data-type='4'>
+      <text class="{{stationType == '4' && isShow ? 'wx-font-red':''}}">更多</text>
+      <image src="{{stationType == '4' && isShow ? '../../image/wx-up-red.png':'../../image/wx-down.png'}}"></image>
+    </view>
+  </view>
+
+  <!-- 订单列表 -->
+  <view class="wx-list">
+    <view class="wx-each" hover-class="hover" wx:for='{{orderList}}' wx:key='index'>
+      <view class="wx-left">
+        <image class="wx-big" src="{{item.headPic}}"></image>
+      </view>
+      <view class="wx-right">
+        <text class="wx-name">{{item.offerTitle}}</text>
+        <text class="wx-common">{{item.remarks}}</text>
+        <view class="wx-label-mini">
+          <text wx:for='{{item.tagArr}}' wx:for-item='tagArr' wx:key='index' wx:if='{{index < 4}}'>{{tagArr}}</text>
+        </view>
+        <text class="wx-money">￥{{item.price}}</text>
+        <text class="wx-fans-common">粉丝要求：0~{{item.fanNums}}</text>
+      </view>
+    </view>
+
+    <!-- <view class="wx-nodata {{!hasData?'hidden':''}}">暂无数据</view> -->
+  </view>
+
+  <!-- 平台筛选 -->
+  <view class="wx-station {{stationType == '1' && isShow ? 'isShow':'hidden'}}">
+    <view class="wx-label">
+      <text class="{{stationArray[index].status == '1' ? 'wx-red-bg':''}}" wx:for='{{stationArray}}' wx:key='index' bindtap="clickStation" data-id='{{item.id}}' data-status='{{item.status}}'>{{item.dictValue}}</text>
+    </view>
+    <view class="wx-btns">
+      <button class="wx-clear" bindtap="clearAll">重置</button>
+      <button class="wx-sure" bindtap="sureStation">确定</button>
+    </view>
+  </view>
+
+  <!-- 粉丝要求--升降序 -->
+  <!-- 价格排序--升降序 -->
+
+  <!-- 更多 -->
+  <!-- 标签筛选 -->
+  <view class="wx-station {{stationType == '4' && isShow ? 'isShow':'hidden'}}">
+    <text class="wx-lable-title">网红标签</text>
+    <view class="wx-label">
+      <!-- <text class="" data-labelType="0" bindtap="clickLabel">全部</text> -->
+      <text class="{{labelArray[index].status == '1' ? 'wx-red-bg':''}}" wx:for='{{labelArray}}' wx:key='index' bindtap="clickLabel" data-id='{{item.id}}' data-status='{{item.status}}'>{{item.dictValue}}</text>
+    </view>
+    <view class="wx-btns">
+      <button class="wx-clear" bindtap="clearAll">重置</button>
+      <button class="wx-sure" bindtap="sureLabel">确定</button>
+    </view>
+  </view>
+
+  <view class="zhezhao {{isShow && (stationType != '2' && stationType != '3')?'isShow' : 'hidden'}}"></view>
+
+  <!-- 发布需求 -->
+  <view class="wx-public" bindtap="clickPublic">
+    <image src="../../image/wx-public.png"></image>
+  </view>
+  
+</view>

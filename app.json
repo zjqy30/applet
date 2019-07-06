@@ -1,0 +1,52 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/mine/mineindex/mineindex",
+    "pages/mine/identification/identification",
+    "pages/mine/abortus/abortus",
+    "pages/mine/correctphone/correctphone",
+    "pages/logs/logs",
+    "pages/hall/businesshall/businesshall",
+    "pages/hall/celebrityhall/celebrityhall",
+    "pages/hall/whdetail/whdetail"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#aaa",
+    "selectedColor": "#ff2644",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+     {
+      "pagePath": "pages/index/index",
+      "iconPath": "pages/image/wx-index-no.png",
+      "selectedIconPath": "pages/image/wx-index.png",
+      "text": "首页"
+    },
+      {
+        "pagePath": "pages/hall/celebrityhall/celebrityhall",
+        "iconPath": "pages/image/wx-find-no.png",
+        "selectedIconPath": "pages/image/wx-find.png",
+        "text": "网红"
+      },
+      {
+        "pagePath": "pages/hall/businesshall/businesshall",
+        "iconPath": "pages/image/wx-shopping-no.png",
+        "selectedIconPath": "pages/image/wx-shopping.png",
+        "text": "订单"
+      },
+      {
+        "pagePath": "pages/mine/mineindex/mineindex",
+        "iconPath": "pages/image/wx-mine-no.png",
+        "selectedIconPath": "pages/image/wx-mine.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

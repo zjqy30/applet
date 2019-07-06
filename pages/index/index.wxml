@@ -1,0 +1,62 @@
+<!-- 
+  作者： 星星
+  创建时间：2019/7/1
+  描述：首页
+-->
+<view class="wx-container">
+  <!-- 顶部轮播图 -->
+  <view class="mw-swiper">
+    <swiper class="card-swiper" indicator-dots="{{false}}" circular="true" autoplay="true" interval="3000" duration="500" bindchange="cardSwiper" indicator-color="#8799a3" indicator-active-color="#0081ff" bindtap="clickBanner">
+      <!-- 当前显示的图片的样式 -->
+      <swiper-item wx:for="{{bannerImg}}" wx:key class="{{cardCur == index?'cur':''}}">
+        <image class='bg-img shadow-blur' src='{{item.imgs}}'></image>
+        <text>{{item.index}}</text>
+      </swiper-item>
+    </swiper>
+  </view>
+
+  <!-- 系统公告区域 -->
+  <view class="mw-system-info">
+    <!-- <view class='title'> -->
+    <!-- <text class='icon-red'>系统公告</text> -->
+    <!-- </view> -->
+    <swiper class="announ swiper_container" vertical="true" autoplay="true" circular="true" interval="3000" display-multiple-items='2' >
+      <swiper-item wx:for="{{announcement}}" wx:key='{{announcement}}'>
+        <view class="swiper_item " >
+          <image src="../image/wx-hot.png"></image>
+          {{item.message}}
+        </view>
+      </swiper-item>
+    </swiper>
+  </view>
+  <view class="wx-slipt"></view>
+  <!-- 网红列表 -->
+  <view class="mw-list">
+    <view class="wx-title">新鲜资源</view>
+    <view class="wx-refresh-list">
+
+      <view class="wx-each" hover-class="hover" wx:for='{{whList}}' wx:key='index'>
+        <view class="wx-left">
+          <text class="wx-index">{{index + 1}}</text>
+          <image src="{{item.headPic}}"></image>
+        </view>
+        <view class="wx-right">
+          <view class="wx-top-name">
+            <text class="wx-plat">{{item.platName}}</text>
+            <text class="wx-whname">{{item.wxName}}</text>
+            <text class="wx-label">{{item.tags}}</text>
+          </view>
+        </view>
+        <view class="wx-after">
+          <text class="wx-num">{{item.fansNum}}</text>
+          <view class="wx-fans">粉丝数</view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+
+
+
+
+</view>

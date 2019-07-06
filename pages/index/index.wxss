@@ -1,0 +1,273 @@
+/* 主页样式 */
+
+@font-face {
+  font-family: "X-songti";
+  src: url("X-songti.eot");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* @font-face{
+  font-family: "zihun36hao-zhengwensongkai";
+  src:url("36--Regular.eot");
+  font-weight: normal;
+  font-style: normal;
+} */
+
+.page {
+  background: #f1f1f1;
+}
+
+.hover {
+  background: #f6f5f6 !important;
+}
+
+.color {
+  color: rgb(37, 176, 231);
+}
+
+/* 轮播 */
+
+swiper.square-dot .wx-swiper-dot {
+  background: #fff;
+  opacity: 0.4;
+  width: 10rpx;
+  height: 10rpx;
+  border-radius: 20rpx;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+swiper.square-dot .wx-swiper-dot.wx-swiper-dot-active {
+  opacity: 1;
+  width: 30rpx;
+}
+
+swiper.round-dot .wx-swiper-dot {
+  width: 10rpx;
+  height: 10rpx;
+  top: -4rpx;
+  transition: all 0.3s ease-in-out 0s;
+  position: relative;
+}
+
+swiper.round-dot .wx-swiper-dot.wx-swiper-dot-active::after {
+  content: "";
+  position: absolute;
+  width: 10rpx;
+  height: 10rpx;
+  top: 0rpx;
+  left: 0rpx;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background: #fff;
+  border-radius: 20rpx;
+}
+
+swiper.round-dot .wx-swiper-dot.wx-swiper-dot-active {
+  width: 18rpx;
+  height: 18rpx;
+  top: 0rpx;
+}
+
+.screen-swiper {
+  min-height: 375rpx;
+}
+
+.screen-swiper image {
+  width: 100%;
+  display: block;
+  height: 100%;
+  margin: 0;
+}
+
+.card-swiper {
+  height: 420rpx;
+}
+
+.card-swiper swiper-item {
+  width: 610rpx !important;
+  left: 70rpx;
+  box-sizing: border-box;
+  padding: 30rpx 0rpx 30rpx;
+  overflow: initial;
+}
+
+.card-swiper swiper-item .bg-img {
+  width: 100%;
+  display: block;
+  height: 100%;
+  border-radius: 10rpx;
+  transform: scale(0.9);
+  transition: all 0.2s ease-in 0s;
+}
+
+.card-swiper swiper-item.cur .bg-img {
+  transform: none;
+  transition: all 0.2s ease-in 0s;
+}
+
+.tower-swiper {
+  height: 420rpx;
+  position: relative;
+}
+
+.tower-swiper .tower-item {
+  position: absolute;
+  width: 300rpx;
+  height: 380rpx;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin: auto;
+  transition: all 0.3s ease-in 0s;
+  opacity: 1;
+}
+
+.tower-swiper .tower-item.none {
+  opacity: 0;
+}
+
+.tower-swiper .tower-item .bg-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 6rpx;
+}
+
+/* 红色竖直 */
+
+.title {
+  padding-left: 30rpx;
+  font-size: 36rpx;
+  font-weight: bold;
+}
+
+.icon-red {
+  display: inline-block;
+  position: relative;
+  padding-left: 25rpx;
+}
+
+.icon-red::before {
+  content: '';
+  width: 10rpx;
+  height: 36rpx;
+  position: absolute;
+  left: 0;
+  top: 8rpx;
+  border-radius: 5px;
+  background: red;
+}
+
+/* 竖直滑动--swiper */
+
+.announ {
+  padding-left: 15rpx;
+  font-size: 26rpx;
+  margin: 15rpx;
+  font-weight: 500;
+}
+
+.swiper_container {
+  height: 80rpx;
+}
+
+.swiper_item {
+  margin-bottom: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.swiper_item image {
+  width: 13px;
+  height: 15px;
+  /* margin-top:2px; */
+  margin-right: 8px;
+  float: left;
+}
+
+.wx-slipt {
+  width: 100%;
+  height: 10px;
+  background: #f1f1f1;
+}
+
+/* 新鲜资源 */
+
+.wx-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 15px;
+  margin-bottom: 5px;
+}
+
+.wx-refresh-list image {
+  width: 40px;
+  height: 40px;
+}
+
+.wx-each {
+  padding: 5px 15px;
+  overflow: hidden;
+}
+
+.wx-left, .wx-right {
+  float: left;
+  display: flex;
+  margin-right: 10px;
+}
+
+.wx-index {
+  margin-top: 8px;
+  /* margin-right: 10px; */
+  width:25px;
+}
+
+.wx-plat {
+  font-size: 10px;
+  color: #f03d37;
+  border: 0.5px solid #f03d37;
+  float: left;
+  padding: 1px 4px;
+  border-radius: 3px;
+  margin-right: 8px;
+  margin-top: 3px;
+}
+
+.wx-whname {
+  font-size: 14px;
+  font-weight: bold;
+  float: left;
+  margin-top: 2px;
+  width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.wx-label {
+  clear: both;
+  float: left;
+  font-size: 10px;
+  color: #333;
+  margin-top: 8px;
+}
+
+.wx-after {
+  float: right;
+  text-align: right;
+}
+
+.wx-num {
+  color: red;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.wx-fans {
+  font-size: 10px;
+  color: #333;
+  margin-top: 8px;
+}

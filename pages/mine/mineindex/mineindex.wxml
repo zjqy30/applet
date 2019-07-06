@@ -1,0 +1,68 @@
+<!-- 个人中心（普通用户，网红，商家） -->
+
+<view class="wx-container">
+  <view class="wx-top">
+
+    <view class="wx-headpic">
+      <image src="{{userPic ? userPic : '../../image/wx-myheadpic.png'}}"></image>
+    </view>
+    <view class="wx-login">
+      <text class="" bindtap="skipLogin">{{isLogin ? userName : '登录/注册'}}</text>
+      <text class="wx-logininfo">{{isLogin ? userPhone : '登录后查看更多信息'}}</text>
+    </view>
+
+  </view>
+
+  <view class="wx-function">
+    <!-- 普通用户显示 -->
+    <view class="wx-each" hover-class="hover" wx:if="{{userType == '0'}}">
+      <image src="../../image/wx-mydentify.png"></image>
+      <text>申请认证</text>
+    </view>
+
+    <!-- 网红显示 -->
+    <view class="wx-each" hover-class="hover" wx:if="{{userType == '1'}}">
+      <image src="../../image/wx-myopinion.png"></image>
+      <text>个人资料</text>
+    </view>
+    <view class="wx-each" hover-class="hover" wx:if="{{userType == '1'}}">
+      <image src="../../image/wx-myopinion.png"></image>
+      <text>我的钱包</text>
+    </view>
+
+    <!-- 商家显示 -->
+    <view class="wx-each" hover-class="hover" wx:if="{{userType == '2'}}">
+      <image src="../../image/wx-myopinion.png"></image>
+      <text>个人账单</text>
+    </view>
+
+    <!-- 网红商家共显 -->
+    <view class="wx-each" hover-class="hover" wx:if="{{userType != '0'}}">
+      <image src="../../image/wx-myopinion.png"></image>
+      <text>订单中心</text>
+    </view>
+    <view class="wx-each" hover-class="hover" wx:if="{{userType != '0'}}">
+      <image src="../../image/wx-myopinion.png"></image>
+      <text>修改号码</text>
+    </view>
+
+    <!-- 三种角色通用显示 -->
+    <view class="wx-each" hover-class="hover">
+      <image src="../../image/wx-myopinion.png"></image>
+      <button class="wx-default-style" hover-class="hover" open-type="feedback">帮助反馈</button>
+    </view>
+    <view class="wx-each" hover-class="hover" bindtap="callUs">
+      <image src="../../image/wx-myemail.png"></image>
+      <text>联系我们</text>
+    </view>
+    <view class="wx-each wx-icon" hover-class="hover" bindtap="skipAboutUs">
+      <image src="../../image/wx-myinfo.png"></image>
+      <text>关于我们</text>
+    </view>
+    <view class="wx-each" hover-class="hover">
+      <image src="../../image/wx-myshare.png"></image>
+      <button class="wx-default-style" hover-class="btn-hover" open-type="share">分享一下</button>
+    </view>
+  </view>
+
+</view>
