@@ -29,8 +29,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    const scene = decodeURIComponent(query.scene);
-      console.log(scene+'88888');
     // 获取网红列表
     this.getOrder();
     // 获取平台

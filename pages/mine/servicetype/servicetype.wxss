@@ -1,0 +1,118 @@
+/* pages/mine/servicetype/servicetype.wxss */
+
+page {
+  background: -webkit-linear-gradient(left, #f03, #ff4e4e);
+  padding-top: 20rpx;
+}
+
+.hover {
+  background: #f2f2f2;
+}
+
+/* 填写 */
+
+.wx-pic {
+  display: block;
+  background: #fff;
+  width: 90%;
+  margin: 20rpx auto;
+  padding: 30rpx 0 0;
+  color: #333;
+  font-size: 28rpx;
+}
+
+/* 重写 checkbox 样式 */
+
+checkbox {
+  width: 100%;
+  display: block;
+}
+
+/* 未选中的 背景样式 */
+
+checkbox .wx-checkbox-input {
+  border-radius: 50%; /* 圆角 */
+  width: 40rpx; /* 背景的宽 */
+  height: 40rpx; /* 背景的高 */
+  border: 1px solid #f03;
+  margin-right: 40rpx;
+}
+
+/* 选中后的 背景样式 （红色背景 无边框 可根据UI需求自己修改） */
+
+checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+  border: 1rpx solid #f03;
+  background: #f03;
+}
+
+/* 选中后的 对勾样式 （白色对勾 可根据UI需求自己修改） */
+
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+  border-radius: 50%; /* 圆角 */
+  width: 40rpx; /* 选中后对勾大小，不要超过背景的尺寸 */
+  height: 40rpx; /* 选中后对勾大小，不要超过背景的尺寸 */
+  line-height: 40rpx;
+  text-align: center;
+  font-size: 30rpx; /* 对勾大小 30rpx */
+  color: #fff; /* 对勾颜色 白色 */
+  background: transparent;
+  transform: translate(-50%, -50%) scale(1);
+  -webkit-transform: translate(-50%, -50%) scale(1);
+}
+
+/*  */
+
+.wx-each-type {
+  width: 75%;
+  /* border:1px solid red; */
+  margin: 0 auto;
+  padding: 42rpx;
+  box-shadow: 0rpx 0rpx 8rpx #e4e4e4;
+  border-radius: 4rpx;
+}
+
+/* 说明 */
+
+.wx-info {
+  display: inline-block;
+  font-size: 20rpx;
+  color: #858585;
+  padding: 20rpx 40rpx;
+  width: calc(100% - 80rpx);
+  margin-bottom:30rpx;
+}
+
+.wx-each-type {
+  position: relative;
+}
+
+.wx-price {
+  position: absolute;
+  right: 30rpx;
+  top: 40rpx;
+  bottom: 0;
+  color: #f03;
+  font-size: 40rpx;
+  font-weight: 500;
+
+}
+.wx-icon{
+  font-size: 22rpx;
+  font-weight: 500;
+}
+
+/* 下一步按钮 */
+button {
+  padding: 20rpx;
+  font-size: 30rpx;
+  background: #fff;
+  color: #f03;
+  margin-top: 20rpx;
+}
+
+button::after {
+  padding: 20rpx;
+  border: 0;
+  border-radius: 0;
+  border-top: 0.5rpx solid #f5f5f5;
+}

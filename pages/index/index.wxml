@@ -14,7 +14,6 @@
       </swiper-item>
     </swiper>
   </view>
-
   <!-- 系统公告区域 -->
   <view class="mw-system-info">
     <!-- <view class='title'> -->

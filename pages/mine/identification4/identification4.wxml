@@ -1,0 +1,91 @@
+<!--pages/mine/identification4/identification4.wxml-->
+<view class="wx-contanier">
+  <!-- 认证信息填写 -->
+  <view class="wx-step">
+    <view class="wx-each-step">
+      <text class="wx-first"></text>
+    </view>
+    <view class="wx-each-step">
+      <text class="wx-first"></text>
+    </view>
+    <view class="wx-each-step">
+      <text class="wx-first"></text>
+    </view>
+    <view class="wx-each-step">
+      <text class="wx-first"></text>
+    </view>
+  </view>
+
+  <!-- 上传认证图片 -->
+  <view class="wx-pic">
+
+    <view class="wx-input">
+      <text>个人介绍</text>
+      <textarea placeholder="请输入" maxlength='50'></textarea>
+    </view>
+    <text class="wx-info">用一段话介绍自己（最多50字）</text>
+
+    <view class="wx-input" bindtap="skipModel">
+      <text class="wx-label">服务类型</text>
+      <view class="wx-services" bindtap="selectService">
+
+        <view class="wx-each">
+          <text class="wx-type">
+            <text class="wx-index">1</text>
+          <!-- 微信朋友圈广告/次 -->
+          </text>
+          <text class="wx-price">
+          <!-- ￥200  -->
+          </text>
+
+        </view>
+        <view class="wx-each">
+          <text class="wx-type">
+            <text class="wx-index">2</text>
+          <!-- 微信朋友圈广告/次 -->
+          </text>
+          <text class="wx-price">
+          <!-- ￥200  -->
+          </text>
+        </view>
+        <view class="wx-each">
+          <text class="wx-type">
+            <text class="wx-index">3</text>
+          <!-- 微信朋友圈广告/次 -->
+          </text>
+          <text class="wx-price">
+          <!-- ￥200  -->
+          </text>
+        </view>
+        <view class="wx-each">
+          <text class="wx-type">
+            <text class="wx-index">4</text>
+          <!-- 微信朋友圈广告/次 -->
+          </text>
+          <text class="wx-price">
+          <!-- ￥200  -->
+          </text>
+        </view>
+
+
+      </view>
+    </view>
+    <view class="wx-info">为自己制定价格，定制服务（最多4个）
+    </view>
+
+
+    <view class="wx-agreement">
+      <checkbox>我同意《
+        <view class="wx-blue" bindtap="skipAgreement" data-type="1">服务条款</view>》和《
+        <view class="wx-blue" bindtap="skipAgreement" data-type="2">红腕隐私政策</view>》</checkbox>
+    </view>
+
+
+
+
+    <view class="wx-btn">
+      <button>提交审核</button>
+    </view>
+
+  </view>
+</view>

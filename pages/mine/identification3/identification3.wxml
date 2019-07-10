@@ -1,0 +1,58 @@
+<!--pages/mine/identification3/identification3.wxml-->
+<view class="wx-contanier">
+  <!-- 认证信息填写 -->
+  <view class="wx-step">
+    <view class="wx-each-step">
+      <text class="wx-first"></text>
+    </view>
+    <view class="wx-each-step">
+      <text class="wx-first"></text>
+    </view>
+    <view class="wx-each-step">
+      <text class="wx-first"></text>
+    </view>
+    <view class="wx-each-step">
+      <text></text>
+    </view>
+  </view>
+
+  <!-- 上传认证图片 -->
+  <view class="wx-pic">
+
+     <view class="wx-input wx-noborder" bindtap="skipModel">
+      <text class="wx-label">标签选择</text>
+      <view class="wx-labels">
+        <text>测试1</text>
+        <text>测试1</text>
+        <text>测试1</text>
+        <text>测试1</text>
+        <text>测试1</text>
+        <text>测试1</text>
+        <text>测试1</text>
+        <text>测试1</text>
+        <text>测试1</text>
+        <text>测试1</text>
+      </view>
+    </view>
+    <view class="wx-info">请选择相对应的标签（最多6个）
+    </view>
+
+
+    <view class="wx-input wx-noborder" bindtap="skipModel">
+      <text class="wx-label">形象照</text>
+      <view class="wx-images">
+        <image src="{{defaultImg}}"></image>
+        <image src="{{defaultImg}}"></image>
+        <image src="{{defaultImg}}"></image>
+      </view>
+    </view>
+    <view class="wx-info">上传形象照可以让更多的人看到你，所以尽可能的 上传（最多6张）
+     
+    </view>
+
+    <view class="wx-btn">
+      <button bindtap="skipNext">下一步</button>
+    </view>
+
+  </view>
+</view>

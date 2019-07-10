@@ -2,10 +2,10 @@
 //获取应用实例
 const app = getApp();
 
-
 Page({
   data: {
-    userInfo: {},
+    userId:'',
+    userInfo: {} ,
     hasUserInfo: false,
     cardCur: 0,
     // 测试banner
@@ -13,21 +13,12 @@ Page({
     // 测试公告
     announcement: [],
     // 测试的网红类型
-    tabType: [{
-      name: '全部'
-    }, {
-      name: '抖音'
-    }, {
-      name: '快手'
-    }, {
-      name: '微视'
-    }, {
-      name: '全部'
-    }],
+    tabType: [],
     whList: [],
     pageNumber: '1',
     hasmore: 'none',
     test: '<button>123</button>',
+    inviteCode:''
   },
   /**
    * 生命周期函数--监听页面加载
@@ -36,24 +27,35 @@ Page({
     // const scene = decodeURIComponent(options.scene);
     // console.log(scene + '88888');
     var _this = this;
-    // 获取用户的基本信息
-    wx.getUserInfo({
-      success: function(res) {
-        console.log(JSON.stringify(res));
-      }
-    })
+    console.log(JSON.stringify(_this.data.userInfo)+'这是用户信息');
+    // 新老用户进入先获取code并获取opneid
     // 获取缓存中的openid，如果有就不用走授权流程了
     wx.getStorage({
       key: 'openid',
       success(res) {
-        console.log(res)
         var openid = res.data;
         app.globalData.openid = openid; //存全局变量，用于其他页面使用
-        // 自动登录
-        _this.userLogin();
+
+        // 从缓存中获取用户的userid,如果没有重新登录
+        wx.getStorage({
+          key: 'loginInfo',
+          success: function (res) {
+            // 已登录过了
+            var loginInfo = JSON.parse(res.data);
+            _this.data.userId = loginInfo.userId;
+            app.globalData.isLogin = true;
+
+          },
+          fail:function(error){
+            // 未登录
+            wx.redirectTo({
+              url: '/pages/login/login',
+            })
+          }
+        })
+       
       },
       fail(res) {
-        console.log(res)
         // 获取登录凭证
         wx.login({
           success: function(res) {
@@ -77,7 +79,6 @@ Page({
   },
   // 获取当前显示的图片序号
   cardSwiper(e) {
-    // console.log(JSON.stringify(e));
     this.setData({
       cardCur: e.detail.current
     })
@@ -139,6 +140,23 @@ Page({
           key: 'openid',
           data: response.data.openid
         })
+        // 从缓存中获取用户的userid,如果没有重新登录
+        wx.getStorage({
+          key: 'loginInfo',
+          success: function (res) {
+            // 已登录过了
+            var loginInfo = JSON.parse(res.data);
+            _this.data.userId = loginInfo.userId;
+            app.globalData.isLogin = true;
+
+          },
+          fail: function (error) {
+            // 未登录
+            wx.redirectTo({
+              url: '/pages/login/login',
+            })
+          }
+        })
       } else {
         // 数据返回失败
         wx.showToast({
@@ -150,21 +168,31 @@ Page({
   },
   // 用户登录
   userLogin: function() {
-    wx.getUserInfo({
-      success: function(res) {
 
-      }
-    })
     var _this = this;
     var params = {
-      pages: '1'
+      openid: app.globalData.openid,
+      wxname: _this.data.userInfo.nickName,
+      gender: _this.data.userInfo.gender,
+      avatarUrl: _this.data.userInfo.avatarUrl,
+      country: _this.data.userInfo.country,
+      inviteCode: _this.data.inviteCode
     }
-    app.fetch('/hone/applet/banner/list', params).then((response) => {
+    app.fetch('/hone/applet/userBasic/login', params).then((response) => {
       // 数据返回成功
       if (response.errorCode == '0') {
-        _this.setData({
-          bannerImg: response.data.bannersList
-        })
+        app.globalData.userType = response.data.userType;
+        app.globalData.phoneNo = response.data.phoneNo;
+        app.globalData.isLogin = true;
+        // 登录后获取用户的类型
+        if (response.data.userType == '0'){
+          // 普通用户，可去个人中心认证网红或商家
+
+        } else if (response.data.userType == '1'){
+
+        } else if (response.data.userType == '2'){
+
+        }
       } else {
         // 数据返回失败
         wx.showToast({

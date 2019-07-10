@@ -1,0 +1,66 @@
+<!--pages/mine/identification2/identification2.wxml-->
+<view class="wx-contanier">
+  <!-- 认证信息填写 -->
+  <view class="wx-step">
+    <view class="wx-each-step">
+      <text class="wx-first"></text>
+    </view>
+    <view class="wx-each-step">
+      <text class="wx-first"></text>
+    </view>
+    <view class="wx-each-step">
+      <text></text>
+    </view>
+    <view class="wx-each-step">
+      <text></text>
+    </view>
+  </view>
+
+  <!-- 上传认证图片 -->
+  <view class="wx-pic">
+
+    <view class="wx-input">
+      <text>身份证号</text>
+      <input type="number" class="wx-select" placeholder="请输入"></input>
+    </view>
+    <text class="wx-info">您本人的身份证号</text>
+
+
+    <view class="wx-input wx-noborder" bindtap="skipModel">
+      <text class="wx-label">手持身份证照</text>
+      <view class="wx-images">
+        <image src="{{handCard}}"></image>
+      </view>
+    </view>
+    <view class="wx-info">持有本人有效二代身份证，拍摄时确认身份证证件清晰 五官清晰，亮度均匀。此身份证照仅供认证使用，如有 问题请
+      <view class="wx-blue" bindtap="skipModel" data-type="1">查看模板</view>
+    </view>
+
+    <view class="wx-input wx-noborder" bindtap="skipModel">
+      <text class="wx-label">身份证正反照</text>
+      <view class="wx-images">
+        <image src="{{handCard}}"></image>
+        <image src="{{handCard}}"></image>
+      </view>
+    </view>
+    <view class="wx-info">拍摄时确认身份证边框完整，字体清晰，亮度均匀。此 身份证照仅供认证使用，如有问题请
+      <view class="wx-blue" bindtap="skipModel" data-type="2">查看模板</view>
+    </view>
+
+    <view class="wx-input wx-noborder" bindtap="skipModel">
+      <text class="wx-label">平台截图证明</text>
+      <view class="wx-images">
+        <image src="{{handCard}}"></image>
+        <image src="{{handCard}}"></image>
+      </view>
+    </view>
+    <view class="wx-info">截图时确认粉丝数量，头像ID显示清晰。此截图仅供认 证使用，如有问题请
+      <view class="wx-blue" bindtap="skipModel" data-type="3">查看模板</view>
+    </view>
+
+    <view class="wx-btn">
+      <button bindtap="skipNext">下一步</button>
+    </view>
+
+  </view>
+</view>

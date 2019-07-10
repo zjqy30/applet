@@ -1,133 +1,149 @@
-<!-- 网红详情页面 -->
-<view class="container">
-  <view class="mh-box">
-    <image class="mh-img" mode="aspectFill" src="{{userBasicInfo.avatarUrl || ''}}"></image>
-    <view class="mask-layer"></view>
+<!-- 网红详情页 -->
+<view class="wx-container">
+  <!--  轮播图 -->
+  <swiper indicator-dots="" autoplay="true" interval="3000" duration="800" bindchange="changePic">
+    <swiper-item wx:for="{{personalImgs}}" wx:key='index'>
+      <image src="{{item.imgurl}}"></image>
+    </swiper-item>
+  </swiper>
+  <!-- 轮播图的计数 -->
+  <text class="wx-num">{{currentIndex}}/{{perImgLength}}</text>
+
+  <!-- 用户的头像 -->
+  <view class="wx-headPic">
+    <image src="../../image/wx-myheadpic.png"></image>
+    <text class="wx-name">用户名称</text>
   </view>
-  <view class="info-box">
-    <head-plat-cmp containerSize="167" headImg="{{userBasicInfo.avatarUrl}}" myClass="head-plat-class" platId="{{platformId}}" platSize="47"></head-plat-cmp>
-    <view class="nickname">{{userBasicInfo.wxName ||'网红'}}</view>
-    <!-- <view class="plat-info">{{user.terrace}}:</view> -->
-    <view class="param-box">
-      <resources-cmp account="{{user.terrace==null?'--':user.terrace}}" classies_name="平台" downClass="down-class" upClass="up-class"></resources-cmp>
-      <resources-cmp account="{{stsj.baseInfo.follower_quantity==null?user.bind_fss:stsj.baseInfo.follower_quantity}}" classies_name="粉丝" downClass="down-class" upClass="up-class"></resources-cmp>
+
+  <!-- 用户基本信息 -->
+  <view class="wx-basicInfo">
+    <view class="wx-info">
+      <text>抖音</text>
+      <text class="wx-label">平台</text>
     </view>
-  </view>
-  <view class="personal-info panel">
-    <view class="top">
-      <view class="basic">
-        <resources-cmp account="{{stsj.baseInfo.resign==null?'--':stsj.baseInfo.resign}}" classies_name="城市" containerClass="con-info-class" downClass="down-info-class" upClass="up-info-class"></resources-cmp>
-        <resources-cmp account="{{stsj.baseInfo.age==null?'--':stsj.baseInfo.age}}" classies_name="年龄" containerClass="con-info-class" downClass="down-info-class" upClass="up-info-class"></resources-cmp>
-        <resources-cmp account="{{user.users.gender==-1||user.users.gender==null?'--':user.users.gender=='1'?'男':'女'}}" classies_name="性别" containerClass="con-info-class" downClass="down-info-class" upClass="up-info-class"></resources-cmp>
-      </view>
-      <!-- <button open-type='share' class="share-btn">
-        <text class="share-icon lg icon-share"></text> 分享
-      </button> -->
+    <view class="wx-info">
+      <text>成都</text>
+      <text class="wx-label">地区</text>
     </view>
-    <view class="bottom">
-      <view class="labels">
-        <view class="label-item" wx:for="{{user.whtag}}" wx:key="{{tag}}">{{item}}</view>
-      </view>
-    </view>
-  </view>
-  <view class="anchor-data panel">
-    <view class="item bottom-border">
-      <view class="img-box">
-        <text class="flag-icon icon-shop lg text-gray"></text>
-      </view>
-      <view class="lead-name">店铺</view>
-      <view class="amount"></view>
-      <view class="mean">{{user.hasshop?'有商铺':'暂无'}}</view>
-    </view>
-    <view class="item bottom-border">
-      <view class="img-box">
-        <text class="flag-icon icon-appreciate lg text-gray"></text>
-      </view>
-      <view class="lead-name">点赞</view>
-      <view class="amount"></view>
-      <view class="mean">{{stsj.baseInfo.receivepraise_num_user==0?'未填写':stsj.baseInfo.receivepraise_num_user}}</view>
-    </view>
-    <view class="item">
-      <view class="img-box">
-        <text class="flag-icon icon-news lg text-gray"></text>
-      </view>
-      <view class="lead-name">作品</view>
-      <view class="amount"></view>
-      <view class="mean">{{stsj.baseInfo.feed_num_all}}</view>
+    <view class="wx-info">
+      <text>10万</text>
+      <text class="wx-label">粉丝</text>
     </view>
   </view>
-  <!-- 粉丝画像 -->
-  <view class="data-box">
-    <view class="label">
-      <view class="line"></view>
-      <view class="txt">粉丝画像-（每周更新）</view>
-    </view>
-    <view wx:if='{{fshx}}'>
-      <view class="navs">
-        <view class="item {{active_tab==index?'active':''}}" wx:for="{{tabMenu}}" data-chart="{{item}}" data-tab="{{index}}" style="width: {{item.length>=4?'auto' : item.length>=2 ? '96rpx':'56rpx'}}; margin-right: {{index == tabMenu.length-1 ? '0' : '40rpx'}};"
-          wx:key bindtap="onSwitchChart" data-id="{{index}}">
-          {{item}}
-        </view>
-      </view>
-      <!-- index== 城市 -->
-      <view class="cavas_baba" wx:if='{{active_tab==0 && stsj.citys.length!=0}}'>
-        <ff-canvas id="guage-dom" canvas-id="guage" opts="{{cvCity}}"></ff-canvas>
-      </view>
-      <!-- index== 性别 -->
-      <view class="cavas_baba" wx:elif='{{active_tab==1 && stsj.genders.length!=0}}'>
-        <ff-canvas id="column-dom" canvas-id="column" opts="{{genderCur}}"></ff-canvas>
-      </view>
-      <!-- index== 年龄 -->
-      <view class="cavas_baba" wx:elif='{{active_tab==2 && stsj.ages.length!=0}}'>
-        <ff-canvas id="column-dom" canvas-id="column" opts="{{cvAge}}"></ff-canvas>
-      </view>
-      <!-- index== 星座 -->
-      <view class="cavas_baba" wx:elif='{{active_tab==3 && stsj.constellations.length!=0}}'>
-        <ff-canvas id="guage-dom" canvas-id="guage" opts="{{mapConstellations}}"></ff-canvas>
-      </view>
-    </view>
-    <view class='test_tip1' wx:if='{{stsj.ages.length==0||load==null}}'>
-      <text style='color:#888; font-size: 30rpx; margin-top: 100rpx;'>暂无数据</text>
+
+  <!-- 个人简介 -->
+  <view class="wx-introduce">
+    <view class="wx-title">个人简介</view>
+    <view class="wx-content">关于我自己我大概粉丝有10万左右，带货能力还不错具体方面你可 以联系我的具体私聊。大部份的单子我都能接除了一些比较特殊的，欢 迎来找我的。
     </view>
   </view>
-  <!-- 用户的照片 -->
-  <view class="data-box">
-    <view class="label">
-      <view class="line"></view>
-      <view class="txt">形象展示</view>
+
+  <!-- 平台担保 -->
+  <view class="wx-plat">
+    <view class="wx-plat-info">
+      <image src="../../image/wx-icon1.png"></image>
+      <text>平台担保</text>
     </view>
-    <view class='grid col-2 padding-sm' wx:if="{{user.whImages.length}}">
-      <view bindtap='load_images' data-imgs='{{user.whImages}}' id='{{index}}' class='padding-sm' wx:for='{{user.whImages}}' wx:key='photos'>
-        <image class="bg-img padding-bottom-xl test_img" src="{{item}}"></image>
+    <view class="wx-plat-info">
+      <image src="../../image/wx-icon1.png"></image>
+      <text>平台担保</text>
+    </view>
+    <view class="wx-plat-info">
+      <image src="../../image/wx-icon1.png"></image>
+      <text>平台担保</text>
+    </view>
+
+  </view>
+
+  <!--分隔符 -->
+  <view class="wx-split"></view>
+
+  <!-- 额外信息 -->
+  <view class="wx-extraInfo">
+    <view class="wx-title">数据参考</view>
+    <view class="wx-models">
+      <view class="wx-model">
+        <text>99</text>
+        <text class="wx-label">年龄</text>
+      </view>
+      <view class="wx-model">
+        <text>332</text>
+        <text class="wx-label">作品</text>
+      </view>
+      <view class="wx-model">
+        <text>10万</text>
+        <text class="wx-label">点赞数</text>
+      </view>
+      <view class="wx-model">
+        <text>暂无</text>
+        <text class="wx-label">商铺</text>
+      </view>
+      <view class="wx-model">
+        <text>男</text>
+        <text class="wx-label">性别</text>
       </view>
     </view>
-    <!-- 如果没有结果 -->
-    <view class="empty" wx:else>
-      暂无形象照片
+
+    <view class="wx-title">服务类型</view>
+    <view class="wx-services">
+
+      <view class="wx-each">
+        <text class="wx-type">
+            <text class="wx-index">1</text>微信朋友圈广告/次
+        </text>
+        <text class="wx-price">￥200</text>
+      </view>
+      <view class="wx-each">
+        <text class="wx-type">
+            <text class="wx-index">1</text>微信朋友圈广告/次
+        </text>
+        <text class="wx-price">￥200</text>
+      </view>
+      <view class="wx-each">
+        <text class="wx-type">
+            <text class="wx-index">1</text>微信朋友圈广告/次
+        </text>
+        <text class="wx-price">￥200</text>
+      </view>
+      <view class="wx-each">
+        <text class="wx-type">
+            <text class="wx-index">1</text>微信朋友圈广告/次
+        </text>
+        <text class="wx-price">￥200</text>
+      </view>
+
+
     </view>
   </view>
-</view>
-<view class='cu-bar border shop' hidden='{{ckHtight}}'></view>
-<!-- 绝对定位 -->
-<view class='test-kb-1' />
-<view class="cu-bar bg-white post tabbar border shop" hidden='{{ckHtight}}'>
-  <button class="test_line action baise" open-type='share'>
-    <view style='font-size:40rpx;' class='padding-bottom-xs icon-share baise'>
+
+  <!--分隔符 -->
+  <view class="wx-split"></view>
+  <view class="wx-fans-data">
+    <view class="wx-title">粉丝画像</view>
+  </view>
+
+
+  <!-- 底部按钮 -->
+  <view class="wx-btns">
+    <view class="wx-btn wx-share">
+      <image src="../../image/wx-share.png"></image>
+      <text>分享</text>
     </view>
-    分享Ta
-  </button>
-  <button class="action test_line baise" open-type='contact'>
-    <view style='font-size:40rpx;' class='padding-bottom-xs icon-service baise'>
+
+    <view class="wx-btn wx-collect">
+      <image src="../../image/wx-collect.png"></image>
+      <text>收藏</text>
     </view>
-    在线客服
-  </button>
-  <form style='width:20%;' bindsubmit="doCollect">
-    <button class="action {{isCollected?'text-red':'baise'}}" form-type='submit'>
-      <view style='font-size:40rpx;' class='padding-bottom-xs icon-likefill  '></view>
-      {{isCollected?'取消':'收藏'}}
-    </button>
-  </form>
-  <button class='bg-red submit' bindtap='callkf'>
-    <view class='icon-dianhua padding'></view>
-    联系经纪</button>
+
+    <view class="wx-btn wx-online">
+      <button>在线客服</button>
+    </view>
+
+    <view class="wx-btn wx-concat">
+      <button>联系经纪人</button>
+    </view>
+
+
+
+  </view>
 </view>

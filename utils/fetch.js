@@ -2,17 +2,18 @@
 
 // 直接通过文件名调用
 module.exports = function(path, params) {
-  // 0测试，1正式
-  var isTest = '1';
+  // 1正式
+  var isTest = '0';
+
+  // 测试：apiTest
+  // 正式：api
   var api = '';
-  var apiTest = 'http://l1838324x8.imwork.net';
-  // 测试：
-  // 正式：
+  var apiTest = 'http://192.168.0.167:8080'; // 测试服务器，映射http://l1838324x8.imwork.net
 
   if (isTest == '0') {
-    var url = api + path;
-  } else {
     var url = apiTest + path;
+  } else {
+    var url = api + path;
   }
 
   // 打印参数和接口地址
@@ -24,7 +25,6 @@ module.exports = function(path, params) {
       header: {
         'Content-Type': 'application/json'
       },
-
       method: 'POST',
       dataType: 'json',
       success: function(response) {

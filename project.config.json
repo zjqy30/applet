@@ -48,7 +48,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 5,
+			"current": 14,
 			"list": [
 				{
 					"id": -1,
@@ -89,6 +89,69 @@
 					"id": -1,
 					"name": "关于我们",
 					"pathName": "pages/mine/abortus/abortus",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "登录页面",
+					"pathName": "pages/login/login",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "网红认证",
+					"pathName": "pages/mine/identification/identification",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "网红认证2",
+					"pathName": "pages/mine/identification2/identification2",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "网红认证3",
+					"pathName": "pages/mine/identification3/identification3",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 10,
+					"name": "网红认证4",
+					"pathName": "pages/mine/identification4/identification4",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "服务类型选择",
+					"pathName": "pages/mine/servicetype/servicetype",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "商家认证1",
+					"pathName": "pages/mine/identificationoffer/identificationoffer",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "商家认证2",
+					"pathName": "pages/mine/identificationoffer2/identificationoffer2",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "测试页面",
+					"pathName": "pages/test/test",
 					"query": "",
 					"scene": null
 				}
