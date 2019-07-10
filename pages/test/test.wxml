@@ -1,4 +1,8 @@
 <!--index.wxml-->
-<view class="container">
-  <ff-canvas id="column-dom" canvas-id="column" opts="{{ opts }}"></ff-canvas>
+<view class="wx-canvas">
+   <ff-canvas id="column-dom" canvas-id="column" opts="{{columnChart}}"></ff-canvas>
+</view>
+
+<view class="wx-canvas">
+   <ff-canvas id="guage-dom" canvas-id="guage" opts="{{pieChart}}"></ff-canvas>
 </view>

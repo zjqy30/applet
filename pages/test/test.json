@@ -1,5 +1,6 @@
 {
   "usingComponents": {
     "ff-canvas": "../component/f2-canvas/f2-canvas" 
-  }
+  },
+  "navigationBarTitleText": "测试页面"
 }
