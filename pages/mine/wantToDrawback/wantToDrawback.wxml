@@ -1,0 +1,48 @@
+<!--pages/mine/wantToDrawback/wantToDrawback.wxml-->
+<view class="wx-container">
+ <view class="wx-title">退款订单</view>
+ <form class="wx-content" report-submit="true" bindsubmit="submitDrawback">
+
+  <view class="wx-each" hover-class="hover">
+   <view class="wx-left">
+    <image class="wx-big" src="{{offerInfo.offerPic}}"></image>
+   </view>
+   <view class="wx-right">
+    <text class="wx-name">{{offerInfo.offerTitle}}</text>
+    <text class="wx-common">{{offerInfo.remarks}}</text>
+    <view class="wx-label-mini">
+     <text wx:for='{{offerInfo.tagArr}}' wx:for-item='tagArr' wx:key='index' wx:if='{{index < 4}}'>{{tagArr}}</text>
+    </view>
+    <text class="wx-money">￥{{offerInfo.price}}</text>
+    <text class="wx-fans-common">粉丝要求：{{offerInfo.fanNums}}万</text>
+   </view>
+  </view>
+
+  <view class="wx-drawback">
+   <view class="wx-input">
+    <label>退款金额：</label>
+    <text class="wx-red">￥{{offerInfo.price}}</text>
+   </view>
+   <view class="wx-input">
+    <label>退款原因：</label>
+    <input class="wx-reson" placeholder="必填" name="reason"></input>
+   </view>
+  </view>
+
+  <view>
+   <button class="wx-submit" form-type="submit">提交退款</button>
+  </view>
+
+ </form>
+
+ <view class="zhezhao {{isShow ? '':'hidden'}}"></view>
+  <!-- 退款弹出 -->
+ <view class="wx-pop-info {{isShow ? '':'hidden'}}">
+  <image src="../../image/wx-checking.png"></image>
+  <text>已提交…平台审核中</text>
+  <text class="wx-pretime">预计3个工作日内退回您的账户</text>
+  <text class="wx-pretime">3秒后返回上一页</text>
+ </view>
+
+
+</view>

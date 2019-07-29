@@ -19,35 +19,25 @@
   <!-- 上传认证图片 -->
   <view class="wx-pic">
 
-     <view class="wx-input wx-noborder" bindtap="skipModel">
+    <view class="wx-input wx-noborder">
       <text class="wx-label">标签选择</text>
       <view class="wx-labels">
-        <text>测试1</text>
-        <text>测试1</text>
-        <text>测试1</text>
-        <text>测试1</text>
-        <text>测试1</text>
-        <text>测试1</text>
-        <text>测试1</text>
-        <text>测试1</text>
-        <text>测试1</text>
-        <text>测试1</text>
+        <text class="{{labelArr[index].status == '1' ? 'wx-red-bg':''}}" wx:for='{{labelArr}}' wx:key='index' bindtap="selectLabel" data-id='{{item.id}}' data-status='{{item.status}}' data-index="{{index}}">{{item.dictValue}}</text>
+
       </view>
     </view>
     <view class="wx-info">请选择相对应的标签（最多6个）
     </view>
 
 
-    <view class="wx-input wx-noborder" bindtap="skipModel">
-      <text class="wx-label">形象照</text>
+    <view class="wx-input wx-noborder">
+      <text class="wx-label wx-label1">形象照</text>
       <view class="wx-images">
-        <image src="{{defaultImg}}"></image>
-        <image src="{{defaultImg}}"></image>
-        <image src="{{defaultImg}}"></image>
+        <image bindtap='uploadImg' src="{{defaultImg}}"></image>
+        <image bindtap="perviewPic" mode='aspectFit' bindlongpress="deleteImage"  wx:for='{{personImgs}}' wx:key='path' src="{{item.path}}" data-pic='{{item.path}}' data-index='{{index}}'></image>
       </view>
     </view>
-    <view class="wx-info">上传形象照可以让更多的人看到你，所以尽可能的 上传（最多6张）
-     
+    <view class="wx-info">上传形象照可以让更多的人看到你，所以请尽可能的上传
     </view>
 
     <view class="wx-btn">

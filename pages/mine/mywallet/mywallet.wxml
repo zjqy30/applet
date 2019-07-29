@@ -1,0 +1,40 @@
+<!--pages/mine/mywallet/mywallet.wxml-->
+<view class="wx-container">
+ <!-- 顶部余额 -->
+ <view class="wx-top">
+  <view class="wx-overage">账号余额（元）</view>
+  <view class="wx-money">{{avaiableBalance}}</view>
+ </view>
+
+ <!-- 提现记录 -->
+ <view class="wx-record">
+  <view class="wx-split"></view>
+  <view class="wx-withdraw"  bindtap="toWithdraw">
+   <image src="../../image/wx-mywallte.png"></image>
+   <text>提现</text>
+  </view>
+  <view class="wx-split"></view>
+
+  <!-- 记录列表 -->
+  <view class="wx-record-list">
+   <view class="wx-each-record" hover-class="hover" wx:for="{{changeList}}" wx:key="index" data-offerid="{{item.offerId}}">
+    <view class="wx-left">
+     <image src="../../image/wx-record.png"></image>
+     <view class="wx-name">
+      <text class="wx-task-name">{{item.title}}<text class='wx-status'>{{item.chargeStatusText}}</text></text>
+      <text class="wx-date">{{item.createDate}}</text>
+     </view>
+    </view>
+    <view class="wx-right">
+     <text class="wx-change">{{item.icon}}{{item.totalFee}}</text>
+     <text class="wx-minipro">手续费{{item.serviceFee ? item.serviceFee:'暂无'}}</text>
+    </view>
+   </view>
+
+
+  </view>
+
+ </view>
+
+
+</view>

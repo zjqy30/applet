@@ -1,0 +1,11 @@
+<!--pages/mine/companypic/companypic.wxml-->
+<view class="wx-container">
+ <view class="wx-top">
+  <image src="../../image/wx-company2.jpg"></image>
+ </view>
+ <view class="wx-main">
+  <image src="../../image/wx-company.jpg"></image>
+  <image src="../../image/wx-company1.jpg"></image>
+
+ </view>
+</view>

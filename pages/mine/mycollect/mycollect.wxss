@@ -1,0 +1,142 @@
+/* pages/mine/mycollect/mycollect.wxss */
+
+/* 网红列表 */
+
+page {
+ background: #f5f5f5;
+}
+/* 无数据 */
+.wx-nodata{
+ width: 100%;
+ text-align: center;
+ font-size: 26rpx;
+ color: #333;
+}
+.wx-nodata image{
+ width: 316rpx;
+ height: 318rpx;
+ margin:180rpx auto 60rpx;
+}
+.wx-nodata text{
+ display: block;
+ margin-top:12rpx;
+}
+.wx-back{
+ width: 40%;
+ color: #FF0033;
+ background: transparent;
+ margin-top:80rpx;
+ font-size: 26rpx;
+ border-radius: 30rpx;
+ border:1rpx solid #f03;
+}
+.wx-each {
+ position: relative;
+ overflow: hidden;
+ margin-bottom: 20rpx;
+ background: #fff;
+}
+
+.wx-left {
+ float: left;
+}
+
+/* 图片重叠定位 */
+
+.wx-big {
+ width: 100rpx;
+ height: 100rpx;
+ position: relative;
+}
+
+.wx-small {
+ width: 34rpx;
+ height: 34rpx;
+ position: relative;
+ bottom: 0;
+ left: -34rpx;
+}
+
+.wx-right {
+ float: left;
+ font-size: 30rpx;
+}
+
+.wx-name {
+ font-weight: bold;
+ width: 240rpx;
+ overflow: hidden;
+ text-overflow: ellipsis;
+ white-space: nowrap;
+ margin-bottom: 10rpx;
+ margin-top: -6rpx;
+ float: left;
+}
+
+.wx-label-mini {
+ clear: both;
+ color: #858585;
+ font-size: 20rpx;
+ margin-bottom: 6rpx;
+}
+
+.wx-label-mini text {
+ background: #f6f5f6;
+ padding: 4rpx 10rpx;
+ margin-right: 20rpx;
+}
+
+.wx-data {
+ font-size: 20rpx;
+ color: #858585;
+}
+
+.wx-red {
+ color: #f03;
+ font-size: 28rpx;
+}
+
+.wx-fans-num {
+ margin-right: 20rpx;
+}
+
+.wx-sex {
+ width: 22rpx;
+ height: 22rpx;
+ float: left;
+ margin-top: 6rpx;
+}
+
+.wx-more {
+ width: 22rpx;
+ height: 6rpx;
+ float: right;
+ margin-top: 6rpx;
+}
+
+/* 侧滑 */
+.wx-inner {
+ top: 0;
+ padding: 24rpx 30rpx;
+ width: calc(100% - 60rpx);
+ z-index: 5;
+ transition: left 0.2s ease-in-out;
+ overflow: hidden;
+ position: relative;
+ background: #fff;
+}
+
+.wx-del {
+ position: absolute;
+ top:0;
+ bottom:0;
+ width: 180rpx;
+ text-align: center;
+ vertical-align: center;
+ line-height: 160rpx;
+ z-index: 1;
+ right: 0;
+ color: #fff;
+ background: #f03;
+ font-size: 24rpx;
+}

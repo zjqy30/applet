@@ -12,31 +12,36 @@
   </view>
 
   <!-- 上传认证图片 -->
+  <form bindsubmit="submitCheck" report-submit="true">
   <view class="wx-pic">
 
-    <view class="wx-input wx-noborder" bindtap="skipModel">
-      <text class="wx-label">手持身份证照</text>
+    <view class="wx-input wx-noborder">
+      <text class="wx-label1">手持身份证照</text>
       <view class="wx-images">
-        <image src="{{handCard}}"></image>
+        <image bindtap='uploadImg' data-type='0' class="{{handCard? 'hidden':''}}" src="{{defaultCard}}"></image>
+        <image bindtap='previewPic' mode='aspectFit' data-pic='{{handCard}}' class="{{handCard? '':'hidden'}}" src="{{handCard}}" bindlongpress="deleteImage" data-type='0'></image>
       </view>
     </view>
     <view class="wx-info">持有公司法人有效二代身份证，拍摄时确认身份证证件 清晰五官清晰，亮度均匀。此身份证照仅供认证使用， 如有问题请
-      <view class="wx-blue" bindtap="skipModel" data-type="1">查看模板</view>
+      <view class="wx-blue" bindtap="skipModel" data-type="shouchi">查看模板</view>
     </view>
 
-    <view class="wx-input wx-noborder" bindtap="skipModel">
+    <view class="wx-input wx-noborder">
       <text class="wx-label">营业执照</text>
       <view class="wx-images">
-        <image src="{{handCard}}"></image>
+        <image bindtap='uploadImg' data-type='3' class="{{platPic? 'hidden':''}}" src="{{defaultCard}}"></image>
+        <image bindtap='previewPic' mode='aspectFit' data-pic='{{platPic}}' class="{{platPic? '':'hidden'}}" src="{{platPic}}" bindlongpress="deleteImage" data-type='3'></image>
       </view>
     </view>
     <view class="wx-info">持有本公司有效营业执照，拍摄时确认各项内容显示清晰，如有问题请
-      <view class="wx-blue" bindtap="skipModel" data-type="1">查看模板</view>
+      <view class="wx-blue" bindtap="skipModel" data-type="yingyezhizhao">查看模板</view>
     </view>
 
     <view class="wx-btn">
-      <button>提交审核</button>
+      <button form-type="submit">提交审核</button>
     </view>
 
   </view>
+  </form>
+  
 </view>

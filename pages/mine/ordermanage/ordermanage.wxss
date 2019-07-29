@@ -1,0 +1,312 @@
+/* pages/mine/ordermanage/ordermanage.wxss */
+
+page {
+ background: #f5f5f5;
+}
+
+.hover {
+ background: #f5f5f5;
+}
+.hidden{
+ display: none;
+}
+.isShow{
+ display: block;
+}
+button.wx-grey{
+  color: #858585!important;
+ border:1rpx solid #858585!important;
+
+}
+
+/* tab */
+.wx-tab {
+ width: 100%;
+ height: 68rpx;
+ line-height: 68rpx;
+ position: fixed;
+ top: 0;
+ left: 0;
+ overflow: hidden;
+ background: #1f1f26;
+ z-index: 2;
+}
+
+.wx-tab view {
+ float: left;
+ text-align: center;
+ width: 33.33%;
+ height: 100%;
+ font-size: 26rpx;
+ color: #858585;
+}
+
+.wx-tab text {
+ width: 100%;
+ margin: 0 auto;
+}
+
+.wx-tab-hover {
+ border-bottom: 6rpx solid #f03;
+ padding-bottom: 12rpx;
+ color: #fff;
+}
+
+/* 网红列表 */
+
+.wx-list {
+ margin-top: 72rpx;
+ position: relative;
+ z-index: 1;
+}
+
+.wx-each {
+ padding: 24rpx 30rpx 14rpx;
+ position: relative;
+ overflow: hidden;
+ margin-bottom: 20rpx;
+ background: #fff;
+ line-height: 1;
+}
+
+.wx-left {
+ float: left;
+ overflow: hidden;
+  background: #000;
+}
+
+.wx-big {
+ width: 204rpx;
+ height: 204rpx;
+ position: relative;
+}
+
+.wx-right {
+ width: calc(100% - 224rpx);
+ float: left;
+ font-size: 30rpx;
+ margin-left: 20rpx;
+ line-height: 38rpx;
+}
+
+.wx-name {
+ font-weight: bold;
+ width: 240rpx;
+ overflow: hidden;
+ text-overflow: ellipsis;
+ white-space: nowrap;
+ margin-bottom: 10rpx;
+ margin-top: 0rpx;
+ float: left;
+}
+
+.wx-common {
+ clear: both;
+ display: block;
+ color: #858585;
+ font-size: 20rpx;
+ width: 400rpx;
+ text-overflow: ellipsis;
+ overflow: hidden;
+ white-space: nowrap;
+ margin-bottom: 10rpx;
+}
+
+.wx-status {
+ float: right;
+ color: #f03;
+ font-size: 20rpx;
+}
+
+.wx-label-mini {
+ clear: both;
+ color: #858585;
+ font-size: 20rpx;
+ margin-bottom: 6rpx;
+}
+
+.wx-label-mini text {
+ background: #f6f5f6;
+ padding: 4rpx 10rpx;
+ margin-right: 20rpx;
+}
+
+.wx-fans-common {
+ display: block;
+ color: #858585;
+ font-size: 20rpx;
+}
+
+.wx-money {
+ color: #f03;
+ font-size: 28rpx;
+}
+
+.wx-red {
+ color: #f03;
+ font-size: 28rpx;
+}
+
+.wx-fans-num {
+ margin-right: 20rpx;
+}
+
+.wx-sex {
+ width: 22rpx;
+ height: 22rpx;
+ float: left;
+ margin-top: 6rpx;
+}
+
+.wx-more {
+ width: 22rpx;
+ height: 6rpx;
+ float: right;
+ margin-top: 6rpx;
+}
+
+/* 进行中的 */
+.wx-count{
+ font-size: 20rpx;
+ color: #333;
+ width: 100%;
+ text-align: right;
+ clear: both;
+}
+.wx-money1{
+ font-size: 24rpx;
+}
+
+.wx-btns{
+ width: 100%;
+ position: relative;
+ overflow: hidden;
+ color: #FF0033;
+ font-size: 22rpx;
+margin:20rpx 0 10rpx;
+}
+.wx-btns button{
+ color: #858585;
+ font-size: 22rpx;
+ padding: 0;
+ width: 127rpx;
+ background: #fff;
+ float: right;
+ margin-left:30rpx;
+ line-height:2;
+ border-radius: 40rpx!important;
+ border:1rpx solid #FF0033;
+
+}
+button.wx-finish{
+ color: #f03;
+}
+.wx-concat{
+color: #858585!important;
+ border:1rpx solid #858585!important;
+}
+/* 无数据 */
+.wx-nodata{
+ width: 100%;
+ text-align: center;
+ font-size: 26rpx;
+ color: #333;
+}
+.wx-nodata image{
+ width: 316rpx;
+ height: 318rpx;
+ margin:180rpx auto 60rpx;
+}
+.wx-nodata text{
+ display: block;
+ margin-top:12rpx;
+}
+.wx-back{
+ width: 40%;
+ color: #FF0033;
+ background: transparent;
+ margin-top:80rpx;
+ font-size: 26rpx;
+ border-radius: 30rpx;
+ border:1rpx solid #f03;
+}
+.wx-mini-info{
+ color: #333;
+ font-size: 24rpx;
+ opacity: 0.4;
+}
+
+.wx-pop-info {
+ position: fixed;
+ top: 333rpx;
+ margin: 0 auto;
+ left: 0;
+ right: 0;
+ background: #fff;
+ z-index: 21;
+ width: 80%;
+ border-radius: 20rpx;
+}
+
+.wx-pop-top {
+ width: 100%;
+ height: 120rpx;
+ background: #f03;
+ border-top-left-radius: 20rpx;
+ border-top-right-radius: 20rpx;
+ text-align: center;
+ line-height: 120rpx;
+ color: #fff;
+ font-size: 34rpx;
+}
+
+.wx-pop-icon {
+ position: absolute;
+ top: 40rpx;
+ right: 30rpx;
+ font-weight: bold;
+ line-height: 0;
+ font-size: 38rpx;
+}
+
+.wx-pop-content {
+ font-size: 24rpx;
+ color: #333;
+ padding: 40rpx;
+}
+
+.wx-pop-content text {
+ display: block;
+ margin: 40rpx 0;
+}
+
+.wx-pop-btns button {
+ float: left;
+ width: 100%;
+ height: 80rpx;
+ line-height: 80rpx;
+ color: #333;
+ font-size: 30rpx;
+ background: #DEDEDE;
+  border-radius: 0;
+  border-bottom-left-radius: 20rpx;
+}
+.wx-pop-btns .wx-sure{
+ border-bottom-right-radius: 20rpx!important;
+ border-bottom-left-radius: 20rpx;
+ background: #FF0033;
+ color: #fff;
+}
+
+/* 遮罩 */
+
+.zhezhao {
+ width: 100%;
+ height: 100%;
+ position: fixed;
+ background-color: #999;
+ z-index: 20;
+ top: 0;
+ left: 0;
+ opacity: 0.5;
+}

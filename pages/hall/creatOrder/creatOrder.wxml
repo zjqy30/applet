@@ -1,0 +1,67 @@
+<!-- 创建订单 -->
+<view class="wx-container">
+ <!-- 流程步骤 -->
+ <view class="wx-step">
+  <view class="wx-each-step">
+   <text class="wx-first"></text>
+  </view>
+  <view class="wx-each-step">
+   <text class=""></text>
+  </view>
+ </view>
+
+ <!-- 填写表单 -->
+ <form class="wx-fill" bindsubmit="formSubmit">
+
+  <view class="wx-input wx-line">
+   <text>需求平台</text>
+   <picker mode='selector' bindchange="bindPlat" value="" range-key="dictValue" range="{{plat}}">
+    <input type="text" disabled="true" class="wx-select" placeholder="请选择平台" value="{{plat[platItem].dictValue ?  plat[platItem].dictValue: orderData.starPlate }}" name="plateFormId"></input>
+   </picker>
+  </view>
+  <text class="wx-info">您自己所需要的平台</text>
+
+  <view class="wx-input wx-line">
+   <text>需求性别</text>
+   <picker mode='selector' bindchange="bindGender" value="" range-key="text" range="{{genderArr}}">
+    <input type="text" disabled="true" class="wx-select" placeholder="请选择性别" value="{{genderArr[genderItem].text ? genderArr[genderItem].text:orderData.genderText}}" name="sex"></input>
+   </picker>
+  </view>
+  <text class="wx-info">选择你想要的性格分类</text>
+
+  <view class="wx-input">
+   <text>粉丝数</text>
+   <input type="number" class="wx-select" placeholder="请输入粉丝数" name='fansNum' value="{{orderData.fanNums ? orderData.fanNums : ''}}" bindblur='noPointLimit'></input>
+  </view>
+  <text class="wx-info">请输入您大概需要的粉丝数（万为单位）</text>
+
+  <view class="wx-input">
+   <text>您的平台</text>
+   <input type="" class="wx-select" placeholder="输入带货平台" name='shopPlateForm' value="{{orderData.shopPlate ? orderData.shopPlate : ''}}" bindblur='noPointLimit'></input>
+  </view>
+  <text class="wx-info">输入您想要带货的平台，如没有就不需要输入（例如：淘宝）</text>
+
+  <view class="wx-input">
+   <text>商品介绍</text>
+   <textarea placeholder="请输入商品介绍" maxlength='50' name='remarks' value="{{orderData.remarks ? orderData.remarks : ''}}"></textarea>
+  </view>
+  <text class="wx-info">用一段话介绍自己需要带货的商品（字数50字）</text>
+
+  <view class="wx-input wx-noborder">
+   <text class="wx-label wx-long-label">网红标签选择</text>
+   <view class="wx-labels">
+    <text class="{{labelArr[index].status == '1' ? 'wx-red-bg':''}}" wx:for='{{labelArr}}' wx:key='index' bindtap="selectLabel" data-id='{{item.id}}' data-status='{{item.status}}' data-index='{{index}}'>{{item.dictValue}}</text>
+
+   </view>
+  </view>
+  <view class="wx-info">请选择相对应的标签（最多6个）
+  </view>
+
+  <view class="wx-btn">
+   <button formType="submit">下一步</button>
+  </view>
+
+ </form>
+
+
+</view>

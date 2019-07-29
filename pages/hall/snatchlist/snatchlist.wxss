@@ -1,0 +1,85 @@
+/* pages/hall/snatchlist/snatchlist.wxss */
+.hover{
+ background: #f5f5f5;
+}
+
+.wx-refresh-list image {
+ width: 80rpx;
+ height: 80rpx;
+ margin-top: 10rpx;
+ border-radius: 10rpx;
+}
+
+.wx-stnach-each {
+ clear: both;
+ padding: 10px 30rpx 15rpx 10rpx;
+ overflow: hidden;
+}
+
+.wx-left, .wx-right {
+ float: left;
+ display: flex;
+ margin-right: 10px;
+}
+
+.wx-right, .wx-after {
+ margin-top: 14rpx;
+}
+
+.wx-snatch-plat {
+ font-size: 10px;
+ color: #f03d37;
+ border: 0.5px solid #f03d37;
+ padding: 1px 4px;
+ border-radius: 3px;
+ margin-right: 8px;
+ float: left;
+}
+
+.wx-whname {
+ font-size: 14px;
+ font-weight: bold;
+ width: 100px;
+ overflow: hidden;
+ text-overflow: ellipsis;
+ white-space: nowrap;
+ float: left;
+}
+
+.wx-gender {
+ width: 24rpx !important;
+ height: 24rpx !important;
+}
+
+.wx-snatch-label {
+ clear: both;
+ /* float: left; */
+ font-size: 10px;
+ color: #333;
+ /* margin-top: 8px; */
+ display: block;
+}
+
+.wx-after {
+ float: right;
+ text-align: right;
+}
+
+.wx-num1 {
+ color: #f03;
+ font-size: 15px;
+ font-weight: bold;
+}
+
+.wx-fans {
+ font-size: 10px;
+ color: #333;
+ /* margin-top: 8px; */
+}
+.wx-index {
+  margin-top: 8px;
+  margin-right:20rpx;
+  width:60rpx;
+  float: left;
+  text-align: right;
+}

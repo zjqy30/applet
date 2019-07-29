@@ -17,3 +17,17 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
+
+/* 图表样式 */
+.wx-canvas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+ff-canvas {
+  width: 100vw;
+  height: 500rpx;
+}

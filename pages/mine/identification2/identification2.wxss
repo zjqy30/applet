@@ -1,157 +1,171 @@
 /* pages/mine/identification2/identification2.wxss */
 
 page {
-  background: -webkit-linear-gradient(left, #f03, #ff4e4e);
-  padding-top: 20rpx;
+ background: -webkit-linear-gradient(left, #f03, #ff4e4e);
+ padding-top: 20rpx;
+}
+
+.hidden {
+ display: none;
 }
 
 .hover {
-  background: #f2f2f2;
+ background: #f2f2f2;
 }
 
 .wx-step {
-  width: 70%;
-  margin: 0 auto;
+ width: 70%;
+ margin: 0 auto;
 }
 
 .wx-each-step {
-  text-align: center;
-  display: inline-block;
-  width: 25%;
-  height: 60rpx;
-  line-height: 50rpx;
-  position: relative;
+ text-align: center;
+ display: inline-block;
+ width: 25%;
+ height: 60rpx;
+ line-height: 50rpx;
+ position: relative;
 }
 
 .wx-each-step text {
-  display: inline-block;
-  width: 20rpx;
-  height: 20rpx;
-  line-height: 20rpx;
-  margin: auto 0;
-  border-radius: 10rpx;
-  background: #b3172d;
-  position: relative;
-  z-index: 10;
+ display: inline-block;
+ width: 20rpx;
+ height: 20rpx;
+ line-height: 20rpx;
+ margin: auto 0;
+ border-radius: 10rpx;
+ background: #b3172d;
+ position: relative;
+ z-index: 10;
 }
 
 .wx-first {
-  background: #fff !important;
+ background: #fff !important;
 }
 
 .wx-each-step::before {
-  content: '';
-  width: 100%;
-  height: 2rpx;
-  background: #b3172d;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  margin: auto 0;
-  right: -70rpx;
-  z-index: 5;
+ content: '';
+ width: 100%;
+ height: 2rpx;
+ background: #b3172d;
+ position: absolute;
+ top: 0;
+ bottom: 0;
+ margin: auto 0;
+ right: -70rpx;
+ z-index: 5;
 }
 
 .wx-each-step:last-child::before {
-  background: none;
+ background: none;
 }
 
 /* 填写 */
 
 .wx-pic {
-  display: block;
-  background: #fff;
-  width: 90%;
-  margin: 20rpx auto;
-  padding-top: 20rpx;
-  color: #333;
-  font-size: 28rpx;
+ display: block;
+ background: #fff;
+ width: 90%;
+ margin: 20rpx auto;
+ padding-top: 20rpx;
+ color: #333;
+ font-size: 28rpx;
 }
 
 .wx-input {
-  padding: 30rpx 40rpx;
-  width: calc(100% - 80rpx);
-  position: relative;
-  overflow: hidden;
+ padding: 30rpx 40rpx;
+ width: calc(100% - 80rpx);
+ position: relative;
+ overflow: hidden;
 }
 
 .wx-input text {
-  float: left;
-  width: 120rpx;
+ float: left;
+ width: 120rpx;
 }
 
 .wx-label {
-  width: 200rpx !important;
+ width: 340rpx !important;
+ position: relative;
+}
+.wx-label::after{
+ content:'（长按图片可删除）';
+ position: absolute;
+ top:10rpx;
+ right:0;
+ font-size: 20rpx;
+ color: #f03;
 }
 
 .wx-line text::after {
-  content: '';
-  position: absolute;
-  right: 20rpx;
-  top: 0;
-  bottom: 0;
-  margin: auto 0;
-  width: 24rpx;
-  height: 24rpx;
-  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAsCAYAAAB7aah+AAABlUlEQVRYR73XMUvDQBQH8HuXkCCi6OBS0KHQ0Q/gILg4FFwtCn6KQkkgcxK69mN00UEcdHPxO0iCg50EcWlx8qXkIMWmaZq7e9fbjjvud+8N9+eAbWlA7oxGo/3pdHrBGDvinE8cx3nt9/u/lHcQUBiGXc758b+Df1zXfaTEBBTH8S1jbK9UASkmoCiKzgDgtKJVZJiAxuOxlabpJWPsxBQmoG1gC8g0tgSZxFYgU1glZAJbC1FjtRAlthGiwhpBFFhjSBeTgnQwaUgVU4JUMGVIFtOCGmDfvu/fAwBqQwWWJEkXAFrlPOOcP3meNyGB4jg+zLLsCgB2ypBt2w+DweBLG6pDEPEjCIKXHNeCNiCfnU7nudfr/WlBMogyJIsoQSqINKSKSEE6SGNIF2kEUSAbISqkFqJE1kLUSCVkAlmBTCFLkElkAZlGBJRlGURRdM05PyiHFiIuPfXldZk55F//2Wx2YxIRFeX/1yRJ7gDALTDKSoozRcIOh8MWIp4j4q5lWe/tdvutSEaZ9tTt1YpymUvMAWQJqjyo1Yb5AAAAAElFTkSuQmCC) no-repeat center;
-  background-size: 100%;
+ content: '';
+ position: absolute;
+ right: 20rpx;
+ top: 0;
+ bottom: 0;
+ margin: auto 0;
+ width: 24rpx;
+ height: 24rpx;
+ background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAsCAYAAAB7aah+AAABlUlEQVRYR73XMUvDQBQH8HuXkCCi6OBS0KHQ0Q/gILg4FFwtCn6KQkkgcxK69mN00UEcdHPxO0iCg50EcWlx8qXkIMWmaZq7e9fbjjvud+8N9+eAbWlA7oxGo/3pdHrBGDvinE8cx3nt9/u/lHcQUBiGXc758b+Df1zXfaTEBBTH8S1jbK9UASkmoCiKzgDgtKJVZJiAxuOxlabpJWPsxBQmoG1gC8g0tgSZxFYgU1glZAJbC1FjtRAlthGiwhpBFFhjSBeTgnQwaUgVU4JUMGVIFtOCGmDfvu/fAwBqQwWWJEkXAFrlPOOcP3meNyGB4jg+zLLsCgB2ypBt2w+DweBLG6pDEPEjCIKXHNeCNiCfnU7nudfr/WlBMogyJIsoQSqINKSKSEE6SGNIF2kEUSAbISqkFqJE1kLUSCVkAlmBTCFLkElkAZlGBJRlGURRdM05PyiHFiIuPfXldZk55F//2Wx2YxIRFeX/1yRJ7gDALTDKSoozRcIOh8MWIp4j4q5lWe/tdvutSEaZ9tTt1YpymUvMAWQJqjyo1Yb5AAAAAElFTkSuQmCC) no-repeat center;
+ background-size: 100%;
 }
 
 .wx-input::after {
-  content: '';
-  position: absolute;
-  left: 30rpx;
-  bottom: 0;
-  width: 90%;
-  border: 0.5rpx solid #858585;
-  opacity: 0.1;
+ content: '';
+ position: absolute;
+ left: 30rpx;
+ bottom: 0;
+ width: 90%;
+ border: 0.5rpx solid #858585;
+ opacity: 0.1;
 }
 
 .wx-noborder::after {
-  border: none;
+ border: none;
 }
 
 .wx-noborder {
-  padding-bottom: 0;
+ padding-bottom: 0;
 }
 
 .wx-select {
-  float: left;
-  width: calc(100% - 200rpx);
-  margin-top: -5rpx;
-  margin-left: 10rpx;
-  font-size: 24rpx;
+ float: left;
+ width: calc(100% - 200rpx);
+ margin-top: -5rpx;
+ margin-left: 10rpx;
+ font-size: 24rpx;
 }
 
 /* 说明 */
 
 .wx-info {
-  display: inline-block;
-  font-size: 20rpx;
-  color: #858585;
-  padding: 20rpx 40rpx;
-  width: calc(100% - 80rpx);
+ display: inline-block;
+ font-size: 20rpx;
+ color: #858585;
+ padding: 20rpx 40rpx;
+ width: calc(100% - 80rpx);
 }
 
 /*  */
 
 .wx-images {
-  width: 100%;
-  height: 100%;
-  padding: 20rpx 0;
-  text-align: center;
-  margin-top: 30rpx;
-  position: relative;
+ width: 100%;
+ height: 100%;
+ padding: 20rpx 0;
+ text-align: center;
+ margin-top: 30rpx;
+ position: relative;
 }
 
 .wx-images image {
-  width: 582rpx;
-  height: 280rpx;
-  margin-top: 20rpx;
-  position: relative;
+ width: 582rpx;
+ height: 280rpx;
+ margin-top: 20rpx;
+ position: relative;
 }
 
 /* 删除按钮 */
+
 /* .wx-images image::after {
   content: '';
   position: absolute;
@@ -165,24 +179,24 @@ page {
 } */
 
 .wx-blue {
-  color: #3a9bf5;
-  display: inline-block;
+ color: #3a9bf5;
+ display: inline-block;
 }
 
 /* 下一步按钮 */
 
 button {
-  padding: 20rpx;
-  font-size: 30rpx;
-  background: #fff;
-  color: #f03;
-  margin-top: 20rpx;
+ padding: 20rpx;
+ font-size: 30rpx;
+ background: #fff;
+ color: #f03;
+ margin-top: 20rpx;
 }
 
 button::after {
-  padding: 20rpx;
-  border: 0;
-  border-radius: 0;
-  border-top: 0.5rpx solid #333;
-  opacity: 0.5;
+ padding: 20rpx;
+ border: 0;
+ border-radius: 0;
+ border-top: 0.5rpx solid #333;
+ opacity: 0.5;
 }

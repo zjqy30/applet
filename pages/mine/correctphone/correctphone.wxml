@@ -1,2 +1,16 @@
-<!--pages/mine/correctphone/correctphone.wxml-->
-<text>pages/mine/correctphone/correctphone.wxml</text>
+<!-- 修改手机号 -->
+<view class="wx-container">
+ <form report-submit="true" bindsubmit="correctPhone">
+
+  <view class="wx-input">
+   <label>+86</label>
+   <input class="wx-phone-new" placeholder="请输入手机号码" name='phoneNo' bindinput="getInputPhone"></input>
+   <button class="wx-code" bindtap="getPhoneCode" disabled="{{isCanClick}}">获取短信验证码</button>
+  </view>
+  <view class="wx-input">
+   <input placeholder="输入短信验证码" name='code'></input>
+  </view>
+  <button class="wx-submit" form-type="submit">绑定</button>
+ </form>
+
+</view>

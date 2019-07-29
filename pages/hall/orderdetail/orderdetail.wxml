@@ -1,0 +1,195 @@
+<!-- 订单详情页 -->
+<view class="wx-container">
+ <!--  轮播图 -->
+ <swiper indicator-dots="" autoplay="true" interval="3000" duration="800" bindchange="changePic">
+  <swiper-item wx:for="{{offerPic}}" wx:key='index'>
+   <image  mode='aspectFit' src="{{item}}" bindtap="perviewPic" data-pic="{{item}}"></image>
+  </swiper-item>
+ </swiper>
+ <!-- 轮播图的计数 -->
+ <text class="wx-num">{{currentIndex}}/{{perImgLength}}</text>
+
+
+ <!-- 额外信息 -->
+ <view class="wx-extraInfo">
+  <view class="wx-title">数据参考</view>
+  <view class="wx-models">
+   <view class="wx-model">
+    <text>{{offerInfo.shopPlate}}</text>
+    <text class="wx-label">商家平台</text>
+   </view>
+   <view class="wx-model">
+    <text>{{offerInfo.fanNums}}万</text>
+    <text class="wx-label">粉丝要求</text>
+   </view>
+   <view class="wx-model">
+    <text>{{offerInfo.price}}</text>
+    <text class="wx-label">任务单价</text>
+   </view>
+   <view class="wx-model">
+    <text>{{offerInfo.starPlate}}</text>
+    <text class="wx-label">需求平台</text>
+   </view>
+   <view class="wx-model">
+    <text>{{offerInfo.genderText}}</text>
+    <text class="wx-label">性别</text>
+   </view>
+  </view>
+ </view>
+
+ <!-- 个人简介 -->
+ <view class="wx-introduce">
+  <view class="wx-title">{{offerInfo.offerTitle}}</view>
+  <view class="wx-content1">{{offerInfo.remarks}}</view>
+ </view>
+
+  <!--分隔符 -->
+ <view class="wx-split"></view>
+ <!-- 底部按钮(默认的详情展示--大厅，网红审核中) -->
+ <view class="wx-btns wx-bottom-btn" wx:if="{{pageType == '0' || pageType == 'wh1'}}">
+  <button class="wx-btn wx-share" hover-class="btn-hover " open-type="share">
+   <image src="../../image/wx-share.png"></image>
+   <text>分享</text>
+  </button>
+  <view class="wx-btn wx-online">
+   <button open-type="contact">在线客服</button>
+  </view>
+  <view class="wx-btn wx-concat">
+   <button bindtap="toSnatchOrder">{{ifSnatch == '0'?'我要抢单':'已抢单'}}</button>
+  </view>
+ </view>
+
+ <!-- 底部说明，网红进行中和已完成订单 -->
+ <view class="wx-bottom-info" wx:if="{{pageType == 'wh2' || pageType == 'wh3'}}">
+  <view class="wx-title">订单详情</view>
+  <view class="wx-content">
+   <text>订单编号：{{offerInfo.orderNo}}</text>
+   <text>商家姓名：{{offerInfo.wxName}}</text>
+   <text>商家电话：{{phoneNo}}</text>
+   <text>发布时间：{{offerInfo.createDate}}</text>
+   <text>接单时间：{{offerInfo.lockDate}}</text>
+   <text wx:if="{{pageType == 'wh3'}}">完成时间：{{offerInfo.finshDate}}</text>
+  </view>
+ </view>
+
+ <!-- 商家审核中 （审核不通过的订单直接跳创建订单页面进行修改）-->
+ <view class="wx-offer-btn wx-bottom-btn" wx:if="{{pageType == 'PY'}}">
+  <button>审核中</button>
+ </view>
+
+ <!-- 商家退款中-->
+ <view class="wx-offer-btn wx-bottom-btn" wx:if="{{pageType == 'RA'}}">
+  <button>退款中</button>
+ </view>
+ <!-- 商家退款驳回-->
+ <view class="wx-offer-btn wx-bottom-btn" wx:if="{{pageType == 'RF'}}">
+  <button>退款驳回</button>
+ </view>
+ <!-- 商家退款成功-->
+ <view class="wx-offer-btn wx-bottom-btn" wx:if="{{pageType == 'RN'}}">
+  <!--分隔符 -->
+ <view class="wx-split"></view>
+  <button>退款成功</button>
+ </view>
+
+ <!-- 商家退款成功-->
+ <view class="wx-offer-btn wx-bottom-btn" wx:if="{{pageType == 'NAP'}}">
+  <!--分隔符 -->
+ <view class="wx-split"></view>
+  <button bindtap="correctOrder">修改订单</button>
+ </view>
+
+ <!-- 商家已发布AP -->
+ <view class="wx-ap" wx:if="{{pageType == 'AP'}}">
+  <view class="wx-snatch-person">
+   <view class="wx-title">抢单人员
+    <view class="wx-more" bindtap="toSnatchList">{{snatchUserList.length == 0 ? '暂无抢单' : '更多'}}</view>
+   </view>
+   <view class="wx-refresh-list">
+    <view class="wx-stnach-each" hover-class="hover" wx:for="{{snatchUserList}}" wx:key='index' wx:if="{{index < 5}}" bindtap="selectSnatch" data-id='{{item.id}}'>
+     <view class="wx-left">
+      <image src="{{item.headPic}}"></image>
+     </view>
+     <view class="wx-right">
+      <view class="wx-top-name">
+       <text class="wx-snatch-plat">{{item.platName}}</text>
+       <text class="wx-whname">{{item.wxName}}</text>
+       <image class="wx-gender" src="{{item.gender== '1' ? '../../image/wx-man.png' : '../../image/wx-woman.png'}}"></image>
+       <text class="wx-snatch-label">{{item.tag ? item.tag : '暂无'}}</text>
+      </view>
+     </view>
+     <view class="wx-after">
+      <text class="wx-num1">{{item.fansNums}}</text>
+      <view class="wx-fans">粉丝数</view>
+     </view>
+    </view>
+
+   </view>
+  </view>
+  <!--分隔符 -->
+  <view class="wx-split"></view>
+  <view class="wx-bottom-info">
+   <view class="wx-title">订单详情</view>
+   <view class="wx-content">
+    <text>订单编号：{{offerInfo.orderNo}}</text>
+    <text>创建时间：{{offerInfo.createDate}}</text>
+    <text>发布时间：{{offerInfo.approveDate}}</text>
+   </view>
+  </view>
+  <!--分隔符 -->
+  <view class="wx-split"></view>
+  <view class="wx-offer-btn wx-bottom-btn">
+   <button class="{{snatchUserList.length == 0 ? 'wx-grey':''}}" bindtap="toSnatchList">筛选人员</button>
+  </view>
+ </view>
+
+ <!-- 商家进行中 -->
+ <view class="wx-bottom-info" wx:if="{{pageType == 'LK'}}">
+  <view class="wx-title">订单详情</view>
+  <view class="wx-content">
+   <text>订单编号：{{offerInfo.orderNo}}</text>
+   <text>接单网红：{{wxName}}</text>
+   <text>网红电话：{{phoneNo}}</text>
+   <text>创建时间：{{offerInfo.createDate}}</text>
+   <text>发布时间：{{offerInfo.approveDate}}</text>
+   <text>开始时间：{{offerInfo.lockDate}}</text>
+  </view>
+ </view>
+
+ <!-- 商家已完成 -->
+  <view class="wx-bottom-info" wx:if="{{pageType == 'FN'}}">
+  <view class="wx-title">订单详情</view>
+  <view class="wx-content">
+   <text>订单编号：{{offerInfo.orderNo}}</text>
+   <text>接单网红：{{wxName}}</text>
+   <text>网红电话：{{phoneNo}}</text>
+   <text>创建时间：{{offerInfo.createDate}}</text>
+   <text>发布时间：{{offerInfo.approveDate}}</text>
+   <text>开始时间：{{offerInfo.lockDate}}</text>
+   <text>结束时间：{{offerInfo.finshDate}}</text>
+  </view>
+ </view>
+
+
+ <!-- 遮罩 -->
+ <view class="zhezhao {{isShow ?'isShow' : 'hidden'}}"></view>
+ <!-- 抢单提醒 -->
+ <view class="wx-pop-info {{isShow ?'isShow' : 'hidden'}}">
+  <view class="wx-pop-top">
+   <view class="wx-pop-title">提醒事项</view>
+   <view class="wx-pop-icon" bindtap="closePop">X</view>
+  </view>
+  <view class="wx-pop-content">
+   <text>1.请确认是否对此订单进行操作</text>
+   <text>2.请注意是否符合订单的要求</text>
+   <text>3.抢单后商家会对人员进行筛选挑选合
+适的人进行合作，届时请注意订单状态</text>
+  </view>
+
+  <view class="wx-pop-btns">
+   <button bindtap="closePop">再考虑下</button>
+   <button class="wx-sure" bindtap="sureSnatchOrder">确认抢单</button>
+  </view>
+ </view>
+
+</view>

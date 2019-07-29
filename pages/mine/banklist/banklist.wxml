@@ -1,0 +1,15 @@
+<!--pages/mine/banklist/banklist.wxml-->
+<view class="wx-container">
+
+ <view class="wx-bank-list">
+  <view class="wx-each" hover-class="hover" wx:for='{{banklist}}' wx:key='index' data-bankname="{{item.bankName}}" bindtap="selectedBank">
+   <image src="{{item.bankImg}}"></image>
+   <text>{{item.bankName}}</text>
+  </view>
+ </view>
+
+
+
+
+
+</view>

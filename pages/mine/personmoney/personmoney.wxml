@@ -1,0 +1,19 @@
+<!--pages/mine/personmoney/personmoney.wxml-->
+<view class="wx-container">
+ <!-- 记录列表 -->
+ <view class="wx-record-list">
+  <view class="wx-each-record" hover-class="hover" wx:for="{{changeList}}" wx:key="index" data-offerid="{{item.offerId}}">
+   <view class="wx-left">
+    <image src="../../image/wx-record.png"></image>
+    <view class="wx-name">
+     <text class="wx-task-name">{{item.title}}<text class='wx-status'>{{item.chargeStatusText}}</text></text>
+     <text class="wx-date">{{item.createDate}}</text>
+    </view>
+   </view>
+   <view class="wx-right">
+    <text class="wx-change">{{item.chargeType == 'PY'?'-':'+'}}{{item.totalFee}}</text>
+   </view>
+  </view>
+
+ </view>
+</view>

@@ -1,0 +1,3 @@
+<view bindtap='back' class='fill'>
+<image class='mode_img' src='{{mode_img}}'> </image>
+</view>

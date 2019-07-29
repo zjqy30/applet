@@ -1,0 +1,70 @@
+<!--pages/mine/personfile/personfile.wxml-->
+<!--pages/mine/identification/identification.wxml-->
+<view class="wx-contanier">
+ <!-- 认证信息填写 -->
+ <view class="wx-step">
+  <view class="wx-each-step">
+   <text class="wx-first"></text>
+  </view>
+  <view class="wx-each-step">
+   <text></text>
+  </view>
+  <view class="wx-each-step">
+   <text></text>
+  </view>
+ </view>
+ <form class="wx-fill" bindsubmit="formSubmit">
+  <view class="wx-input wx-line">
+   <text>所在平台</text>
+   <picker mode='selector' bindchange="bindPlat" value="" range-key="dictValue" range="{{plat}}">
+    <input type="text" disabled="true" class="wx-select" placeholder="请选择" value="{{plat[platItem].dictValue ? plat[platItem].dictValue : userExtraInfo.platformName}}" name="plat"></input>
+   </picker>
+  </view>
+  <text class="wx-info">您自己所在的平台</text>
+
+  <view class="wx-input">
+   <text>平台ID</text>
+   <input class="wx-select" placeholder="请输入平台ID，并验证" name='platFormUserId' value="{{userExtraInfo.platformUserId}}"></input>
+  </view>
+  <text class="wx-info">您自己所在的平台的ID号，填写之后可以点击最下方的验证按钮实现与平台的数据对接。如未出现数据，请自己手动输入相对应的数据。</text>
+  <view class="wx-input">
+   <text>粉丝数</text>
+   <input type="number" class="wx-select" placeholder="请输入粉丝数" name='fansNum' value='{{checkData.follower_quantity ? checkData.follower_quantity : userExtraInfo.fansNums}}' bindblur='noPointLimit'></input>
+  </view>
+  <text class="wx-info">你平台的大概粉丝数量</text>
+
+  <view class="wx-input wx-line">
+   <text>年龄</text>
+   <picker mode='selector' bindchange="bindAge" value="" range="{{age}}">
+    <input type="number" disabled="true" class="wx-select" placeholder="请选择年龄" value="{{age[ageItem] ? age[ageItem] : userBasicInfo.age}}" name="age"></input>
+   </picker>
+  </view>
+  <text class="wx-info">您的年龄</text>
+
+  <view class="wx-input">
+   <text>点赞数</text>
+   <input class="wx-select" placeholder="请输入点赞数" name='thumpUpNums' value="{{checkData.receivepraise_num_user ? checkData.receivepraise_num_user : userExtraInfo.thumbUpNums}}" bindblur='noPointLimit'></input>
+  </view>
+  <text class="wx-info">您所在平台的点赞总和</text>
+
+  <view class="wx-input">
+   <text>作品数</text>
+   <input class="wx-select" placeholder="请输入作品数" name='workNums' value="{{checkData.feed_num_all ? checkData.feed_num_all : userExtraInfo.workNums}}" bindblur='noPointLimit'></input>
+  </view>
+  <text class="wx-info">你所在平台的作品总和</text>
+
+  <view class="wx-input wx-line">
+   <text>有无店铺</text>
+   <picker mode='selector' bindchange="bindStore" value="" range-key="text" range="{{store}}">
+    <input type="text" disabled="true" class="wx-select" placeholder="请选择有无店铺" value="{{store[storeItem].text ? store[storeItem].text : (userBasicInfo.hasShop == '1'?'有':'无')}}" name="hasShop"></input>
+   </picker>
+
+  </view>
+  <text class="wx-info">您所在平台是否绑定了店铺</text>
+  <view class="wx-btn">
+   <button formType="submit">{{isCheck == '0' ? '验证' : '下一步'}}</button>
+  </view>
+
+ </form>
+
+</view>

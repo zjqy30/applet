@@ -13,8 +13,8 @@
     <view class="wx-each-tab wx-each-fans" bindtap="clickSelect" data-type='3'>
       <text class="{{stationType == '3' ? 'wx-font-red':''}}">粉丝排序</text>
       <view class="wx-right-icon">
-        <image src="{{stationType == '3' && selectOrder == 'desc' ? '../../image/wx-up-red.png':'../../image/wx-up.png'}}"></image>
-        <image src="{{stationType == '3' && selectOrder == 'asc'? '../../image/wx-down.png':'../../image/wx-down.png'}}"></image>
+        <image src="{{stationType == '3' && selectOrder == 'asc' ? '../../image/wx-up-red.png':'../../image/wx-up.png'}}"></image>
+        <image src="{{stationType == '3' && selectOrder == 'desc'? '../../image/wx-down-red.png':'../../image/wx-down.png'}}"></image>
       </view>
 
     </view>
@@ -29,7 +29,7 @@
     <view class="wx-each" hover-class="hover" wx:for='{{whList}}' wx:key='index' bindtap="skipDetail" data-userid="{{item.userId}}">
       <image class="wx-more" src="../../image/wx-more.png"></image>
       <view class="wx-left">
-        <image class="wx-big" src="{{item.headPic}}"></image>
+        <image class="wx-big"  mode='aspectFit' src="{{item.headPic}}"></image>
         <image class="wx-small" src="{{item.dictPic}}"></image>
       </view>
       <view class="wx-right">
@@ -54,10 +54,10 @@
   <!-- 平台筛选 -->
   <view class="wx-station {{stationType == '1' && isShow ? 'isShow':'hidden'}}">
     <view class="wx-label">
-      <text class="{{stationArray[index].status == '1' ? 'wx-red-bg':''}}" wx:for='{{stationArray}}' wx:key='index' bindtap="clickStation" data-id='{{item.id}}' data-status='{{item.status}}'>{{item.dictValue}}</text>
+      <text class="{{stationArray[index].status == '1' ? 'wx-red-bg':''}}" wx:for='{{stationArray}}' wx:key='index' bindtap="clickStation" data-id='{{item.id}}' data-status='{{item.status}}' data-index="{{index}}">{{item.dictValue}}</text>
     </view>
     <view class="wx-btns">
-      <button class="wx-clear" bindtap="clearAll">重置</button>
+      <button class="wx-clear" bindtap="clearAll" data-cleartype="0">重置</button>
       <button class="wx-sure" bindtap="sureStation">确定</button>
     </view>
   </view>
@@ -78,11 +78,10 @@
   <view class="wx-station {{stationType == '4' && isShow ? 'isShow':'hidden'}}">
     <text class="wx-lable-title">网红标签</text>
     <view class="wx-label">
-      <!-- <text class="" data-labelType="0" bindtap="clickLabel">全部</text> -->
-      <text class="{{labelArray[index].status == '1' ? 'wx-red-bg':''}}" wx:for='{{labelArray}}' wx:key='index' bindtap="clickLabel" data-id='{{item.id}}' data-status='{{item.status}}'>{{item.dictValue}}</text>
+      <text class="{{labelArray[index].status == '1' ? 'wx-red-bg':''}}" wx:for='{{labelArray}}' wx:key='index' bindtap="clickLabel" data-id='{{item.id}}' data-status='{{item.status}}' data-index='{{index}}'>{{item.dictValue}}</text>
     </view>
     <view class="wx-btns">
-      <button class="wx-clear" bindtap="clearAll">重置</button>
+      <button class="wx-clear" bindtap="clearAll" data-cleartype="1">重置</button>
       <button class="wx-sure" bindtap="sureLabel">确定</button>
     </view>
   </view>

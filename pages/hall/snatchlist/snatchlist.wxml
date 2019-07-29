@@ -1,0 +1,27 @@
+<!--pages/hall/snatchlist/snatchlist.wxml-->
+<view class="wx-container">
+ <view class="wx-refresh-list">
+
+  <view class="wx-stnach-each" bindtap="selectSnatch" hover-class="hover" wx:for="{{snatchUserList}}" wx:key='index' data-id='{{item.id}}'>
+   <text class="wx-index">{{index + 1}}</text>
+   <view class="wx-left">
+    <image src="{{item.headPic}}"></image>
+   </view>
+   <view class="wx-right">
+
+    <view class="wx-top-name">
+
+     <text class="wx-snatch-plat">{{item.platName}}</text>
+     <text class="wx-whname">{{item.wxName}}</text>
+     <image class="wx-gender" src="{{item.gender== '1' ? '../../image/wx-man.png' : '../../image/wx-woman.png'}}"></image>
+     <text class="wx-snatch-label">{{item.tag ? item.tag : '暂无'}}</text>
+    </view>
+   </view>
+   <view class="wx-after">
+    <text class="wx-num1">{{item.fansNums}}</text>
+    <view class="wx-fans">粉丝数</view>
+   </view>
+  </view>
+
+ </view>
+</view>

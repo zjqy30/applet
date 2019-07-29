@@ -1,0 +1,95 @@
+<!--pages/mine/identification4/identification4.wxml-->
+<view class="wx-contanier">
+ <!-- 认证信息填写 -->
+ <view class="wx-step">
+  <view class="wx-each-step">
+   <text class="wx-first"></text>
+  </view>
+  <view class="wx-each-step">
+   <text class="wx-first"></text>
+  </view>
+  <view class="wx-each-step">
+   <text class="wx-first"></text>
+  </view>
+ </view>
+
+ <!-- 上传认证图片 -->
+ <form bindsubmit="submitCheck" report-submit="true">
+  <view class="wx-pic">
+
+   <view class="wx-input">
+    <text>个人介绍</text>
+    <textarea placeholder="请输入个人介绍" maxlength='50' bindinput="getIntroduce" value="{{userBasicInfo.personalIntroduce}}"></textarea>
+   </view>
+   <text class="wx-info">用一段话介绍自己（最多50字）</text>
+
+   <view class="wx-input">
+    <text class="wx-label">服务类型</text>
+    <view class="wx-services" bindtap="selectService">
+
+     <view class="wx-each">
+      <text class="wx-type">
+            <text class="wx-index">1</text>{{userExtraInfo.serviceTemplateList[0].title}}</text>
+      <text class="wx-price">￥{{userExtraInfo.serviceTemplateList[0].price}}</text>
+
+     </view>
+     <view class="wx-each">
+      <text class="wx-type">
+            <text class="wx-index">2</text>{{userExtraInfo.serviceTemplateList[1].title}}</text>
+      <text class="wx-price">￥{{userExtraInfo.serviceTemplateList[1].price}}</text>
+     </view>
+     <view class="wx-each">
+      <text class="wx-type">
+            <text class="wx-index">3</text>{{userExtraInfo.serviceTemplateList[2].title}}
+      </text>
+      <text class="wx-price">￥{{userExtraInfo.serviceTemplateList[2].price}}</text>
+     </view>
+     <view class="wx-each">
+      <text class="wx-type">
+            <text class="wx-index">4</text>{{userExtraInfo.serviceTemplateList[3].title}}</text>
+      <text class="wx-price">￥{{userExtraInfo.serviceTemplateList[3].price}}</text>
+     </view>
+
+    </view>
+   </view>
+   <view class="wx-info">为自己制定价格，定制服务（最多4个）
+   </view>
+
+    <view class="wx-input wx-noborder">
+      <text class="wx-label1">平台截图证明</text>
+      <view class="wx-images">
+        <image bindtap='uploadImg' data-type='3' class="{{platPic? 'hidden':''}}" src="{{defaultCard}}"></image>
+        <image bindtap='previewPic' mode="aspectFit" data-pic='{{platPic}}' class="{{platPic? '':'hidden'}}" src="{{platPic}}" bindlongpress="deleteImage"></image>
+      </view>
+    </view>
+    <view class="wx-info">截图时确认粉丝数量，头像ID显示清晰。此截图仅供认 证使用，如有问题请
+      <view class="wx-blue" bindtap="skipModel" data-type="pingtai">查看模板</view>
+    </view>
+   <view class="wx-btn">
+    <button form-type="submit">提交审核</button>
+   </view>
+  </view>
+ </form>
+
+ <!-- 遮罩 -->
+ <view class="zhezhao {{isShow ?'isShow' : 'hidden'}}"></view>
+ <!-- 提醒 -->
+ <view class="wx-pop-info {{isShow ?'isShow' : 'hidden'}}">
+  <view class="wx-pop-top">
+   <view class="wx-pop-title">提醒事项</view>
+   <view class="wx-pop-icon" bindtap="closePop">X</view>
+  </view>
+  <view class="wx-pop-content">
+   <text>1.请确认是否提交个人信息进行修改</text>
+   <text>2.若无问题可确认提交</text>
+  </view>
+
+  <view class="wx-pop-btns">
+   <button bindtap="closePop">修改一下</button>
+   <button class="wx-sure" bindtap="submitYourInfo">修改资料</button>
+  </view>
+ </view>
+
+
+
+</view>

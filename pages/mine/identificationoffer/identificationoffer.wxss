@@ -4,7 +4,9 @@ page {
   background: -webkit-linear-gradient(left, #f03, #ff4e4e);
   padding-top: 20rpx;
 }
-
+.hidden{
+  display: none;
+}
 .hover {
   background: #f2f2f2;
 }
@@ -83,7 +85,18 @@ page {
 .wx-label {
   width: 200rpx !important;
 }
-
+.wx-label1 {
+ width: 340rpx !important;
+ position: relative;
+}
+.wx-label1::after{
+ content:'（长按图片可删除）';
+ position: absolute;
+ top:10rpx;
+ right:0;
+ font-size: 20rpx;
+ color: #f03;
+}
 .wx-line text::after {
   content: '';
   position: absolute;
@@ -185,4 +198,22 @@ button::after {
   border-radius: 0;
   border-top: 0.5rpx solid #333;
   opacity: 0.5;
+}
+
+/* 三级联动 */
+.tui-picker-content{
+ padding: 30rpx;
+ text-align: center;
+}
+.tui-picker-name{
+ height: 80rpx;
+ line-height: 80rpx;
+}
+.tui-picker-detail{
+ height: 80rpx;
+ line-height: 80rpx;
+ background-color: #fff;
+ font-size: 35rpx;
+ padding: 0 10px;
+ overflow: hidden;
 }

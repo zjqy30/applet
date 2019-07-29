@@ -1,0 +1,10 @@
+.mode_img {
+  width: 88vw;
+  height: 1300rpx;
+  margin: 3vw;
+  margin-left: 5.5vw; 
+}
+.fill{
+  width: 100vw;
+  height: 100vh;
+}

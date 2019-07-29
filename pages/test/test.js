@@ -1,170 +1,134 @@
-import F2 from '../component/f2-canvas/lib/f2';
+// pages/leftSwiperDel/index.js
+var app = getApp();
 
-let chart = null;
+const delList = [
+ {
+  txtStyle: "",
+  icon: "/images/icon0.png",
+  txt: "向左滑动可以删除"
+ },
+ {
+  txtStyle: "",
+  icon: "/images/icon6.png",
+  txt: "微信小程序|联盟（wxapp-union.com）"
+ }
+];
 
-function columnChart(canvas, width, height) {
-  const data = [{
-      year: '1951 年',
-      sales: 38
-    },
-    {
-      year: '1952 年',
-      sales: 52
-    },
-    {
-      year: '1956 年',
-      sales: 61
-    },
-    {
-      year: '1957 年',
-      sales: 145
-    },
-    {
-      year: '1958 年',
-      sales: 48
-    },
-    {
-      year: '1959 年',
-      sales: 38
-    },
-    {
-      year: '1960 年',
-      sales: 38
-    },
-    {
-      year: '1962 年',
-      sales: 38
-    },
-  ];
-  chart = new F2.Chart({
-    el: canvas,
-    width,
-    height
-  });
-
-  chart.source(data, {
-    sales: {
-      tickCount: 5
-    }
-  });
-  chart.tooltip({
-    showItemMarker: false,
-    onShow(ev) {
-      const {
-        items
-      } = ev;
-      items[0].name = null;
-      items[0].name = items[0].title;
-      items[0].value = '¥ ' + items[0].value;
-    }
-  });
-  chart.interval().position('year*sales');
-  chart.render();
-  return chart;
-}
-
-function pieChart(canvas, width, height) {
-  const map = {
-    '芳华': '40%',
-    '妖猫传': '20%',
-    '机器之血': '18%',
-    '心理罪': '15%',
-    '寻梦环游记': '5%',
-    '其他': '2%',
-  };
-  const data = [{
-      name: '芳华',
-      percent: 0.4,
-      a: '1'
-    },
-    {
-      name: '妖猫传',
-      percent: 0.2,
-      a: '1'
-    },
-    {
-      name: '机器之血',
-      percent: 0.18,
-      a: '1'
-    },
-    {
-      name: '心理罪',
-      percent: 0.15,
-      a: '1'
-    },
-    {
-      name: '寻梦环游记',
-      percent: 0.05,
-      a: '1'
-    },
-    {
-      name: '其他',
-      percent: 0.02,
-      a: '1'
-    }
-  ];
-  chart = new F2.Chart({
-    el: canvas,
-    width,
-    height
-  });
-  chart.source(data, {
-    percent: {
-      formatter(val) {
-        return val * 100 + '%';
-      }
-    }
-  });
-  chart.legend({
-    position: 'left',
-    itemFormatter(val) {
-      return val + '  ' + map[val];
-    }
-  });
-  chart.tooltip(false);
-  chart.coord('polar', {
-    transposed: true,
-    radius: 0.85
-  });
-  chart.axis(false);
-  chart.interval()
-    .position('a*percent')
-    .color('name', ['#858585', '#13C2C2', '#2FC25B', '#FACC14', '#F04864', '#8543E0'])
-    .adjust('stack')
-    .style({
-      lineWidth: 0.5,
-      stroke: '#fff',
-      lineJoin: 'round',
-      lineCap: 'round'
-    })
-    .animate({
-      appear: {
-        duration: 1000,
-        easing: 'bounceOut'
-      }
-    });
-
-  chart.render();
-  return chart;
-}
 
 Page({
-  onShareAppMessage: function(res) {
-    return {
-      title: 'F2 微信小程序图表组件，你值得拥有~',
-      path: '/pages/index/index',
-      success: function() {},
-      fail: function() {}
+ /**
+ * delBtnWidth: 删除按钮的宽度单位
+ * list: 循环的mock数据
+ * startX: 收支触摸开始滑动的位置
+ */
+ data: {
+  delBtnWidth: 180,
+  list: [],
+  startX: ""
+ },
+ onLoad: function (options) {
+  // 页面初始化 options为页面跳转所带来的参数
+  this.initEleWidth();
+ },
+ onReady: function () {
+  // 页面渲染完成
+  var oDelList = delList;
+  this.setData({
+   list: oDelList
+  })
+ },
+ onShow: function () {
+  // 页面显示
+ },
+ onHide: function () {
+  // 页面隐藏
+ },
+ onUnload: function () {
+  // 页面关闭
+ },
+ touchS: function (e) {
+  if (e.touches.length == 1) {
+   this.setData({
+    //设置触摸起始点水平方向位置
+    startX: e.touches[0].clientX
+   });
+  }
+ },
+ touchM: function (e) {
+  if (e.touches.length == 1) {
+   //手指移动时水平方向位置
+   var moveX = e.touches[0].clientX;
+   //手指起始点位置与移动期间的差值
+   var disX = this.data.startX - moveX;
+   var delBtnWidth = this.data.delBtnWidth;
+   var txtStyle = "";
+   if (disX == 0 || disX < 0) {//如果移动距离小于等于0，说明向右滑动，文本层位置不变
+    txtStyle = "left:0px";
+   } else if (disX > 0) {//移动距离大于0，文本层left值等于手指移动距离
+    txtStyle = "left:-" + disX + "px";
+    if (disX >= delBtnWidth) {
+     //控制手指移动距离最大值为删除按钮的宽度
+     txtStyle = "left:-" + delBtnWidth + "px";
     }
-  },
-  data: {
-    columnChart: {
-      onInit: columnChart
-    },
-    pieChart: {
-      onInit: pieChart
-    }
-  },
-
-  onReady() {}
-});
+   }
+   //获取手指触摸的是哪一项
+   var index = e.currentTarget.dataset.index;
+   var list = this.data.list;
+   list[index].txtStyle = txtStyle;
+   //更新列表的状态
+   this.setData({
+    list: list
+   });
+  }
+ },
+ touchE: function (e) {
+  if (e.changedTouches.length == 1) {
+   //手指移动结束后水平位置
+   var endX = e.changedTouches[0].clientX;
+   //触摸开始与结束，手指移动的距离
+   var disX = this.data.startX - endX;
+   var delBtnWidth = this.data.delBtnWidth;
+   //如果距离小于删除按钮的1/2，不显示删除按钮
+   var txtStyle = disX > delBtnWidth / 2 ? "left:-" + delBtnWidth + "px" : "left:0px";
+   //获取手指触摸的是哪一项
+   var index = e.currentTarget.dataset.index;
+   var list = this.data.list;
+   list[index].txtStyle = txtStyle;
+   //更新列表的状态
+   this.setData({
+    list: list
+   });
+  }
+ },
+ //获取元素自适应后的实际宽度
+ getEleWidth: function (w) {
+  var real = 0;
+  try {
+   var res = wx.getSystemInfoSync().windowWidth;
+   var scale = (750 / 2) / (w / 2);//以宽度750px设计稿做宽度的自适应
+   real = Math.floor(res / scale);
+   return real;
+  } catch (e) {
+   return false;
+   // Do something when catch error
+  }
+ },
+ initEleWidth: function () {
+  var delBtnWidth = this.getEleWidth(this.data.delBtnWidth);
+  this.setData({
+   delBtnWidth: delBtnWidth
+  });
+ },
+ //点击删除按钮事件
+ delItem: function (e) {
+  //获取列表中要删除项的下标
+  var index = e.currentTarget.dataset.index;
+  var list = this.data.list;
+  //移除列表中下标为index的项
+  list.splice(index, 1);
+  //更新列表的状态
+  this.setData({
+   list: list
+  });
+ },
+})

@@ -1,5 +1,4 @@
 {
-  "enablePullDownRefresh": true,
-  "onReachBottomDistance": 50,
-  "navigationBarTitleText": "首页"
+  "navigationBarTitleText": "",
+  "navigationStyle":"custom"
 }

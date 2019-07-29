@@ -7,8 +7,8 @@ module.exports = function(path, params) {
 
   // 测试：apiTest
   // 正式：api
-  var api = '';
-  var apiTest = 'http://192.168.0.167:8080'; // 测试服务器，映射http://l1838324x8.imwork.net
+  var api = 'http://l1838324x8.imwork.net';
+  var apiTest = 'http://192.168.0.166:8080'; // 测试服务器，映射http://l1838324x8.imwork.net
 
   if (isTest == '0') {
     var url = apiTest + path;

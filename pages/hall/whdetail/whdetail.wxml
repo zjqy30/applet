@@ -1,149 +1,193 @@
 <!-- 网红详情页 -->
 <view class="wx-container">
-  <!--  轮播图 -->
-  <swiper indicator-dots="" autoplay="true" interval="3000" duration="800" bindchange="changePic">
-    <swiper-item wx:for="{{personalImgs}}" wx:key='index'>
-      <image src="{{item.imgurl}}"></image>
-    </swiper-item>
-  </swiper>
-  <!-- 轮播图的计数 -->
-  <text class="wx-num">{{currentIndex}}/{{perImgLength}}</text>
+ <!--  轮播图 -->
+ <swiper indicator-dots="" autoplay="true" interval="3000" duration="800" bindchange="changePic">
+  <swiper-item wx:for="{{personalImgs}}" wx:key='index'>
+   <image  mode='aspectFit' src="{{item}}" bindtap="perviewPic" data-pic="{{item}}"></image>
+  </swiper-item>
+ </swiper>
+ <!-- 轮播图的计数 -->
+ <text class="wx-num">{{currentIndex}}/{{perImgLength}}</text>
 
-  <!-- 用户的头像 -->
-  <view class="wx-headPic">
-    <image src="../../image/wx-myheadpic.png"></image>
-    <text class="wx-name">用户名称</text>
+ <!-- 用户的头像 -->
+ <view class="wx-headPic">
+  <image src="{{userBasicInfo.avatarUrl}}"></image>
+  <text class="wx-name">{{userBasicInfo.wxName}}</text>
+ </view>
+
+ <!-- 用户基本信息 -->
+ <view class="wx-basicInfo">
+  <view class="wx-info">
+   <text>{{userExtraInfo.platformName}}</text>
+   <text class="wx-label">平台</text>
+  </view>
+  <view class="wx-info">
+   <text>{{userBasicInfo.country ? userBasicInfo.country :'暂无'}}</text>
+   <text class="wx-label">地区</text>
+  </view>
+  <view class="wx-info">
+   <text>{{userExtraInfo.fansNums}}万</text>
+   <text class="wx-label">粉丝</text>
+  </view>
+ </view>
+
+ <!-- 个人简介 -->
+ <view class="wx-introduce">
+  <view class="wx-title">个人简介</view>
+  <view class="wx-content">{{userBasicInfo.personalIntroduce}}
+  </view>
+ </view>
+
+ <!-- 平台担保 -->
+ <view class="wx-plat">
+  <view class="wx-plat-info">
+   <image src="../../image/wx-icon1.png"></image>
+   <text>平台担保</text>
+  </view>
+  <view class="wx-plat-info">
+   <image src="../../image/wx-icon1.png"></image>
+   <text>平台担保</text>
+  </view>
+  <view class="wx-plat-info">
+   <image src="../../image/wx-icon1.png"></image>
+   <text>平台担保</text>
   </view>
 
-  <!-- 用户基本信息 -->
-  <view class="wx-basicInfo">
-    <view class="wx-info">
-      <text>抖音</text>
-      <text class="wx-label">平台</text>
-    </view>
-    <view class="wx-info">
-      <text>成都</text>
-      <text class="wx-label">地区</text>
-    </view>
-    <view class="wx-info">
-      <text>10万</text>
-      <text class="wx-label">粉丝</text>
-    </view>
+ </view>
+
+ <!--分隔符 -->
+ <view class="wx-split"></view>
+
+ <!-- 额外信息 -->
+ <view class="wx-extraInfo">
+  <view class="wx-title">数据参考</view>
+  <view class="wx-models">
+   <view class="wx-model">
+    <text>{{userBasicInfo.age}}</text>
+    <text class="wx-label">年龄</text>
+   </view>
+   <view class="wx-model">
+    <text>{{userExtraInfo.workNums}}</text>
+    <text class="wx-label">作品</text>
+   </view>
+   <view class="wx-model">
+    <text>{{userExtraInfo.thumbUpNums}}{{userExtraInfo.thumbUpNums == '0' ? '':'万'}}</text>
+    <text class="wx-label">点赞数</text>
+   </view>
+   <view class="wx-model">
+    <text>{{userBasicInfo.hasShop == '1.0' ? '有':'无'}}</text>
+    <text class="wx-label">商铺</text>
+   </view>
+   <view class="wx-model">
+    <text>{{userBasicInfo.gender == '1' ? '男':'女'}}</text>
+    <text class="wx-label">性别</text>
+   </view>
   </view>
 
-  <!-- 个人简介 -->
-  <view class="wx-introduce">
-    <view class="wx-title">个人简介</view>
-    <view class="wx-content">关于我自己我大概粉丝有10万左右，带货能力还不错具体方面你可 以联系我的具体私聊。大部份的单子我都能接除了一些比较特殊的，欢 迎来找我的。
-    </view>
-  </view>
+  <view class="wx-title">服务类型</view>
+  <view class="wx-services">
 
-  <!-- 平台担保 -->
-  <view class="wx-plat">
-    <view class="wx-plat-info">
-      <image src="../../image/wx-icon1.png"></image>
-      <text>平台担保</text>
-    </view>
-    <view class="wx-plat-info">
-      <image src="../../image/wx-icon1.png"></image>
-      <text>平台担保</text>
-    </view>
-    <view class="wx-plat-info">
-      <image src="../../image/wx-icon1.png"></image>
-      <text>平台担保</text>
-    </view>
+   <view class="wx-each" wx:for="{{userExtraInfo.serviceTemplateList}}" wx:key="index">
+    <text class="wx-type">
+            <text class="wx-index">{{index + 1}}</text>{{item.title}}
+    </text>
+    <text class="wx-price">￥{{item.price}}</text>
+   </view>
 
-  </view>
-
-  <!--分隔符 -->
-  <view class="wx-split"></view>
-
-  <!-- 额外信息 -->
-  <view class="wx-extraInfo">
-    <view class="wx-title">数据参考</view>
-    <view class="wx-models">
-      <view class="wx-model">
-        <text>99</text>
-        <text class="wx-label">年龄</text>
-      </view>
-      <view class="wx-model">
-        <text>332</text>
-        <text class="wx-label">作品</text>
-      </view>
-      <view class="wx-model">
-        <text>10万</text>
-        <text class="wx-label">点赞数</text>
-      </view>
-      <view class="wx-model">
-        <text>暂无</text>
-        <text class="wx-label">商铺</text>
-      </view>
-      <view class="wx-model">
-        <text>男</text>
-        <text class="wx-label">性别</text>
-      </view>
-    </view>
-
-    <view class="wx-title">服务类型</view>
-    <view class="wx-services">
-
-      <view class="wx-each">
-        <text class="wx-type">
-            <text class="wx-index">1</text>微信朋友圈广告/次
-        </text>
-        <text class="wx-price">￥200</text>
-      </view>
-      <view class="wx-each">
-        <text class="wx-type">
-            <text class="wx-index">1</text>微信朋友圈广告/次
-        </text>
-        <text class="wx-price">￥200</text>
-      </view>
-      <view class="wx-each">
-        <text class="wx-type">
-            <text class="wx-index">1</text>微信朋友圈广告/次
-        </text>
-        <text class="wx-price">￥200</text>
-      </view>
-      <view class="wx-each">
-        <text class="wx-type">
-            <text class="wx-index">1</text>微信朋友圈广告/次
-        </text>
-        <text class="wx-price">￥200</text>
-      </view>
-
-
-    </view>
-  </view>
-
-  <!--分隔符 -->
-  <view class="wx-split"></view>
-  <view class="wx-fans-data">
-    <view class="wx-title">粉丝画像</view>
-  </view>
-
-
-  <!-- 底部按钮 -->
-  <view class="wx-btns">
-    <view class="wx-btn wx-share">
-      <image src="../../image/wx-share.png"></image>
-      <text>分享</text>
-    </view>
-
-    <view class="wx-btn wx-collect">
-      <image src="../../image/wx-collect.png"></image>
-      <text>收藏</text>
-    </view>
-
-    <view class="wx-btn wx-online">
-      <button>在线客服</button>
-    </view>
-
-    <view class="wx-btn wx-concat">
-      <button>联系经纪人</button>
-    </view>
-
+   <!-- <view class="wx-each">
+    <text class="wx-type">
+            <text class="wx-index">2</text>微信朋友圈广告/次
+    </text>
+    <text class="wx-price">￥200</text>
+   </view>
+   <view class="wx-each">
+    <text class="wx-type">
+            <text class="wx-index">3</text>微信朋友圈广告/次
+    </text>
+    <text class="wx-price">￥200</text>
+   </view>
+   <view class="wx-each">
+    <text class="wx-type">
+            <text class="wx-index">4</text>微信朋友圈广告/次
+    </text>
+    <text class="wx-price">￥200</text>
+   </view> -->
 
 
   </view>
+ </view>
+
+ <!--分隔符 -->
+ <view class="wx-split"></view>
+ <view class="wx-fans-data"  wx:if="{{cityDatas.length != 0}}">
+  <view class="wx-title">粉丝画像</view>
+  <view class="wx-tab">
+   <text class="{{type == '1' ? 'wx-red' : ''}}" bindtap="changeType" data-type='1'>城市</text>
+   <text class="{{type == '2' ? 'wx-red' : ''}}" bindtap="changeType" data-type='2'>性别</text>
+   <text class="{{type == '3' ? 'wx-red' : ''}}" bindtap="changeType" data-type='3'>年龄</text>
+   <text class="{{type == '4' ? 'wx-red' : ''}}" bindtap="changeType" data-type='4'>星座</text>
+  </view>
+  <view class="wx-canvas" wx:if="{{type == '1'}}">
+   <ff-canvas id="cityData-dom" canvas-id="cityData" opts="{{cityData}}"></ff-canvas>
+  </view>
+
+  <view class="wx-canvas" wx:if="{{type == '2'}}">
+   <ff-canvas id="genderData-dom" canvas-id="genderData" opts="{{genderData}}"></ff-canvas>
+  </view>
+
+  <view class="wx-canvas" wx:if="{{type == '3'}}">
+   <ff-canvas id="ageData-dom" canvas-id="ageData" opts="{{ageData}}"></ff-canvas>
+  </view>
+
+  <view class="wx-canvas" wx:if="{{type == '4'}}">
+   <ff-canvas id="starData-dom" canvas-id="starData" opts="{{starData}}"></ff-canvas>
+  </view>
+ </view>
+
+ <!--分隔符 -->
+ <view class="wx-split"></view>
+ <!-- 底部按钮 -->
+ <view class="wx-btns ">
+  <view class="wx-btn wx-share">
+   <image src="../../image/wx-share.png"></image>
+   <button class="wx-default-style " hover-class="btn-hover " open-type="share">分享</button>
+   <!-- <text></text> -->
+  </view>
+
+  <view class="wx-btn wx-collect" bindtap="toCollect">
+   <image src="{{isCollect == '1'?'../../image/wx-collect-red.png':'../../image/wx-collect.png'}}"></image>
+   <button class="wx-default-style {{isCollect == '1'?'wx-redtext':''}}" hover-class="btn-hover " open-type="">收藏</button>
+  </view>
+
+  <view class="wx-btn wx-online">
+   <button open-type="contact">在线客服</button>
+  </view>
+
+  <view class="wx-btn wx-concat">
+   <button bindtap="callContact" wx:if="{{pageType != 'select'}}">联系经纪人</button>
+   <button bindtap="lockOrder" wx:if="{{pageType == 'select'}}">确认合作</button>
+  </view>
+
+  <!-- 遮罩 -->
+  <view class="zhezhao {{isShow ?'isShow' : 'hidden'}}"></view>
+  <!-- 商家锁单提醒 -->
+  <view class="wx-pop-info {{isShow ?'isShow' : 'hidden'}}">
+   <view class="wx-pop-top">
+    <view class="wx-pop-title">提醒事项</view>
+    <view class="wx-pop-icon" bindtap="closePop">X</view>
+   </view>
+   <view class="wx-pop-content">
+    <text>1.请确认此次的合作伙伴，再次确认后你将获得此网红的联系方式，你可直接与网红取得联系进行订单服务</text>
+    <text>2.若是合作过程中产生问题可随时联系客服我们将及时解决您的问题</text>
+   </view>
+
+   <view class="wx-pop-btns">
+    <button bindtap="closePop">看看其他</button>
+    <button class="wx-sure" bindtap="sureLockOrder">确认合作</button>
+   </view>
+  </view>
+
+
+
+ </view>
 </view>

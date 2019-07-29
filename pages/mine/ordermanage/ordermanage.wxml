@@ -1,0 +1,119 @@
+<!-- 订单管理 -->
+<view class="wx-container">
+ <view class="wx-tab">
+  <view bindtap="clickTab" data-tabtype="1">
+   <text class="{{tabtype == '1'?'wx-tab-hover':''}}">已抢单</text>
+  </view>
+  <view bindtap="clickTab" data-tabtype="2">
+   <text class="{{tabtype == '2'?'wx-tab-hover':''}}">进行中</text>
+  </view>
+  <view bindtap="clickTab" data-tabtype="3">
+   <text class="{{tabtype == '3'?'wx-tab-hover':''}}">已完成</text>
+  </view>
+ </view>
+
+ <!-- 订单列表 -->
+ <view class="wx-list">
+
+  <!-- 无数据 -->
+  <view class="wx-nodata" wx:if="{{list.length == 0 && pageNumber == '1'}}">
+   <image src="../../image/wx-no-order.png"></image>
+   <text>空空如也</text>
+   <text class="wx-mini-info">赶紧去大厅抢单吧</text>
+   <button class="wx-back" bindtap="toOrderHall">去大厅</button>
+  </view>
+
+  <!-- 审核中 3种状态：抢单中，抢单失败，取消订单-->
+  <view class="wx-each" hover-class="hover" bindtap="skipOrderDetail" wx:for='{{list}}' wx:key='index' wx:if="{{tabtype == '1' && hasData}}" data-id="{{item.id}}" data-pagetype="wh1">
+   <view class="wx-left">
+    <image class="wx-big" mode='aspectFit' src="{{item.pic}}"></image>
+   </view>
+   <view class="wx-right">
+    <text class="wx-name">{{item.title}}</text>
+    <text class="wx-status">{{item.status}}</text>
+    <text class="wx-common">{{item.remarks}}</text>
+    <view class="wx-label-mini">
+     <text wx:for='{{item.tagArr}}' wx:for-item='tagArr' wx:key='index' wx:if='{{index < 4}}'>{{tagArr}}</text>
+    </view>
+    <text class="wx-money">￥{{item.price}}</text>
+    <text class="wx-fans-common">粉丝要求：{{item.fansNum}}</text>
+   </view>
+  </view>
+
+  <!-- 进行中 3种状态：进行中，待确认,商家待确认 -->
+  <view class="wx-each" hover-class="hover" wx:for='{{list}}' wx:key='index' wx:if="{{tabtype == '2' && hasData}}" data-id="{{item.id}}" data-pagetype="wh2" data-phoneno="{{item.phoneNo}}">
+   <view class="wx-list-data" bindtap="skipOrderDetail" data-id="{{item.id}}" data-pagetype="wh2" data-phoneno="{{item.phoneNo}}">
+    <view class="wx-left">
+     <image class="wx-big" mode='aspectFit' src="{{item.pic}}"></image>
+    </view>
+    <view class="wx-right">
+     <text class="wx-name">{{item.title}}</text>
+     <!-- 网红待确认，即商家那边确认后，网红进入待确认，网红点击待确认，订单进入已完成；或者网红这边已确认等待商家确认，商家确认后进入已完成 -->
+     <text class="wx-status">{{item.status}}</text>
+     <text class="wx-common">{{item.remarks}}</text>
+     <view class="wx-label-mini">
+      <text wx:for='{{item.tagArr}}' wx:for-item='tagArr' wx:key='index' wx:if='{{index < 4}}'>{{tagArr}}</text>
+     </view>
+     <text class="wx-money">￥{{item.price}}</text>
+     <text class="wx-fans-common">粉丝要求：{{item.fansNum}}</text>
+    </view>
+   </view>
+   <!-- 底部按钮 -->
+   <view class="wx-count">
+    合计：
+    <text class="wx-money1">￥{{item.price}}</text> （含服务费20%）
+   </view>
+   <view class="wx-btns">
+    <button class="wx-finish {{item.starApprove == '1'?'wx-grey':''}}" data-id="{{item.id}}" data-sellapprove="{{item.sellApprove}}" data-starapprove="{{item.starApprove}}" bindtap="sureFinish">{{item.starApprove == '1'?'已确认':'确认完成'}}</button>
+    <button class="wx-concat" bindtap="concatOffer" data-shopphone="{{item.phoneNo}}">商家电话</button>
+    <button class="wx-concat" bindtap="concatUs">联系我们</button>
+   </view>
+
+  </view>
+
+  <!-- 已完成，1种状态已完成 -->
+  <view class="wx-each" hover-class="hover" bindtap="skipOrderDetail" wx:for='{{list}}' wx:key='index' wx:if="{{tabtype == '3' && hasData}}" data-id="{{item.id}}" data-pagetype="wh3" data-phoneno="{{item.phoneNo}}">
+   <view class="wx-left">
+    <image class="wx-big" mode='aspectFit' src="{{item.pic}}"></image>
+   </view>
+   <view class="wx-right">
+    <text class="wx-name">{{item.title}}</text>
+    <text class="wx-status">{{item.status}}</text>
+    <text class="wx-common">{{item.remarks}}</text>
+    <view class="wx-label-mini">
+     <text wx:for='{{item.tagArr}}' wx:for-item='tagArr' wx:key='index' wx:if='{{index < 4}}'>{{tagArr}}</text>
+    </view>
+    <text class="wx-money">￥{{item.price}}</text>
+    <text class="wx-fans-common">粉丝要求：{{item.fansNum}}</text>
+   </view>
+   <!-- 底部按钮 -->
+   <view class="wx-count">
+    合计：
+    <text class="wx-money1">￥{{item.price}}</text> （含服务费20%）
+   </view>
+  </view>
+  <!-- list -->
+ </view>
+
+
+ <!-- 遮罩 -->
+ <view class="zhezhao {{isShow ?'isShow' : 'hidden'}}"></view>
+ <!-- 抢单提醒 -->
+ <view class="wx-pop-info {{isShow ?'isShow' : 'hidden'}}">
+  <view class="wx-pop-top">
+   <view class="wx-pop-title">提醒事项</view>
+   <view class="wx-pop-icon" bindtap="closePop">X</view>
+  </view>
+  <view class="wx-pop-content">
+   <text>1.请您确认您已经完成商家此次任务。本次佣金会在商家确认完成后，立即打款至您的钱包。</text>
+   <text>2.如果你未完成此次任务或是误操作请继续完成订单上的任务。</text>
+  </view>
+
+  <view class="wx-pop-btns">
+   <!-- <button bindtap="closePop">再考虑下</button> -->
+   <button class="wx-sure" bindtap="sureFinishMine">确认完成</button>
+  </view>
+
+ </view>
+
+</view>

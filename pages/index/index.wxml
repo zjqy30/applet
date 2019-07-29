@@ -3,59 +3,131 @@
   创建时间：2019/7/1
   描述：首页
 -->
-<view class="wx-container">
-  <!-- 顶部轮播图 -->
-  <view class="mw-swiper">
-    <swiper class="card-swiper" indicator-dots="{{false}}" circular="true" autoplay="true" interval="3000" duration="500" bindchange="cardSwiper" indicator-color="#8799a3" indicator-active-color="#0081ff" bindtap="clickBanner">
-      <!-- 当前显示的图片的样式 -->
-      <swiper-item wx:for="{{bannerImg}}" wx:key class="{{cardCur == index?'cur':''}}">
-        <image class='bg-img shadow-blur' src='{{item.imgs}}'></image>
-        <text>{{item.index}}</text>
-      </swiper-item>
-    </swiper>
-  </view>
-  <!-- 系统公告区域 -->
-  <view class="mw-system-info">
-    <!-- <view class='title'> -->
-    <!-- <text class='icon-red'>系统公告</text> -->
-    <!-- </view> -->
-    <swiper class="announ swiper_container" vertical="true" autoplay="true" circular="true" interval="3000" display-multiple-items='2' >
-      <swiper-item wx:for="{{announcement}}" wx:key='{{announcement}}'>
-        <view class="swiper_item " >
-          <image src="../image/wx-hot.png"></image>
-          {{item.message}}
-        </view>
-      </swiper-item>
-    </swiper>
-  </view>
-  <view class="wx-slipt"></view>
-  <!-- 网红列表 -->
-  <view class="mw-list">
-    <view class="wx-title">新鲜资源</view>
-    <view class="wx-refresh-list">
+<view class="wx-container" style="overflow:{{isMove}}">
+ <view class="wx-nav" style="height:{{mainTop}}px;top:0;;line-height:{{mainTop + 30}}px">
+  入驻
+  <text class="wx-number" wx:for='{{arrPerson}}' wx:key='index'>{{item}}</text>
+  <!-- <text class="wx-number">0</text> -->
+  <!-- <text class="wx-number">8</text> -->
+  <!-- <text class="wx-number">9</text> -->
+  <!-- <text class="wx-number">1</text>  -->
+  达人
+ </view>
 
-      <view class="wx-each" hover-class="hover" wx:for='{{whList}}' wx:key='index'>
-        <view class="wx-left">
-          <text class="wx-index">{{index + 1}}</text>
-          <image src="{{item.headPic}}"></image>
-        </view>
-        <view class="wx-right">
-          <view class="wx-top-name">
-            <text class="wx-plat">{{item.platName}}</text>
-            <text class="wx-whname">{{item.wxName}}</text>
-            <text class="wx-label">{{item.tags}}</text>
-          </view>
-        </view>
-        <view class="wx-after">
-          <text class="wx-num">{{item.fansNum}}</text>
-          <view class="wx-fans">粉丝数</view>
-        </view>
-      </view>
+ <view class="wx-top" style="margin-top:{{mainTop}}px">
+  <view class="wx-top-info">
+   <image src="../image/wx-logo1.png"></image>
+   <text style="color:#fff;">汇聚全网达人资源 助力企业推广需求</text>
+  </view>
+ </view>
+ <!-- 顶部轮播图 -->
+ <view class="mw-swiper">
+  <swiper class="wx-swiper-box" indicator-dots="true" circular="true" autoplay="true" interval="3000" duration="500" bindchange="cardSwiper" indicator-color="#8799a3" indicator-active-color="#0081ff" bindtap="clickBanner">
+   <!-- 当前显示的图片的样式 -->
+   <swiper-item wx:for="{{bannerImg}}" wx:key>
+    <image class='wx-swiper-img' src='{{item.imgs}}'></image>
+    <text>{{item.index}}</text>
+   </swiper-item>
+  </swiper>
+ </view>
+ <!-- 系统公告区域 -->
+ <view class="mw-system-info">
+  <image class="wx-info-common" src="../image/wx-hot.png"></image>
+  <swiper class="announ swiper_container" vertical="true" autoplay="true" circular="false" interval="2000" display-multiple-items='0' previousMargin='0' nextMargin='0'>
+   <swiper-item wx:for="{{announcement}}" wx:key="index" catchtouchmove="stopTouchMove">
+    <view class="swiper_item ">
+     <text class="wx-message-content">{{item.message}}</text>
     </view>
+   </swiper-item>
+  </swiper>
+ </view>
+ <view class="wx-slipt"></view>
 
+ <view class="wx-news">
+  <view class="wx-logo">
+   <image class="wx-info-common" src="../image/wx-logo.png"></image>
+  </view>
+  <!-- 最新的消息(不要滑动，只显示3条) -->
+  <swiper class="announ swiper_container1" vertical="true" autoplay="false" circular="false" interval="0" display-multiple-items='3' previousMargin='0' nextMargin='0'>
+   <swiper-item wx:for="{{newslist}}" wx:key='index' wx:if='{{index < 3}}'>
+    <view class="swiper_item" catchtouchmove="stopTouchMove">
+     <text class="wx-news-content">• {{item.content}}  </text>
+     <text class="wx-news-time">{{item.hoursDiff}}</text>
+    </view>
+   </swiper-item>
+  </swiper>
+ </view>
+ <view class="wx-slipt"></view>
+
+ <view class="wx-model">
+  <view class="wx-each-model" bindtap="skipDetailPage" data-type="1">
+   <view class="wx-left">
+    <text>订单大厅</text>
+    <view class="wx-info-model">众多订单 等你合作</view>
+   </view>
+   <view class="wx-right">
+    <image src="../image/wx_block2.png"></image>
+   </view>
   </view>
 
+  <view class="wx-each-model" bindtap="skipDetailPage" data-type="2">
+   <view class="wx-left">
+    <text>网红大厅</text>
+    <view class="wx-info-model">海量网红 等你筛选</view>
+   </view>
+   <view class="wx-right">
+    <image src="../image/wx_block1.png"></image>
+   </view>
+  </view>
 
+  <view class="wx-each-model" bindtap="skipDetailPage" data-type="3">
+   <view class="wx-left">
+    <text>公司资质</text>
+    <view class="wx-info-model">平台监管 更加安全</view>
+   </view>
+   <view class="wx-right">
+    <image src="../image/wx_block4.png"></image>
+   </view>
+  </view>
+  <view class="wx-each-model" bindtap="skipDetailPage" data-type="4">
+   <view class="wx-left">
+    <text>关注我们</text>
+    <view class="wx-info-model">一手资讯 及时知道</view>
+   </view>
+   <view class="wx-right">
+    <image src="../image/wx_block3.png"></image>
+   </view>
+  </view>
+ </view>
+ <!-- 二维码 -->
+ <!-- <view class="zhezhao {{isShow ? 'isShow':'hidden'}}"  bindtap="closeCode"></view>
+ <view class="wx-code {{isShow ? 'isShow':'hidden'}}" bindtap="closeCode">
+  <image src="../image/wx-code.jpg" bindlongtap="saveCodePic"></image>
+ </view> -->
 
+ <!-- 网红列表 -->
+ <view class="mw-list">
+  <!-- <view class="wx-title">新鲜资源</view>
+  <view class="wx-refresh-list">
 
+   <view class="wx-each" hover-class="hover" wx:for='{{whList}}' wx:key='index'>
+    <view class="wx-left">
+     <text class="wx-index">{{index + 1}}</text>
+     <image src="{{item.headPic}}"></image>
+    </view>
+    <view class="wx-right">
+     <view class="wx-top-name">
+      <text class="wx-plat">{{item.platName}}</text>
+      <text class="wx-whname">{{item.wxName}}</text>
+      <text class="wx-label">{{item.tags}}</text>
+     </view>
+    </view>
+    <view class="wx-after">
+     <text class="wx-num">{{item.fansNum}}</text>
+     <view class="wx-fans">粉丝数</view>
+    </view>
+   </view>
+  </view> -->
+
+ </view>
 </view>

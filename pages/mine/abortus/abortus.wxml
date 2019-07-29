@@ -1,12 +1,11 @@
 <view class='margin-xl bg-white padding-lg radius shadow-lg'>
 <view class='test'>
-  <image src='../../image/logo_back.png' class='test_icon'style='margin-bottom: 20rpx;' mode='widthFix'></image>
+  <image src='../../image/wx-logo.jpg' class='test_icon'style='margin-bottom: 10rpx;' mode='widthFix'></image>
 </view>
 <!-- bindtap='gouser'  -->
  <!-- bindlongtap='go_admin'  -->
-    <view class="pure" style='height: {{autohight}}rpx;'>
+    <view class="pure " style='height: {{autohight}}rpx;'>
       <view class="album-date" animation="{{albumSwitchAnimation}}">
-        <!-- 隐藏的空间 -->
         <view class='hide_space' wx:if='{{autohight == 688}}'>
           <view class='ml-sm'>
             <text class='iconfont icon-titles danger-text'></text>

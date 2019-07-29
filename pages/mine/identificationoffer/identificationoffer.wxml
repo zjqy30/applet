@@ -15,61 +15,37 @@
   <view class="wx-pic">
     <view class="wx-input wx-line">
       <text>行业选择</text>
-      <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" range="{{multiArray}}">
-        <view>
-          {{multiSelect}}
-        </view>
-      </picker>
-      <!-- <picker mode='multiSelector' bindchange="bindPlat" value="" range-key="name" range="{{multiArray}}">
-        <input type="text" disabled="true" class="wx-select" placeholder="请选择" value="{{plat[platItem].name}}" name="plat"></input>
-      </picker> -->
+        <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" range-key='name'>
+        <input type="text" disabled="true" class="wx-select" placeholder="请选择" value="{{multiArray[0][multiIndex[0]].name}}-{{multiArray[1][multiIndex[1]].name}}-{{multiArray[2][multiIndex[2]].name}}" name=""></input>
+        </picker>
     </view>
 
     <view class="wx-input">
       <text>邀请码</text>
-      <input class="wx-select" placeholder="请输入"></input>
+      <input class="wx-select" placeholder="请输入" bindinput="getInviteCode" value="{{inviteCode}}" disabled="disabled"></input>
     </view>
     <text class="wx-info">如果没有就不需要输入（选填）</text>
 
     <view class="wx-input">
       <text>身份证号</text>
-      <input class="wx-select" placeholder="请输入"></input>
+      <input class="wx-select" placeholder="请输入" bindinput="getCardId"></input>
     </view>
     <text class="wx-info">需要公司法人的身份证号</text>
 
-    <!-- <view class="wx-input wx-noborder" bindtap="skipModel">
-      <text class="wx-label">手持身份证照</text>
+    <view class="wx-input wx-noborder">
+      <text class="wx-label wx-label1">身份证正反照</text>
       <view class="wx-images">
-        <image src="{{handCard}}"></image>
-      </view>
-    </view>
-    <view class="wx-info">持有本人有效二代身份证，拍摄时确认身份证证件清晰 五官清晰，亮度均匀。此身份证照仅供认证使用，如有 问题请
-      <view class="wx-blue" bindtap="skipModel" data-type="1">查看模板</view>
-    </view> -->
-
-    <view class="wx-input wx-noborder" bindtap="skipModel">
-      <text class="wx-label">身份证正反照</text>
-      <view class="wx-images">
-        <image src="{{handCard}}"></image>
-        <image src="{{handCard}}"></image>
+        <image bindtap='uploadImg' data-type='1' class="{{cardPic1? 'hidden':''}}" src="{{defaultCard}}"></image>
+        <image bindtap='previewPic'  mode='aspectFit'  data-pic='{{cardPic1}}' class="{{cardPic1? '':'hidden'}}" src="{{cardPic1}}" bindlongpress="deleteImage" data-type='1'></image>
+        <image bindtap='uploadImg' data-type='2' class="{{cardPic2? 'hidden':''}}" src="{{defaultCard}}"></image>
+        <image bindtap='previewPic' mode='aspectFit'  data-pic='{{cardPic2}}' class="{{cardPic2? '':'hidden'}}" src="{{cardPic2}}" bindlongpress="deleteImage" data-type='2'></image>
       </view>
     </view>
     <view class="wx-info">需要公司法人的身份证照。拍摄时确认身份证边框完整 字体清晰，亮度均匀。此身份证照仅供认证使用，如有 问题请
       <view class="wx-blue" bindtap="skipModel" data-type="2">查看模板</view>
     </view>
 
-    <!-- <view class="wx-input wx-noborder" bindtap="skipModel">
-      <text class="wx-label">平台截图证明</text>
-      <view class="wx-images">
-        <image src="{{handCard}}"></image>
-        <image src="{{handCard}}"></image>
-      </view>
-    </view>
-    <view class="wx-info">截图时确认粉丝数量，头像ID显示清晰。此截图仅供认 证使用，如有问题请
-      <view class="wx-blue" bindtap="skipModel" data-type="3">查看模板</view>
-    </view> -->
-
-    <view class="wx-btn">
+    <view class="wx-btn" bindtap="skipNext">
       <button>下一步</button>
     </view>
 

@@ -5,7 +5,9 @@ page {
   background: -webkit-linear-gradient(left, #f03, #ff4e4e);
   padding-top: 20rpx;
 }
-
+.hidden{
+  display: none;
+}
 .hover {
   background: #f2f2f2;
 }
@@ -82,9 +84,21 @@ page {
 }
 
 .wx-label {
-  width: 200rpx !important;
+  width: 290rpx !important;
+   position: relative;
 }
-
+.wx-label1 {
+ width: 340rpx !important;
+ position: relative;
+}
+.wx-label::after,.wx-label1::after{
+ content:'（长按图片可删除）';
+ position: absolute;
+ top:10rpx;
+ right:0;
+ font-size: 20rpx;
+ color: #f03;
+}
 .wx-line text::after {
   content: '';
   position: absolute;

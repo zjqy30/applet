@@ -1,0 +1,16 @@
+<!--pages/mine/recentpayment/recentpayment.wxml-->
+<view class="wx-container">
+ <view class="wx-rencet-list">
+
+  <view class="wx-each" hover-class="hover" wx:for='{{rencentList}}' wx:key='index' data-receiver="{{item.userName}}" data-cardno="{{item.cardNo}}" data-bankname="{{item.bankName}}" bindtap="selectedPerson">
+   <image src="{{item.bankimg}}"></image>
+   <text>{{item.userName}}</text>
+   <view class="wx-number">
+    {{item.cardNo}} {{item.bankName}}
+   </view>
+  </view>
+
+  <view class="wx-nodata" wx:if="{{rencentList.length == 0}}">暂无最近收款人</view>
+
+ </view>
+</view>

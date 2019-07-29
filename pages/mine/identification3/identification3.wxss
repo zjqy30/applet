@@ -4,11 +4,17 @@ page {
   background: -webkit-linear-gradient(left, #f03, #ff4e4e);
   padding-top: 20rpx;
 }
-
+.hidden{
+  display: none;
+}
 .hover {
   background: #f2f2f2;
 }
-
+.wx-red-bg{
+  color: #fff;
+  background: #f03;
+  border:1rpx solid #fff!important;
+}
 .wx-step {
   width: 70%;
   margin: 0 auto;
@@ -83,7 +89,18 @@ page {
 .wx-label {
   width: 200rpx !important;
 }
-
+.wx-label1 {
+ width: 260rpx !important;
+ position: relative;
+}
+.wx-label1::after{
+ content:'（长按图片可删除）';
+ position: absolute;
+ top:10rpx;
+ right:0;
+ font-size: 20rpx;
+ color: #f03;
+}
 .wx-line text::after {
   content: '';
   position: absolute;
@@ -194,7 +211,7 @@ button::after {
 
 .wx-labels {
   clear: both;
-  width: 100%;
+  /* width: calc(100% - 40rpx); */
   font-size: 20rpx;
   margin: auto auto;
   text-align: center;
@@ -202,13 +219,14 @@ button::after {
 }
 
 .wx-labels text {
-  display: block;
   float: left;
-  width: calc(100% - 8rpx) / 4;
-  border: 0.5rpx solid #858585;
+  margin:0 auto;
+  width: calc((100% - 106rpx) / 4);
+  border: 1rpx solid #858585;
   text-align: center;
   margin-right: 30rpx;
   margin-top: 20rpx;
+
   padding: 10rpx 0;
 }
 

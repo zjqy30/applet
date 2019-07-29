@@ -1,0 +1,14 @@
+/* pages/mine/companypic/companypic.wxss */
+
+.wx-container {
+ padding: 24rpx 44rpx;
+}
+
+.wx-top image {
+ width: 100%;
+}
+
+.wx-main image {
+ width: 50%;
+ margin-top:24rpx;
+}

@@ -4,7 +4,12 @@ page {
   background: -webkit-linear-gradient(left, #f03, #ff4e4e);
   padding-top: 20rpx;
 }
-
+.hidden{
+ display: none;
+}
+.isShow{
+ display: block;
+}
 .hover {
   background: #f2f2f2;
 }
@@ -236,4 +241,83 @@ button::after {
 
 .wx-index{
   width: 30rpx!important;
+}
+
+/* 认证提醒 */
+/* 抢单提醒 */
+
+.wx-pop-info {
+ position: fixed;
+ top: 333rpx;
+ margin: 0 auto;
+ left: 0;
+ right: 0;
+ background: #fff;
+ z-index: 21;
+ width: 80%;
+ border-radius: 20rpx;
+}
+
+.wx-pop-top {
+ width: 100%;
+ height: 120rpx;
+ background: #f03;
+ border-top-left-radius: 20rpx;
+ border-top-right-radius: 20rpx;
+ text-align: center;
+ line-height: 120rpx;
+ color: #fff;
+ font-size: 34rpx;
+}
+
+.wx-pop-icon {
+ position: absolute;
+ top: 40rpx;
+ right: 30rpx;
+ font-weight: bold;
+ line-height: 0;
+ font-size: 38rpx;
+}
+
+.wx-pop-content {
+ font-size: 24rpx;
+ color: #333;
+ padding: 40rpx;
+}
+
+.wx-pop-content text {
+ display: block;
+ margin: 40rpx 0;
+}
+
+.wx-pop-btns button {
+ float: left;
+ width: 50%;
+ height: 80rpx;
+ line-height: 50rpx;
+ color: #333;
+ font-size: 30rpx;
+ background: #dedede;
+ border-radius: 0;
+ border-bottom-left-radius: 20rpx;
+}
+
+.wx-pop-btns .wx-sure {
+ border-bottom-right-radius: 20rpx !important;
+ border-bottom-left-radius: 0;
+ background: #f03;
+ color: #fff;
+}
+
+/* 遮罩 */
+
+.zhezhao {
+ width: 100%;
+ height: 100%;
+ position: fixed;
+ background-color: #999;
+ z-index: 20;
+ top: 0;
+ left: 0;
+ opacity: 0.5;
 }

@@ -13,7 +13,7 @@ page {
 }
 
 .wx-font-red {
-  color: red;
+  color: #FF0033;
 }
 
 .hover {
@@ -22,7 +22,7 @@ page {
 
 .wx-red-bg {
   color: #fff;
-  background: red;
+  background: #FF0033;
   border: 1rpx solid #fff !important;
 }
 
@@ -69,7 +69,7 @@ page {
 
 .wx-each-tab {
   color: #333;
-  font-size: 30rpx;
+  font-size: 28rpx;
   width: 25%;
   text-align: center;
   float: left;
@@ -82,10 +82,9 @@ page {
 }
 
 /* 粉丝排序 */
-
 .wx-right-icon {
   float: right;
-  margin-top: 10rpx;
+  margin-top: 12rpx;
   margin-right: 25rpx;
 }
 
@@ -112,14 +111,14 @@ page {
 .wx-label {
   width: 100%;
   margin-top: 20rpx;
-  margin-bottom: 280rpx;
+  /* margin-bottom: 280rpx; */
   text-align: center;
 }
 
 .wx-label text {
   text-align: center;
   float: left;
-  width: calc((100% - 90rpx) / 5);
+  width: calc((100% - 96rpx) / 5);
   border: 1rpx solid #979797;
   padding-top: 6rpx;
   padding-bottom: 6rpx;
@@ -166,7 +165,7 @@ button::after {
 }
 
 .wx-sure {
-  background: red !important;
+  background: #FF0033 !important;
   color: #fff !important;
 }
 
@@ -187,6 +186,7 @@ button::after {
 .wx-left {
   float: left;
   overflow: hidden;
+  background: #000;
 }
 
 .wx-big {
@@ -244,12 +244,12 @@ button::after {
 }
 
 .wx-money {
-  color: red;
+  color: #FF0033;
   font-size: 28rpx;
 }
 
 .wx-red {
-  color: red;
+  color: #FF0033;
   font-size: 28rpx;
 }
 
@@ -303,7 +303,7 @@ radio-group radio {
 radio .wx-radio-input.wx-radio-input-checked::before {
   width: 60%;
   height: 60%;
-  background: red;
+  background: #FF0033;
   border-radius: 100%;
   content: '';
   /* transform: translate(-50%, -50%) scale(1); *//* -webkit-transform: translate(-50%, -50%) scale(1); */
@@ -318,7 +318,7 @@ radio .wx-radio-input {
 }
 
 radio .wx-radio-input.wx-radio-input-checked {
-  border: 1rpx solid red !important;
+  border: 1rpx solid #FF0033 !important;
 }
 
 .wx-nodata {
@@ -339,4 +339,9 @@ radio .wx-radio-input.wx-radio-input-checked {
   left:0;
   right:0;
   padding:20rpx;
+}
+
+/* 新增纯佣的选择 */
+.wx-clear{
+  clear: both;
 }

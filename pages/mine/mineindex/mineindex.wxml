@@ -1,165 +1,160 @@
 <!-- 个人中心（普通用户，网红，商家） -->
 
 <view class="wx-container">
-  <view class="wx-top">
-    <view class="wx-headpic">
-      <image src="{{isLogin ? userInfo.avatarUrl : '../../image/wx-myheadpic.png'}}"></image>
-    </view>
-    <view class="wx-login">
-      <text class="wx-nikename" bindtap="skipLogin">{{isLogin ? userInfo.nickName : '登录/注册'}}</text>
-      <text class="wx-logininfo">{{phoneNo ? phoneNo : '绑定手机号可查看更多信息'}}</text>
-    </view>
+ <view class="wx-top">
+  <view class="wx-headpic">
+   <image src="{{isLogin ? userInfo.avatarUrl : '../../image/wx-myheadpic.png'}}"></image>
+  </view>
+  <view class="wx-login">
+   <text class="wx-nikename" bindtap="skipLogin">{{isLogin ? userInfo.nickName : '登录/注册'}}</text>
+   <text class="wx-logininfo">{{phoneNo ? phoneNo : '绑定手机号可查看更多信息'}}</text>
+  </view>
+ </view>
 
+ <!-- 网红显示1 -->
+ <form report-submit="true" bindsubmit="skipFunctionModel">
+  <view class="wx-main" wx:if="{{userType == '1' && ifApproved == '1'}}">
+   <view class="wx-main-each">
+    <button class="wx-img" form-type="submit" data-whtype="1" hover-class="nohover">
+     <image src="../../image/wx-person.png"></image>
+    </button>
+    <text>个人资料</text>
+   </view>
+   <view class="wx-main-each">
+    <button class="wx-img" form-type="submit" data-whtype="2" hover-class="nohover">
+     <image src="../../image/wx-order.png"></image>
+    </button>
+    <text>订单管理</text>
+   </view>
+   <view class="wx-main-each">
+    <button class="wx-img" form-type="submit" data-whtype="3" hover-class="nohover">
+     <image src="../../image/wx-wallte.png"></image>
+    </button>
+    <text>我的钱包</text>
+   </view>
+   <view class="wx-main-each">
+    <button class="wx-img" form-type="submit" data-whtype="4" hover-class="nohover">
+     <image src="../../image/wx-document.png"></image>
+    </button>
+    <text>我的收藏</text>
+   </view>
+   <view class="wx-main-each">
+    <button class="wx-img" form-type="submit" data-whtype="5" hover-class="nohover">
+     <image src="../../image/wx-scan.png"></image>
+    </button>
+    <text>扫一扫</text>
+   </view>
+  </view>
+ </form>
+
+
+ <!-- 商家显示2 -->
+ <form report-submit="true" bindsubmit="skipFunctionModel">
+  <view class="wx-main2" wx:if="{{userType == '2' && ifApproved == '1'}}">
+   <view class="wx-main-each">
+    <button class="wx-img" form-type="submit" data-whtype="2" hover-class="nohover">
+     <image src="../../image/wx-order.png"></image>
+    </button>
+    <text>订单管理</text>
+   </view>
+   <view class="wx-main-each">
+    <button class="wx-img" form-type="submit" data-whtype="7" hover-class="nohover">
+     <image src="../../image/wx-money.png"></image>
+    </button>
+    <text>个人账单</text>
+   </view>
+   <view class="wx-main-each">
+    <button class="wx-img" form-type="submit" data-whtype="4" hover-class="nohover">
+     <image src="../../image/wx-document.png"></image>
+    </button>
+    <text>我的收藏</text>
+   </view>
+   <view class="wx-main-each">
+    <button class="wx-img" form-type="submit" data-whtype="5" hover-class="nohover">
+     <image src="../../image/wx-scan.png"></image>
+    </button>
+    <text>扫一扫</text>
+   </view>
+  </view>
+ </form>
+
+ <view class="wx-function">
+
+  <!-- 普通用户显示 -->
+  <view class="wx-each " hover-class="hover " wx:if="{{ifApproved == '-1'}}" bindtap="selectedIdentify">
+   <image src="../../image/wx-mydentify.png "></image>
+   <text>申请认证</text>
   </view>
 
-  <!-- 网红显示1 -->
-  <view class="wx-main" wx:if="{{userType =='1' }}">
-    <view class="wx-main-each">
-    <view class="wx-img"><image src="../../image/wx-person.png"></image></view>
-      <text>个人资料</text>
-    </view>
-    <view class="wx-main-each">
-      <view class="wx-img"><image src="../../image/wx-order.png"></image></view>
-      <text>订单管理</text>
-    </view>
-    <view class="wx-main-each">
-      <view class="wx-img"><image src="../../image/wx-wallte.png"></image></view>
-      <text>我的钱包</text>
-    </view>
-    <view class="wx-main-each">
-      <view class="wx-img"><image src="../../image/wx-document.png"></image></view>
-      <text>我的收藏</text>
-    </view>
-    <view class="wx-main-each">
-      <view class="wx-img"><image src="../../image/wx-scan.png"></image></view>
-      <text>扫一扫</text>
-    </view>
+  <view class="wx-each " hover-class="hover " wx:if="{{userType !='0' && ifApproved == '1'}}" bindtap="correctPhone">
+   <image src="../../image/wx-correctphone.png "></image>
+   <text>修改号码</text>
   </view>
 
-    <!-- 商家显示2 -->
-  <view class="wx-main2" wx:if="{{userType =='2' }}">
- 
-    <view class="wx-main-each">
-      <view class="wx-img"><image src="../../image/wx-order.png"></image></view>
-      <text>订单管理</text>
-    </view>
-       <view class="wx-main-each">
-    <view class="wx-img"><image src="../../image/wx-money.png"></image></view>
-      <text>个人账单</text>
-    </view>
-    <view class="wx-main-each">
-      <view class="wx-img"><image src="../../image/wx-wallte.png"></image></view>
-      <text>我的收藏</text>
-    </view>
-    <view class="wx-main-each">
-      <view class="wx-img"><image src="../../image/wx-document.png"></image></view>
-      <text>扫一扫</text>
-    </view>
+  <!-- 三种角色通用显示 -->
+  <button class=" wx-default-style" open-type="feedback" hover-class="nohover">
+   <image src="../../image/wx-myopinion.png"></image>
+   <text class="wx-label">帮助反馈</text>
+  </button>
+  <view class="wx-each" hover-class="hover" bindtap="introduce">
+   <image src="../../image/wx-useways.png "></image>
+   <text>使用教程</text>
   </view>
-
-  <view class="wx-function">
-
-    <!-- 普通用户显示 -->
-    <view class="wx-each " hover-class="hover " wx:if="{{userType =='0'}}" bindtap="selectedIdentify">
-      <image src="../../image/wx-mydentify.png "></image>
-      <text>申请认证</text>
-    </view>
-
-    <!-- 网红显示 -->
-    <!-- <view class="wx-each " hover-class="hover " wx:if="{{userType =='1' }}">
-      <image src="../../image/wx-myopinion.png "></image>
-      <text>个人资料</text>
-    </view>
-    <view class="wx-each " hover-class="hover " wx:if="{{userType =='1' }}">
-      <image src="../../image/wx-myopinion.png "></image>
-      <text>我的钱包</text>
-    </view> -->
-
-    <!-- 商家显示 -->
-    <view class="wx-each " hover-class="hover " wx:if="{{userType =='2' }}">
-      <image src="../../image/wx-myopinion.png "></image>
-      <text>个人账单</text>
-    </view>
-
-    <!-- 网红商家共显 -->
-    <!-- <view class="wx-each " hover-class="hover " wx:if="{{userType !='0' }}">
-      <image src="../../image/wx-myopinion.png "></image>
-      <text>订单中心</text>
-    </view> -->
-    <view class="wx-each " hover-class="hover " wx:if="{{userType !='0' }}">
-      <image src="../../image/wx-myopinion.png "></image>
-      <text>修改号码</text>
-    </view>
-
-    <!-- 三种角色通用显示 -->
-    <view class="wx-each " hover-class="hover ">
-      <image src="../../image/wx-myopinion.png "></image>
-      <button class="wx-default-style " hover-class="hover " open-type="feedback">帮助反馈</button>
-    </view>
-    <view class="wx-each " hover-class="hover " bindtap="introduce ">
-      <image src="../../image/wx-myemail.png "></image>
-      <text>使用教程</text>
-    </view>
-    <view class="wx-each " hover-class="hover " bindtap="callUs ">
-      <image src="../../image/wx-myemail.png "></image>
-      <text>联系我们</text>
-    </view>
-    <view class="wx-each wx-icon " hover-class="hover " bindtap="skipAboutUs">
-      <image src="../../image/wx-myinfo.png "></image>
-      <text>关于我们</text>
-    </view>
-    <view class="wx-each " hover-class="hover ">
-      <image src="../../image/wx-myshare.png "></image>
-      <button class="wx-default-style " hover-class="btn-hover " open-type="share">分享一下</button>
-    </view>
-
-    <!-- <view class="wx-each wx-icon " hover-class="hover " bindtap="scanTest">
-      <image src="../../image/wx-myinfo.png "></image>
-      <text>扫码测试</text>
-    </view> -->
+  <button class=" wx-default-style" bindtap="callUs" hover-class="nohover">
+   <image src="../../image/wx-myemail.png"></image>
+   <text class="wx-label">联系我们</text>
+  </button>
+  <view class="wx-each wx-icon" hover-class="hover" bindtap="skipAboutUs">
+   <image src="../../image/wx-myinfo.png "></image>
+   <text>关于我们</text>
   </view>
+  <button class=" wx-default-style" open-type="share" hover-class="nohover">
+   <image src="../../image/wx-myshare.png "></image>
+   <text class="wx-label">分享一下</text>
+  </button>
+ </view>
 
-  <!-- 遮罩 -->
-  <view class="zhezhao {{isShow ? '':'hidden'}}"></view>
+ <!-- 遮罩 -->
+ <view class="zhezhao {{isShow ? '':'hidden'}}"></view>
+ <view class="zhezhao {{isShowApproved ? '':'hidden'}}"></view>
 
-  <!-- 选择认证的身份 -->
-  <view class="wx-select {{isShow ? '':'hidden'}}">
-    <view class="wx-select-title">
-      <text>请选择身份</text>
-      <icon type="clear" size="40" bindtap="closePop" />
-    </view>
-    <view class="wx-two">
-      <!-- 网红 -->
-      <view class="wx-dentify wx-first" bindtap="skipiDentify" data-usertype='1'>
-        <image src="../../image/wx-myheadpic.png"></image>
-        <text>我是网红</text>
-      </view>
-      <!-- 商家 -->
-      <view class="wx-dentify wx-first" bindtap="skipiDentify" data-usertype='2'>
-        <image src="../../image/wx-myheadpic.png"></image>
-        <text>我是商家</text>
-      </view>
-    </view>
+ <!-- 选择认证的身份 -->
+ <view class="wx-select {{isShow ? '':'hidden'}}">
+  <view class="wx-select-title wx-select-identity">
+   <text>请选择身份</text>
+   <image src="../../image/wx-close.png" bindtap="closePop"></image>
   </view>
-
-  <!-- 审核状态 -->
-  <view class="wx-select hidden">
-    <view class="wx-select-title">
-      <text>请选择身份</text>
-      <icon type="clear" size="40" bindtap="closePop" />
+  <view class="wx-two">
+   <!-- 网红 -->
+   <view class="wx-dentify {{selectType == '1'?'wx-select-red':''}}" bindtap="skipiDentify" data-usertype='1'>
+    <view class="wx-left-identity">
+     <text class="{{selectType == '1'?'wx-select-red':''}}">网红/自媒体</text>
+     <text class="wx-find {{selectType == '1'?'wx-select-red':''}}">来寻找合作资源，更快的实现变现价值</text>
     </view>
-    <view class="wx-two">
-      <!-- 网红 -->
-      <view class="wx-dentify wx-first" bindtap="skipiDentify" data-usertype='1'>
-        <image src="../../image/wx-myheadpic.png"></image>
-        <text>我是网红</text>
-      </view>
-      <!-- 商家 -->
-      <view class="wx-dentify wx-first" bindtap="skipiDentify" data-usertype='2'>
-        <image src="../../image/wx-myheadpic.png"></image>
-        <text>我是商家</text>
-      </view>
+    <view class="wx-select-img">
+     <image src="{{selectType == '1'?'../../image/wx-select.png':'../../image/wx-unselect.png'}}"></image>
     </view>
+   </view>
+   <!-- 商家 -->
+   <view class="wx-dentify {{selectType == '2'?'wx-select-red':''}}" bindtap="skipiDentify" data-usertype='2'>
+    <view class="wx-left-identity">
+     <text class="{{selectType == '2'?'wx-select-red':''}}">商家/企业</text>
+     <text class="wx-find {{selectType == '2'?'wx-select-red':''}}">来寻找带货品宣传，从而扩大价值化</text>
+    </view>
+    <view class="wx-select-img">
+     <image src="{{selectType == '2'?'../../image/wx-select.png':'../../image/wx-unselect.png'}}"></image>
+    </view>
+   </view>
   </view>
+ </view>
+
+
+
+ <!-- 审核弹出 -->
+ <view class="wx-pop-info {{isShowApproved ? '':'hidden'}}">
+  <image src="../../image/wx-checking.png"></image>
+  <text>已提交…平台审核中</text>
+  <text class="wx-pretime">预计一个小时内完成审核</text>
+ </view>
 
 </view>

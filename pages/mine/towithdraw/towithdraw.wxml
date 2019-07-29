@@ -1,0 +1,43 @@
+<!--pages/mine/towithdraw/towithdraw.wxml-->
+<view class="wx-container">
+ <form report-submit="true" bindsubmit="submitWithdraw">
+
+  <view class="wx-input">
+   <label class="wx-name">收款姓名</label>
+   <input type="text" placeholder="请输入收款人姓名" name="receiver" value="{{receiver}}"></input>
+   <view class="wx-last" bindtap="skipRencet">最近收款人</view>
+  </view>
+
+  <view class="wx-input">
+   <label class="wx-name">收款卡号</label>
+   <input type="number" placeholder="请输入收款卡号" name="cardNo" value="{{cardNo}}"></input>
+  </view>
+
+  <view class="wx-input" bindtap="selectBank">
+   <label class="wx-name">收款银行</label>
+   <input type="number" class="wx-hidden" disabled="disabled" name="bankName" value="{{bankName}}"></input>
+   <view class="wx-last wx-line">{{bankName}}</view>
+  </view>
+
+  <!-- 分隔符 -->
+  <view class="wx-split"></view>
+  <view class="wx-money">
+   <text class="wx-title">提现金额</text>
+   <view class="wx-write-money">
+    <text class="wx-yuan">￥</text>
+    <input type="number" placeholder="0.00" bindblur="countFee" name='drawAmount' value="{{allMoney}}"></input>
+   </view>
+   <button class="wx-all" bindtap="allWithDraw">全部提现</button>
+
+  </view>
+  <view class="wx-fee">
+   <text class="wx-fee1">手续费:{{fee}}元</text>
+   <text class="wx-fee2">可用余额:{{avaiableBalance}}元</text>
+  </view>
+  <text class="wx-info">提现收取1%的费用,预计在一个工作日内到账。</text>
+
+  <button form-type="submit" class="wx-submit">确认提交</button>
+
+ </form>
+
+</view>

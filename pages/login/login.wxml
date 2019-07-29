@@ -7,7 +7,7 @@
   <view class='title centent'>
     红腕
   </view>
-  <view class='tip'>
+  <view class='tip'>    
     欢迎您来到红腕！点击下方按钮进行认证。红腕承诺：不会泄露您的任何信息；除必要的验证码和交易通知外，红腕不会给您发送短信；红腕也异常注重数据安全。红腕，千姿腕态，鹏霄万里！
   </view>
   <!-- 获取用户头像及资料 -->
@@ -15,9 +15,9 @@
     <button class='cu-btn bg-b margin-tb-sm lg text-cb' wx:if="{{!isLogin}}" open-type='getUserInfo' bindgetuserinfo='bindGetUserInfo'>
       <text class='icon-weixin text-cb icon'></text> 微信登录
     </button>
-    <!-- <button class='cu-btn bg-bb margin-tb-sm lg text-cb' wx:if="{{!isBindPhone}}" bindgetphonenumber='bindGetPhoneNumber' open-type='getPhoneNumber'>
+    <button class='cu-btn bg-bb margin-tb-sm lg text-cb' wx:if="{{!isBindPhone}}" bindgetphonenumber='bindGetPhoneNumber' open-type='getPhoneNumber'>
       <text class='icon-phone text-cb icon'></text>绑定手机号
-    </button> -->
+    </button>
     <button class='cu-btn bg-b margin-tb-sm lg text-cb' bindtap='backhome' wx:if="{{!test3}}">
       <text class='icon-check text-cb icon'></text>完成
     </button>

@@ -10,7 +10,7 @@ Page({
   },
   onLoad: function () {
     var that = this;
-    console.log(app.md5.hexMD5('1111'));
+   console.log(app.md5.hexMD5('123456sysUser'));
   },
   formSubmit: function (e) {
     var _this = this

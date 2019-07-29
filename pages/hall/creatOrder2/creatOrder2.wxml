@@ -1,0 +1,67 @@
+<!-- 创建订单第2步 -->
+<view class="wx-container">
+ <!-- 流程步骤 -->
+ <view class="wx-step">
+  <view class="wx-each-step">
+   <text class="wx-first"></text>
+  </view>
+  <view class="wx-each-step">
+   <text class=""></text>
+  </view>
+ </view>
+
+ <!-- 上传商品照片 -->
+ <form report-submit="true" bindsubmit="submitCheck">
+
+  <view class="wx-pic">
+   <!-- 服务类型 -->
+   <view class="wx-input">
+    <text class="wx-label">服务类型</text>
+    <view class="wx-services" bindtap="selectService">
+     <view class="wx-each">
+      <text class="wx-type">
+            <text class="wx-index">1</text>{{templateName ? templateName:orderData.offerTitle}}</text>
+      <text class="wx-price">{{price || orderData.price ? '￥':''}}{{price ? price:orderData.price}}</text>
+     </view>
+    </view>
+   </view>
+   <view class="wx-info">选择自己需要的服务类型，定制化服务</view>
+   <view class="wx-input wx-noborder">
+    <text class="wx-label wx-label1">商品照片</text>
+    <view class="wx-images">
+
+     <image bindtap='uploadImg' src="{{defaultImg}}"></image>
+     <image wx:for='{{personImgs}}' mode='aspectFit' wx:key='path' bindlongpress="deleteImage" bindtap="perviewPic" src="{{item.path}}" data-pic='{{item.path}}' data-index='{{index}}'></image>
+
+    </view>
+   </view>
+   <view class="wx-info">尽可能上传一些关于商品的照片，这样有利于爆光，最多上传（最多6张，长按图片可删除）
+   </view>
+   <view class="wx-btn">
+    <button form-type="submit">提交审核</button>
+   </view>
+  </view>
+ </form>
+
+ <!-- 发布提醒 -->
+ <!-- 遮罩 -->
+ <view class="zhezhao {{isShow ?'isShow' : 'hidden'}}"></view>
+ <!-- 提醒 -->
+ <view class="wx-pop-info {{isShow ?'isShow' : 'hidden'}}">
+  <view class="wx-pop-top">
+   <view class="wx-pop-title">提醒事项</view>
+   <view class="wx-pop-icon" bindtap="closePop">X</view>
+  </view>
+  <view class="wx-pop-content">
+   <text>1.请确认是否发布此次任务</text>
+   <text>2.核对各项信息的真实性或是否填写有误，如无任何问题可立即发布</text>
+   <text>3.发布之后平台会进行审核</text>
+  </view>
+
+  <view class="wx-pop-btns">
+   <button bindtap="closePop">修改一下</button>
+   <button class="wx-sure" bindtap="submitYourInfo">确认发布</button>
+  </view>
+ </view>
+
+</view>

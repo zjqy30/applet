@@ -48,7 +48,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 14,
+			"current": 21,
 			"list": [
 				{
 					"id": -1,
@@ -149,9 +149,72 @@
 					"scene": null
 				},
 				{
+					"id": 14,
+					"name": "协议条款",
+					"pathName": "pages/mine/secretpolice/secretpolice",
+					"query": "",
+					"scene": null
+				},
+				{
 					"id": -1,
-					"name": "测试页面",
+					"name": "创建订单",
+					"pathName": "pages/hall/creatOrder/creatOrder",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "创建订单2",
+					"pathName": "pages/hall/creatOrder2/creatOrder2",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "需求模板",
+					"pathName": "pages/hall/commandTemplate/commandTemplate",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "订单详情",
+					"pathName": "pages/hall/orderdetail/orderdetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 19,
+					"name": "我的钱包",
+					"pathName": "pages/mine/mywallet/mywallet",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我要提现",
+					"pathName": "pages/mine/towithdraw/towithdraw",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 21,
+					"name": "pages/mine/companypic/companypic",
+					"pathName": "pages/mine/companypic/companypic",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "测试",
 					"pathName": "pages/test/test",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "个人资料1",
+					"pathName": "pages/mine/personfile/personfile",
 					"query": "",
 					"scene": null
 				}

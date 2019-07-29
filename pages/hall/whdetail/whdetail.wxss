@@ -1,267 +1,463 @@
+.wx-container {
+ width: 100%;
+ overflow: hidden;
+ /* margin-bottom: 116rpx; */
+}
+
+.wx-redtext {
+ color: #f03 !important;
+}
+
+.hidden {
+ display: none;
+}
+
 /* 轮播图 */
 
 swiper {
-  height: 512rpx;
-  position: relative;
-  z-index: 9;
+ height: 512rpx;
+ position: relative;
+ z-index: 9;
+ background: #000;
 }
 
 swiper image {
-  width: 100%;
-  height: 100%;
-  position: relative;
+ width: 100%;
+ height: 100%;
+ position: relative;
 }
 
 /* 轮播图的计数 */
 
 .wx-num {
-  position: absolute;
-  top: 20rpx;
-  right: 30rpx;
-  color: #fff;
-  font-size: 20rpx;
-  z-index: 11;
+ position: absolute;
+ top: 20rpx;
+ right: 30rpx;
+ color: #fff;
+ font-size: 20rpx;
+ z-index: 11;
 }
 
 /* 头像 */
 
 .wx-headPic {
-  width: 160rpx;
-  height: 160rpx;
-  margin: 0 auto;
-  text-align: center;
+ /* width: 160rpx; */
+ height: 160rpx;
+ margin: 0 auto;
+ text-align: center;
+ border-radius: 80rpx;
 }
 
 .wx-headPic image {
-  width: 100%;
-  height: 100%;
-  margin-top: -80rpx;
-  position: relative;
-  z-index: 10;
+ width: 160rpx;
+ height: 100%;
+ margin-top: -80rpx;
+ position: relative;
+ z-index: 10;
+ border-radius: 80rpx;
 }
 
 .wx-name {
-  font-size: 28rpx;
-  color: #333;
-  margin-top: 48rpx;
-  font-weight: 600;
+ font-size: 28rpx;
+ color: #333;
+ /* margin-top: 48rpx; */
+ font-weight: 600;
+ width: 600rpx !important;
+ text-align: center;
+ display: inline-block;
+ margin: 0 auto;
 }
 
 /* 用户的基本信息 */
 
 .wx-basicInfo {
-  width: 80%;
-  overflow: hidden;
-  margin: 0 auto;
-  text-align: center;
-  color: #333;
-  font-size: 26rpx;
-  font-weight: 600;
+ width: 80%;
+ overflow: hidden;
+ margin: 0 auto;
+ text-align: center;
+ color: #333;
+ font-size: 26rpx;
+ font-weight: 600;
 }
 
 .wx-basicInfo .wx-info {
-  width: 33.3333%;
-  float: left;
-  text-align: center;
-  position: relative;
+ width: 33.3333%;
+ float: left;
+ text-align: center;
+ position: relative;
 }
 
 .wx-info::after {
-  content: '';
-  position: absolute;
-  top: 6rpx;
-  right: 1rpx;
-  bottom: 0;
-  width: 0.5rpx;
-  height: 100%;
-  background: #f5f5f5;
+ content: '';
+ position: absolute;
+ top: 6rpx;
+ right: 1rpx;
+ bottom: 0;
+ width: 0.5rpx;
+ height: 100%;
+ background: #f5f5f5;
 }
 
 .wx-info:last-child:after {
-  background: none;
+ background: none;
 }
 
 .wx-info text {
-  display: block;
+ display: block;
 }
 
 .wx-label {
-  color: #858585;
-  font-size: 22rpx;
-  margin-top: 20rpx;
-  font-weight: normal;
+ color: #858585;
+ font-size: 22rpx;
+ margin-top: 20rpx;
+ font-weight: normal;
 }
 
 /* 个人简介 */
 
 .wx-introduce {
-  width: 100%;
-  padding: 30rpx;
-  color: #333;
-  font-size: 24rpx;
-  font-weight: 600;
-  border-bottom: 0.5rpx solid #f5f5f5;
+ width: 100%;
+ padding: 30rpx;
+ color: #333;
+ font-size: 24rpx;
+ font-weight: 600;
+ border-bottom: 0.5rpx solid #f5f5f5;
 }
 
 .wx-title {
-  position: relative;
-  padding-left: 20rpx;
-  color: #333;
-  font-size: 24rpx;
-  font-weight: 600;
+ position: relative;
+ padding-left: 20rpx;
+ color: #333;
+ font-size: 24rpx;
+ font-weight: 600;
 }
 
 .wx-title::before {
-  content: '';
-  width: 7rpx;
-  height: 80%;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  margin: auto auto;
-  background: -webkit-linear-gradient(left, #f03, #ff4e4e);
+ content: '';
+ width: 7rpx;
+ height: 80%;
+ position: absolute;
+ top: 0;
+ bottom: 0;
+ left: 0;
+ margin: auto auto;
+ background: -webkit-linear-gradient(left, #f03, #ff4e4e);
 }
 
 .wx-content {
-  font-weight: normal;
-  padding: 20rpx;
-  color: #858585;
-  width: calc(100% - 80rpx);
-  text-indent: 2em;
+ font-weight: normal;
+ padding: 20rpx;
+ color: #858585;
+ width: calc(100% - 80rpx);
+ text-indent: 2em;
 }
 
 /* 平台担保 */
 
 .wx-plat {
-  width: 100%;
-  color: #858585;
-  font-size: 18rpx;
-  padding: 24rpx;
+ width: 100%;
+ color: #858585;
+ font-size: 18rpx;
+ padding: 24rpx;
 }
 
 .wx-plat .wx-plat-info {
-  display: inline-block;
-  margin-right: 30rpx;
-  overflow: hidden;
+ display: inline-block;
+ margin-right: 30rpx;
+ overflow: hidden;
 }
 
 .wx-plat image {
-  width: 23rpx;
-  height: 23rpx;
-  float: left;
-  margin-right: 10rpx;
+ width: 23rpx;
+ height: 23rpx;
+ float: left;
+ margin-right: 10rpx;
 }
 
 /* 分隔符 */
 
 .wx-split {
-  width: 100%;
-  background: #f5f5f5;
-  height: 20rpx;
+ width: 100%;
+ background: #f5f5f5;
+ height: 20rpx;
 }
 
 /* 额外信息 */
 
 .wx-extraInfo {
-  padding: 30rpx;
+ padding: 30rpx;
 }
 
 .wx-models {
-  color: #f03;
-  font-size: 26rpx;
-  font-weight: 600;
-  width: 100%;
-  margin: 30rpx auto;
-  border-bottom: 1rpx solid #f5f5f5;
-  border-top: 1rpx solid #f5f5f5;
-  overflow: hidden;
+ color: #f03;
+ font-size: 26rpx;
+ font-weight: 600;
+ width: 100%;
+ margin: 30rpx auto;
+ border-bottom: 1rpx solid #f5f5f5;
+ border-top: 1rpx solid #f5f5f5;
+ overflow: hidden;
+ padding: 20rpx 0;
 }
 
 .wx-model {
-  width: calc((100% - 10rpx) / 3);
-  float: left;
-  text-align: center;
-  padding: 20rpx 0;
-  border: 1rpx solid #f5f5f5;
-  border-top: 0;
+ width: calc((100% - 10rpx) / 3);
+ float: left;
+ text-align: center;
+ padding: 20rpx 0;
+ border: 1rpx solid #f5f5f5;
+ border-top: 0;
 }
 
 .wx-model:first-child {
-  border-left: 0;
+ border-left: 0;
+ border-right: 0;
 }
 
 .wx-model:nth-child(3n) {
-  border-right: 0;
+ border-right: 0;
+ border-left: 0;
 }
 
 .wx-model:nth-child(4n) {
-  border-left: 0;
+ border-left: 0;
+ border-bottom: 0;
+}
+
+.wx-model:nth-child(5n) {
+ border-left: 0;
+ border-bottom: 0;
 }
 
 .wx-model text {
-  display: block;
+ display: block;
 }
 
 /* 服务类型 */
 
 .wx-services {
-  margin-top: 40rpx;
-  /* padding: 20rpx; */
-  border-bottom: 1rpx solid #f5f5f5;
+ margin-top: 40rpx;
+ /* padding: 20rpx; */
+ border-bottom: 1rpx solid #f5f5f5;
 }
 
 .wx-each {
-  width: 100%;
-  overflow: hidden;
-  padding: 30rpx 0;
-  border-top: 1rpx solid #f5f5f5;
+ width: 100%;
+ overflow: hidden;
+ padding: 30rpx 0;
+ border-top: 1rpx solid #f5f5f5;
+}
+
+.wx-index {
+ margin-right: 10rpx;
 }
 
 .wx-type {
-  float: left;
-  width: 60%;
+ float: left;
+ width: 60%;
 }
 
 .wx-each  .wx-price {
-  float: right;
-  width: 20%;
-  text-align: right;
-  color: #f03;
+ float: right;
+ width: 40%;
+ text-align: right;
+ color: #f03;
 }
 
 /* 粉丝画像 */
 
 .wx-fans-data {
-  padding: 30rpx;
+ padding: 30rpx;
+}
+
+/* 粉丝画像tab */
+
+.wx-tab {
+ width: 80%;
+ /* padding:20rpx; */
+ margin: 0 auto;
+ text-align: center;
+}
+
+.wx-tab text {
+ color: #333;
+ font-size: 18rpx;
+ width: 10%;
+ display: inline-block;
+ text-align: center;
+ padding: 0 0 10rpx;
+ margin-right: 20rpx;
+}
+
+.wx-tab text:last-child {
+ margin-right: 0;
+}
+
+.wx-red {
+ border-bottom: 2rpx solid #ff4e4e;
 }
 
 /* 底部按钮 */
-.wx-btns{
-  width: 100%;
-  font-size: 20rpx;
-  color: #858585;
+
+.wx-btns {
+ width: 100%;
+ font-size: 20rpx;
+ color: #858585;
+ /* padding: 30rpx 0; */
+ overflow: hidden;
+ /* position: fixed; */
+ /* bottom: 0; */
+ /* background: #fff; */
+ /* z-index: 999; */
 }
 
-.wx-btns .wx-btn{
-  float: left;
+.wx-btns .wx-btn {
+ text-align: center;
+ float: left;
 }
 
-.wx-btns image{
-  width: 40rpx;
-  height: 40rpx;
+.wx-btns image {
+ width: 40rpx;
+ height: 40rpx;
 }
-.wx-share{
-width: 20%;
-}
-.wx-collect{
-width: 20%;
 
+.wx-share::after {
+ content: '';
+ position: absolute;
+ top: 0;
+ right: 0;
+ width: 1rpx;
+ height: 100%;
 }
-.wx-online{
-width: 30%;
-}
-.wx-concat{
-width: 30%;
 
+.wx-share, .wx-collect {
+ width: 20%;
+ padding: 20rpx 0 0;
+ /* margin-top: 20rpx; */
+ position: relative;
+}
+
+.wx-share text, .wx-collect text {
+ display: block;
+}
+
+.wx-online, .wx-concat {
+ width: 30%;
+ height: 100%;
+}
+
+.wx-concat button {
+ background: #f03 !important;
+}
+
+.wx-online button, .wx-concat button {
+ font-size: 20rpx;
+ background: #ff4e4e;
+ color: #fff;
+ border: 0;
+ border-radius: 0;
+ height: 126rpx;
+ line-height: 126rpx;
+}
+
+.wx-online button::after, .wx-concat button::after {
+ border: 0;
+ border-radius: 0;
+}
+
+/* 去除button的默认样式 */
+
+button {
+ padding: 0;
+ font-size: 20rpx;
+ background: #fff;
+ color: #858585;
+}
+
+button::after {
+ padding: 0;
+ border: 0;
+ border-radius: 0;
+}
+
+.btn-hover {
+ background: none;
+}
+
+/* 锁单提醒 */
+
+.wx-pop-info {
+ position: fixed;
+ top: 333rpx;
+ margin: 0 auto;
+ left: 0;
+ right: 0;
+ background: #fff;
+ z-index: 21;
+ width: 80%;
+ border-radius: 20rpx;
+}
+
+.wx-pop-top {
+ width: 100%;
+ height: 120rpx;
+ background: #f03;
+ border-top-left-radius: 20rpx;
+ border-top-right-radius: 20rpx;
+ text-align: center;
+ line-height: 120rpx;
+ color: #fff;
+ font-size: 34rpx;
+}
+
+.wx-pop-icon {
+ position: absolute;
+ top: 40rpx;
+ right: 30rpx;
+ font-weight: bold;
+ line-height: 0;
+ font-size: 38rpx;
+}
+
+.wx-pop-content {
+ font-size: 24rpx;
+ color: #333;
+ padding: 40rpx;
+}
+
+.wx-pop-content text {
+ display: block;
+ margin: 40rpx 0;
+}
+
+.wx-pop-btns button {
+ float: left;
+ width: 50%;
+ height: 80rpx;
+ line-height: 80rpx;
+ color: #333;
+ font-size: 30rpx;
+ background: #dedede;
+ border-radius: 0;
+ border-bottom-left-radius: 20rpx;
+}
+
+.wx-pop-btns .wx-sure {
+ border-bottom-right-radius: 20rpx !important;
+ border-bottom-left-radius: 0;
+ background: #f03;
+ color: #fff;
+}
+
+/* 遮罩 */
+
+.zhezhao {
+ width: 100%;
+ height: 100%;
+ position: fixed;
+ background-color: #999;
+ z-index: 20;
+ top: 0;
+ left: 0;
+ opacity: 0.5;
 }

@@ -1,81 +1,24 @@
 <!--pages/mine/servicetype/servicetype.wxml-->
 <view class="wx-contanier">
 
-  <!-- 选择服务类型 -->
-  <view class="wx-pic">
-    <checkbox-group class="wx-each-type" bindchange="checkboxChange" id='type1'>
-      <picker mode="{{isShow ? 'selector' : '111'}}" bindchange="selectPrice" value="" range-key="value" range="{{priceArr}}">
-        <checkbox value='1'>可接受纯佣合作
-          <!-- <text class="wx-price "><text class="wx-icon ">￥</text>{{priceArr[priceItem].value}}</text> -->
-        </checkbox>
-      </picker>
-    </checkbox-group>
-    <text class="wx-info ">做一场非专场直播带货（并按比例抽取佣金）</text>
-
-    <checkbox-group class="wx-each-type " bindchange="checkboxChange" id='type2'>
-      <picker mode="{{isShow ? 'selector' : ''}}" bindchange="selectPrice" value="" range-key="value" range="{{priceArr}}">
-        <checkbox value='2'>图文推广/次
-          <text class="wx-price "><text class="wx-icon ">￥</text>{{priceArr[priceItem].value}}</text>
-        </checkbox>
-      </picker>
-    </checkbox-group>
-    <text class="wx-info ">使用类似微信公众号方式进行推广（按次支付佣金）</text>
-
-    <checkbox-group class="wx-each-type " bindchange="checkboxChange" id='type3'>
-      <picker mode="{{isShow ? 'selector' : ''}}" bindchange="selectPrice" value="" range-key="value" range="{{priceArr}}">
-        <checkbox value='3'>微信朋友圈广告/次
-          <text class="wx-price "><text class="wx-icon ">￥</text>{{priceArr[priceItem].value}}</text>
-        </checkbox>
-      </picker>
-
-    </checkbox-group>
-    <text class="wx-info ">朋友圈发布广告（按次支付佣金）</text>
-
-    <checkbox-group class="wx-each-type " bindchange="checkboxChange" id='type4'>
-      <picker mode="{{isShow ? 'selector' : ''}}" bindchange="selectPrice" value="" range-key="value" range="{{priceArr}}">
-        <checkbox value='4'>短视频推广/次
-          <text class="wx-price "><text class="wx-icon ">￥</text>{{priceArr[priceItem].value}}</text>
-        </checkbox>
-      </picker>
-
-    </checkbox-group>
-    <text class="wx-info ">创造短视频进行内容推广（按次支付佣金）</text>
-
-    <checkbox-group class="wx-each-type " bindchange="checkboxChange" id='type5'>
-      <picker mode="{{isShow ? 'selector' : ''}}" bindchange="selectPrice" value="" range-key="value" range="{{priceArr}}">
-        <checkbox value='5'>抖音橱窗类似方式
-          <text class="wx-price "><text class="wx-icon ">￥</text>{{priceArr[priceItem].value}}</text>
-        </checkbox>
-      </picker>
-
-    </checkbox-group>
-    <text class="wx-info ">橱窗或小店挂上商品链接（按月/周支付佣金）</text>
-
-    <checkbox-group class="wx-each-type " bindchange="checkboxChange" id='type6'>
-      <picker mode="{{isShow ? 'selector' : ''}}" bindchange="selectPrice" value="" range-key="value" range="{{priceArr}}">
-        <checkbox value='6'>直播/次
-          <text class="wx-price "><text class="wx-icon ">￥</text>{{priceArr[priceItem].value}}</text>
-        </checkbox>
-      </picker>
-
-    </checkbox-group>
-    <text class="wx-info ">做一场直播带货（按次支付佣金）</text>
-
-    <checkbox-group class="wx-each-type " bindchange="checkboxChange" id='type7'>
-      <picker mode="{{isShow ? 'selector' : ''}}" bindchange="selectPrice" value="" range-key="value" range="{{priceArr}}">
-        <checkbox value='7'>纯佣：专场
-          <text class="wx-price "><text class="wx-icon ">￥</text>{{priceArr[priceItem].value}}</text>
-        </checkbox>
-      </picker>
-
-    </checkbox-group>
-    <text class="wx-info ">做一场专场直播带货（并按比例抽取佣金）</text>
-
-    <view class="wx-btn">
-      <button  bindtap="overBack">确定</button>
-    </view>
-
-
+ <!-- 选择服务类型 -->
+ <view class="wx-pic">
+  <view wx:for="{{typeArr}}" wx:key="id">
+   <checkbox-group class="wx-each-type " bindchange="checkboxChange" id='{{item.id}}'>
+    <picker mode="{{isShow ? 'selector' : ''}}" bindchange="selectPrice" value="" range-key="value" range="{{priceArr}}" data-which='{{index}}'>
+     <checkbox value='{{item.id}}'>{{item.title}}
+      <text class="wx-price " wx:if="item.title != '可接受纯佣合作'"><text class="wx-icon ">￥</text>{{selectPrice[index]}}</text>
+     </checkbox>
+    </picker>
+   </checkbox-group>
+   <text class="wx-info ">{{item.infos}}</text>
   </view>
+  <!-- 确定关闭当前页面 -->
+  <view class="wx-btn">
+   <button bindtap="overBack">确定</button>
+  </view>
+
+
+ </view>
 
 </view>

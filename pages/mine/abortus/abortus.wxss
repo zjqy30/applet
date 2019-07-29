@@ -3,7 +3,6 @@ page {
 }
 
 .bg-white {
-  /* background-color: #fff; */
   color: #666;
 }
 .test {
@@ -16,7 +15,7 @@ page {
   display: flex;
   justify-content: center;
   margin-top:20rpx;
-  padding: 30rpx;
+  padding: 30rpx 30rpx 0;
   padding-bottom:0;
 }
 
@@ -215,6 +214,7 @@ page {
   background: #fff;
   line-height: 44rpx;
   padding-bottom: 0;
+  display: none;
 }
 
 .margin-top-sm {

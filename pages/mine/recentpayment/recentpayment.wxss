@@ -1,0 +1,43 @@
+/* pages/mine/recentpayment/recentpayment.wxss */
+.wx-nodata {
+  color: #666;
+  font-size: 32rpx;
+  text-align: center;
+  margin-top: 200rpx;
+}
+.wx-rencet-list {
+ overflow: hidden;
+ color: #333;
+ font-size: 24rpx;
+}
+.hover{
+ background: #f5f5f5;
+}
+.wx-rencet-list image {
+ width: 45rpx;
+ height: 45rpx;
+ float: left;
+ margin:24rpx 30rpx 0 0 ;
+}
+.wx-each{
+ padding: 24rpx 30rpx;
+ position: relative;
+ line-height: 48rpx;
+
+}
+
+.wx-number{
+ color: #333;
+ font-size:22rpx;
+ opacity: 0.6;
+}
+.wx-each::after{
+ content: '';
+ background: #f5f5f5;
+ width: 100%;
+ height: 1rpx;
+ position: absolute;
+ top: 0;
+ left:0;
+ bottom: 1rpx;
+}

@@ -1,0 +1,42 @@
+<!--pages/mine/mycollect/mycollect.wxml-->
+<view class="wx-container">
+ <!-- 网红列表 -->
+ <view class="wx-list">
+
+  <view class="wx-each" hover-class="hover" wx:for='{{whList}}' wx:key='index'>
+   <view bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE" data-index="{{index}}" bindtap="skipDetail" data-userid="{{item.objectId}}" style="{{item.txtStyle}}" class="wx-inner">
+
+    <image class="wx-more" src="../../image/wx-more.png"></image>
+    <view class="wx-left">
+     <image class="wx-big" src="{{item.headPic}}"></image>
+     <image class="wx-small" src="{{item.dictPic}}"></image>
+    </view>
+    <view class="wx-right">
+     <view class="wx-name-top">
+      <text class="wx-name">{{item.wxName}}</text>
+      <image class="wx-sex" src="{{item.gender == '1'?'../../image/wx-man.png':'../../image/wx-woman.png'}}"></image>
+     </view>
+     <view class="wx-label-mini">
+      <text wx:for='{{item.tagArr}}' wx:for-item='tagArr' wx:key='index' wx:if='{{index < 4}}'>{{tagArr}}</text>
+     </view>
+     <view class="wx-data">
+      <text class="wx-fans-num">粉丝数量<text class="wx-red">{{item.fansNums}}</text></text>
+      <text class="wx-great-num">点赞数<text class="wx-red">{{item.thumbUpNums}}</text></text>
+     </view>
+    </view>
+   </view>
+   <view data-userid="{{item.userId}}" data-objectid="{{item.objectId}}" bindtap="delItem" class="wx-del">取消</view>
+
+  </view>
+  <!-- 无数据 -->
+  <view class="wx-nodata" wx:if="{{whList.length == '0' && pageNumber == '1'}}">
+   <image src="../../image/wx-no-order.png"></image>
+   <text>空空如也</text>
+   <text class="wx-mini-info">赶紧去大厅收藏吧</text>
+   <button class="wx-back" bindtap="toWhHall">去大厅</button>
+  </view>
+
+ </view>
+ <!-- list -->
+
+</view>

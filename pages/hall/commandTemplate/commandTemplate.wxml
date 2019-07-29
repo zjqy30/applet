@@ -1,0 +1,26 @@
+<!--pages/mine/servicetype/servicetype.wxml-->
+<view class="wx-contanier">
+
+  <!-- 选择服务类型 -->
+  <view class="wx-pic">
+
+    <radio-group bindchange="checkboxChange">
+      <view class="wx-radio" wx:for="{{typeArr}}" wx:key="id">
+        <!-- <picker mode="selector" bindchange="selectPrice" value="" range="{{item.priceArr}}" data-which="{{index}}"> -->
+          <radio class="wx-each-type" value='{{item.id}}' data-templatename="{{item.title}}" name='tpl' color='#f03'>
+            <label>{{item.title}}</label>
+            <input class="wx-price" placeholder="定制价格" placeholder-class="wx-placeholder" data-index="{{index}}" data-minprice="{{item.minPrice}}" data-maxprice="{{item.maxPrice}}" data-tplid="{{item.id}}" data-templatename="{{item.title}}" bindinput="getprice" type="number"></input>
+
+
+          </radio>
+        <!-- </picker> -->
+        <text class="wx-info ">{{item.infos}}(价格区域：{{item.minPrice}}元-{{item.maxPrice}}元)</text>
+      </view>
+    </radio-group>
+
+    <!-- 确定关闭当前页面 -->
+    <view class="wx-btn">
+      <button bindtap="overBack">确定</button>
+    </view>
+  </view>
+</view>
