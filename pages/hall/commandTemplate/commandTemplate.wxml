@@ -9,7 +9,7 @@
         <!-- <picker mode="selector" bindchange="selectPrice" value="" range="{{item.priceArr}}" data-which="{{index}}"> -->
           <radio class="wx-each-type" value='{{item.id}}' data-templatename="{{item.title}}" name='tpl' color='#f03'>
             <label>{{item.title}}</label>
-            <input class="wx-price" placeholder="定制价格" placeholder-class="wx-placeholder" data-index="{{index}}" data-minprice="{{item.minPrice}}" data-maxprice="{{item.maxPrice}}" data-tplid="{{item.id}}" data-templatename="{{item.title}}" bindinput="getprice" type="number"></input>
+            <input class="wx-price" placeholder="定制价格" placeholder-class="wx-placeholder" data-index="{{index}}" data-minprice="{{item.minPrice}}" data-maxprice="{{item.maxPrice}}" data-tplid="{{item.id}}" data-templatename="{{item.title}}" bindinput="getprice" type="digit"></input>
 
 
           </radio>

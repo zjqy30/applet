@@ -64,6 +64,7 @@ Page({
     app.globalData.ifApproved = response.data.ifApproved;
     app.globalData.phoneNo = response.data.phoneNo;
     app.globalData.userId = response.data.userId;
+    app.globalData.serviceList = response.data.serviceList;
 
     app.globalData.isLogin = true;
     // _this.data.isLogin = true;
@@ -78,7 +79,7 @@ Page({
     }
 
     _this.data.loginInfo = response.data;
-    
+
 
     wx.hideLoading();
     // 登录后获取用户的类型
@@ -147,9 +148,34 @@ Page({
  backhome: function() {
   // 跳转到tabbar首页面
   if (app.globalData.isLogin && app.globalData.isBindPhone) {
-   wx.switchTab({
-    url: '../index/index',
-   })
+
+   // 无服务类型的，已通过审核的网红
+   if (app.globalData.serviceList == '0' && app.globalData.userType == '1' && app.globalData.ifApproved == '1') {
+    wx.showModal({
+     title: '温馨提示',
+     content: '经系统检测，您尚未定制自己的服务类型。为了更好的用户体验，请去完善您的资料吧',
+     showCancel: false,
+     confirmText: '完善资料',
+     success(res) {
+      if (res.confirm) {
+       console.log('用户点击确定')
+       wx.redirectTo({
+        url: '../mine/personfile/personfile',
+       })
+      }
+     }
+    })
+   } else {
+    wx.switchTab({
+     url: '../index/index',
+    })
+   }
+
+
+
+
+
+
   } else {
    wx.showToast({
     title: '请您先进行登录或绑定手机号！',

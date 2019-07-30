@@ -21,7 +21,8 @@ Page({
   inviteCode: '',
   isShow: false,
   arrPerson:[],
-  initPerson:10000
+  initPerson:10000,
+  isShow:false
  },
  /**
   * 生命周期函数--监听页面加载
@@ -29,8 +30,8 @@ Page({
  onLoad: function(options) {
   var _this = this;
   // 如果有邀请码
-  if(options.inviteCode){
-   app.globalData.inviteCode = decodeURIComponent(options.inviteCode);
+  if(options.id){
+   app.globalData.inviteCode = decodeURIComponent(options.id);
   }
   _this.getWhNum();
   // 设置导航栏高度
@@ -83,6 +84,7 @@ Page({
       app.globalData.userId = loginInfo.userId;
       app.globalData.userType = loginInfo.userType;
       app.globalData.ifApproved = loginInfo.ifApproved;
+      app.globalData.serviceList = loginInfo.serviceList;
       app.globalData.isLogin = true;
 
       // 重新获取获取下用户信息-因为ifApproved是变动的
@@ -90,6 +92,9 @@ Page({
      },
      fail: function(error) {
       // 未登录
+      // _this.setData({
+      //  isShow:true
+      // })
       wx.redirectTo({
        url: '/pages/login/login',
       })
@@ -148,14 +153,29 @@ Page({
   app.fetch('/hone/applet/userBasic/login', params).then((response) => {
    // 数据返回成功
    if (response.errorCode == '0') {
-    app.globalData.ifApproved = response.data.ifApproved
-    app.globalData.userType = response.data.userType
+    app.globalData.ifApproved = response.data.ifApproved;
+    app.globalData.userType = response.data.userType;
+    app.globalData.serviceList = response.data.serviceList;
+    // 无服务类型的，已通过审核的网红
+    if (app.globalData.serviceList == '0' && app.globalData.userType == '1' && app.globalData.ifApproved == '1') {
+     wx.showModal({
+      title: '温馨提示',
+      content: '经系统检测，您尚未定制自己的服务类型。为了更好的用户体验，请去完善您的资料吧',
+      showCancel: false,
+      confirmText: '完善资料',
+      success(res) {
+       if (res.confirm) {
+        console.log('用户点击确定')
+        wx.redirectTo({
+         url: '../mine/personfile/personfile',
+        })
+       }
+      }
+     })
+    }
+
    } else {
-    // 数据返回失败
-    wx.showToast({
-     title: '数据获取失败' || '',
-     icon: 'none'
-    })
+
    }
   })
  },
@@ -360,7 +380,7 @@ Page({
     //  isShow: !_this.data.isShow,
     // })
     wx.navigateTo({
-     url: '../mine/abortus/abortus',
+     url: '../mine/noticeus/noticeus',
     })
     break;
    case '3':

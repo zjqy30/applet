@@ -24,7 +24,8 @@ Page({
  data: {
   delBtnWidth: 180,
   list: [],
-  startX: ""
+  startX: "",
+  src: ''
  },
  onLoad: function (options) {
   // 页面初始化 options为页面跳转所带来的参数
@@ -131,4 +132,9 @@ Page({
    list: list
   });
  },
+ skipPage: function () {
+  this.setData({
+   src: 'http://192.168.0.130:5500/web%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86/index.html'
+  })
+ }
 })

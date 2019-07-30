@@ -48,7 +48,7 @@ Page({
  getUserInfo: function() {
   var _this = this;
   var params = {
-   userId: app.globalData.userId || "95f7e4e8574149c0a4affe89b34fcd54"
+   userId: app.globalData.userId || ""
   }
   app.fetch('/hone/applet/userBasic/userStarInfo', params).then((response) => {
    // 数据返回成功
@@ -124,7 +124,7 @@ Page({
   // console.log(platFormId + '平台的id')
   var _this = this;
   var params = {
-   userId: app.globalData.userId || "95f7e4e8574149c0a4affe89b34fcd54",
+   userId: app.globalData.userId || "",
    platId: _this.data.userExtraInfo.platformId, // 20 b站
    platUserId: platFormId
   }
@@ -132,11 +132,12 @@ Page({
    // 数据返回成功
    if (response.errorCode == '0') {
     // 1获取数据并填写，2isCheck=1已验证
-    var unDeal = response.data;
-    if (unDeal.baseInfo) {
+    var unDeal = response.data.content;
+    if (JSON.parse(unDeal).baseInfo) {
      // 验证拿到的数据
      _this.setData({
-      checkData: unDeal.baseInfo
+      checkData: JSON.parse(unDeal).baseInfo,
+      ageItem: JSON.parse(unDeal).baseInfo.age + 1
      })
     }
     wx.showToast({

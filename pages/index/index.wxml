@@ -14,14 +14,14 @@
   达人
  </view>
 
- <view class="wx-top" style="margin-top:{{mainTop}}px">
+ <view class="wx-top" style="top:{{mainTop}}px;position:fixed;">
   <view class="wx-top-info">
    <image src="../image/wx-logo1.png"></image>
    <text style="color:#fff;">汇聚全网达人资源 助力企业推广需求</text>
   </view>
  </view>
  <!-- 顶部轮播图 -->
- <view class="mw-swiper">
+ <view class="mw-swiper" style="margin-top:{{mainTop + 55}}px">
   <swiper class="wx-swiper-box" indicator-dots="true" circular="true" autoplay="true" interval="3000" duration="500" bindchange="cardSwiper" indicator-color="#8799a3" indicator-active-color="#0081ff" bindtap="clickBanner">
    <!-- 当前显示的图片的样式 -->
    <swiper-item wx:for="{{bannerImg}}" wx:key>
@@ -99,35 +99,11 @@
    </view>
   </view>
  </view>
- <!-- 二维码 -->
- <!-- <view class="zhezhao {{isShow ? 'isShow':'hidden'}}"  bindtap="closeCode"></view>
- <view class="wx-code {{isShow ? 'isShow':'hidden'}}" bindtap="closeCode">
-  <image src="../image/wx-code.jpg" bindlongtap="saveCodePic"></image>
- </view> -->
 
- <!-- 网红列表 -->
- <view class="mw-list">
-  <!-- <view class="wx-title">新鲜资源</view>
-  <view class="wx-refresh-list">
 
-   <view class="wx-each" hover-class="hover" wx:for='{{whList}}' wx:key='index'>
-    <view class="wx-left">
-     <text class="wx-index">{{index + 1}}</text>
-     <image src="{{item.headPic}}"></image>
-    </view>
-    <view class="wx-right">
-     <view class="wx-top-name">
-      <text class="wx-plat">{{item.platName}}</text>
-      <text class="wx-whname">{{item.wxName}}</text>
-      <text class="wx-label">{{item.tags}}</text>
-     </view>
-    </view>
-    <view class="wx-after">
-     <text class="wx-num">{{item.fansNum}}</text>
-     <view class="wx-fans">粉丝数</view>
-    </view>
-   </view>
-  </view> -->
-
- </view>
 </view>
+
+<!-- 遮罩做登录 -->
+ <!-- <view class="zhezhao {{isShow ?'isshow' : 'hidden'}}"></view>
+ <view class="wx-pop">登录</view> -->
+

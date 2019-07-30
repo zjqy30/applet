@@ -1,42 +1,5 @@
-<!-- 商家/企业看这里 -->
+
 <view class="wx-container">
-<view class='hw_text_title margin margin-top'>
-  <text class='icon-titles text-red'></text>商家/企业看这里
-</view>
-<view class='margin'>
-  <view class='margin'>
-    <view class='margin-top margins'>
-      <text class='hw_text size'>1.</text>
-      <text class='hw_font'>在您成功认证后，点击“大厅”——右下角+号即可发布您的需求。发布需求时，可选择的项有：网红达人所在平台；您要求的网红达人粉丝量；此次合作的佣金价格；此次合作的模式等。您也可以上传您所需要推广的品牌或产品图，如果您有其他需求，可以文字的形式进行补充。
-            </text>
-    </view>
-    <view class='margin-top margins'>
-      <text class='hw_text size'>2. </text>
-      <text class='hw_font'>订单发布后需支付此次佣金，请放心，佣金只是在红腕平台暂时托管，待您和网红达人的合作完全结束并且经您确认，网红达人方可收到佣金。
-            </text>
-    </view>
-    <view class='margin-top margins'>
-      <text class='hw_text size'>3.</text>
-      <text class='hw_font'>订单发布且支付佣金成功后，订单会进入审核状态。系统将在1小时内审核您的订单，您可随时通过联系客服来询问审核状态。审核通过后，订单就会显示在大厅中供网红达人查阅，一个订单可供多人抢单。当有网红达人抢单后，您便可在“我的”-“需求”-“已发布”中点击筛选人员进行人员筛选。【目前一个订单只支持确定一人，如您有多名网红达人的需求，您可发布多个订单。】点击筛选后，会看到网红达人的各项信息。点击“就选Ta”按钮，您将获得此次您敲定的网红达人的联系方式。同时，被您选中的网红达人也会收到通知，看到您的联系方式。其他参与此次抢单的网红达人将会收到系统通知：抢单失败。
-            </text>
-    </view>
-    <view class='margin-top margins'>
-      <text class='hw_text size'>4.</text>
-      <text class='hw_font'>成功敲定一名网红达人后，双方可看到彼此的联系方式，您可直接电话沟通或者委托您的销售进行沟通。此时订单进入“进行中”状态，待网红达人服务提供完毕，您可以点击合作完成，届时您支付的佣金将会转入网红达人的红腕钱包。
-            </text>
-    </view>
-    <view class='margin-top margins'>
-      <text class='hw_text size'>5.</text>
-      <text class='hw_font'>订单发布后，在没有网红达人抢单之前是可以一键退款的。若已有网红达人抢单，您欲退款，请联系客服人员。订单在“进行中”状态暂不支持退款。
-            </text>
-    </view>
-    <view class='margin-top margins '>
-      <text class='hw_text size'>6.</text>
-      <text class='hw_font'>如在合作过程中产生纠纷，请第一时间联系客服处理，红腕会依据实际情况、相关证明结合自身判断作出公平裁决。
-            </text>
-    </view>
-  </view>
-</view>
 <!-- 网红/达人看这里 -->
 <view class='hw_text_title paddind-top margin'>
   <text class='icon-titles text-red'></text>网红/达人看这里
@@ -45,7 +8,7 @@
   <view class='margin'>
     <view class='margin-top margins'>
       <text class='hw_text size'>1.</text>
-      <text class='hw_font'>在您认证成功后，点击“大厅”即可看到商家发布的所有需求，请您仔细查看订单需求，不要轻易点击自身条件不符合或者自己不感兴趣的订单哦。因为没有意义的抢单对双方没有任何益处哦
+      <text class='hw_font'>在您认证成功后，点击“订单大厅”即可看到商家发布的所有需求，请您仔细查看订单需求，不要轻易点击自身条件不符合或者自己不感兴趣的订单哦。因为没有意义的抢单对双方没有任何益处哦
             </text>
     </view>
     <view class='margin-top margins'>

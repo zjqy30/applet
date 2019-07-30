@@ -267,9 +267,18 @@ Page({
  },
  // 使用教程
  introduce: function() {
-  wx.navigateTo({
-   url: '../useways/useways',
-  })
+  if(app.globalData.userType == '1'){
+   // 网红
+   wx.navigateTo({
+    url: '../useways/useways',
+   })
+  } else if (app.globalData.userType == '2'){
+   // 商家
+   wx.navigateTo({
+    url: '../useways1/useways1',
+   })
+  }
+  
  },
 
 })

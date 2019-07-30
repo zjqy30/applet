@@ -459,9 +459,32 @@ Page({
   })
  },
  toSkipPC: function() {
-  wx.showToast({
-   title: '请前往PC端红腕进行查看！',
-   icon: 'none'
+  wx.showModal({
+   title: '温馨提示',
+   content: '纯佣订单请前往PC端进行查看,网址为：https://hongonew.com/pc/index.html',
+   // showCancel:false,
+   confirmText:'复制',//
+   success(res) {
+    if (res.confirm) {
+     console.log('用户点击确定')
+     wx.setClipboardData({
+      //准备复制的数据
+      data: 'https://hongonew.com/pc/index.html',
+      success: function (res) {
+       wx.showToast({
+        title: '复制成功',
+       });
+      }
+     });
+    } else if (res.cancel) {
+     console.log('用户点击取消')
+    }
+   }
   })
+  
+  // wx.showToast({
+  //  title: '请前往PC端红腕进行查看！',
+  //  icon: 'none'
+  // })
  }
 })

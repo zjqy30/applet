@@ -1,11 +1,13 @@
 <!--pages/mine/companypic/companypic.wxml-->
 <view class="wx-container">
  <view class="wx-top">
-  <image src="../../image/wx-company2.jpg"></image>
+  <image src="https://images.hongonew.com/images/201907/20190730/1564452282901.jpg" mode='aspectFit' data-pic='https://images.hongonew.com/images/201907/20190730/1564452282901.jpg' bindtap="perviewPic"></image>
+  <image src="https://images.hongonew.com/images/201907/20190730/1564452310185.jpg" mode='aspectFit' data-pic='https://images.hongonew.com/images/201907/20190730/1564452310185.jpg' bindtap="perviewPic"></image>
+  <image src="https://images.hongonew.com/images/201907/20190730/1564452349672.jpg" mode='aspectFit' data-pic='https://images.hongonew.com/images/201907/20190730/1564452349672.jpg' bindtap="perviewPic"></image>
+  <image src="https://images.hongonew.com/images/201907/20190730/1564452364082.jpg" mode='aspectFit' data-pic='https://images.hongonew.com/images/201907/20190730/1564452364082.jpg' bindtap="perviewPic"></image>
  </view>
  <view class="wx-main">
-  <image src="../../image/wx-company.jpg"></image>
-  <image src="../../image/wx-company1.jpg"></image>
-
+  <image src="https://images.hongonew.com/images/201907/20190730/1564452382909.jpg" mode='aspectFit' data-pic='https://images.hongonew.com/images/201907/20190730/1564452382909.jpg' bindtap="perviewPic"></image>
+  <image src="https://images.hongonew.com/images/201907/20190730/1564452407379.jpg" mode='aspectFit' data-pic='https://images.hongonew.com/images/201907/20190730/1564452407379.jpg' bindtap="perviewPic"></image>
  </view>
 </view>

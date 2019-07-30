@@ -1,5 +1,8 @@
 <!--pages/mine/personmoney/personmoney.wxml-->
 <view class="wx-container">
+
+<view class="wx-nodata" wx:if="{{changeList.length == 0}}">暂无记录</view>
+
  <!-- 记录列表 -->
  <view class="wx-record-list">
   <view class="wx-each-record" hover-class="hover" wx:for="{{changeList}}" wx:key="index" data-offerid="{{item.offerId}}">

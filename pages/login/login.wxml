@@ -1,5 +1,7 @@
 <!-- 登录引导页 -->
-<view>
+<image class="wx-bg" src="../image/wx-bg.png"></image>
+<view class="wx-container">
+
   <!-- logo -->
   <view class='test'>
     <image src='../image/logo_back.png' class='test_icon' style='margin-bottom: 20rpx;' mode='widthFix'></image>

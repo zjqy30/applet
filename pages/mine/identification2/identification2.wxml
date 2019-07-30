@@ -21,7 +21,7 @@
 
     <view class="wx-input">
       <text>身份证号</text>
-      <input type="number" class="wx-select" placeholder="请输入" name="idCardNumber" bindinput="getCardId"></input>
+      <input type="idcard" class="wx-select" placeholder="请输入" name="idCardNumber" bindinput="getCardId"></input>
     </view>
     <text class="wx-info">您本人的身份证号</text>
 

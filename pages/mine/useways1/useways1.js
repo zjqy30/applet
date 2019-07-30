@@ -1,4 +1,4 @@
-// pages/mine/companypic/companypic.js
+// pages/mine/useways1/useways1.js
 Page({
 
  /**
@@ -13,17 +13,6 @@ Page({
   */
  onLoad: function (options) {
 
- },
- // 预览图片
- perviewPic: function (e) {
-console.log(JSON.stringify(e))
-  var thisPic = e.currentTarget.dataset.pic;
-  // console.log(thisPic);
-  var urls = [];
-  urls.push(thisPic)
-  wx.previewImage({
-   urls: urls,
-  })
  },
 
  /**

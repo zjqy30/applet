@@ -98,7 +98,7 @@ Page({
     // console.log(platFormId + '平台的id')
     var _this = this;
     var params = {
-      userId: app.globalData.userId, // app.globalData.userId
+     userId: app.globalData.userId || '988c1b1b5cdd5d7313328eb57225f126', // app.globalData.userId
       platId: _this.data.plat[_this.data.platItem].id, // 20 b站
       platUserId: platFormId
     }
@@ -106,12 +106,12 @@ Page({
       // 数据返回成功
       if (response.errorCode == '0') {
         // 1获取数据并填写，2isCheck=1已验证
-        var unDeal = response.data;
-        if (unDeal.baseInfo) {
+        var unDeal = response.data.content;
+       if (JSON.parse(unDeal).baseInfo) {
           // 验证拿到的数据
           _this.setData({
-            checkData: unDeal.baseInfo,
-            ageItem: unDeal.baseInfo.age + 1
+           checkData: JSON.parse(unDeal).baseInfo,
+           ageItem: JSON.parse(unDeal).baseInfo.age + 1
           })
         }
         wx.showToast({

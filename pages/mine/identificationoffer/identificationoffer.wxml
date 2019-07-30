@@ -28,7 +28,7 @@
 
     <view class="wx-input">
       <text>身份证号</text>
-      <input class="wx-select" placeholder="请输入" bindinput="getCardId"></input>
+      <input type="idcard" class="wx-select" placeholder="请输入" bindinput="getCardId"></input>
     </view>
     <text class="wx-info">需要公司法人的身份证号</text>
 
