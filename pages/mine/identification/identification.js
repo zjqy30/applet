@@ -179,8 +179,8 @@ Page({
       // 获取已填数据，进行下一步(每提交进行一次就保存一次)
 
       app.globalData.stepOneData = {
-        openid:app.globalData.openid,
-        userId: app.globalData.userId,
+        openid:app.globalData.openid || '1111test',
+        userId: app.globalData.userId || '123',
         platFormId: _this.data.plat[_this.data.platItem].id,
         platFormUserId: e.detail.value.platFormUserId,
         fanNums: e.detail.value.fansNum,

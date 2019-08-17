@@ -43,13 +43,13 @@
 
   <view class="wx-input">
    <text>点赞数</text>
-   <input class="wx-select" placeholder="请输入点赞数" name='thumpUpNums' value="{{checkData.receivepraise_num_user ? checkData.receivepraise_num_user : userExtraInfo.thumbUpNums}}" bindblur='noPointLimit'></input>
+   <input type="number" class="wx-select" placeholder="请输入点赞数" name='thumpUpNums' value="{{checkData.receivepraise_num_user ? checkData.receivepraise_num_user : userExtraInfo.thumbUpNums}}" bindblur='noPointLimit'></input>
   </view>
   <text class="wx-info">您所在平台的点赞总和</text>
 
   <view class="wx-input">
    <text>作品数</text>
-   <input class="wx-select" placeholder="请输入作品数" name='workNums' value="{{checkData.feed_num_all ? checkData.feed_num_all : userExtraInfo.workNums}}" bindblur='noPointLimit'></input>
+   <input type="number" class="wx-select" placeholder="请输入作品数" name='workNums' value="{{checkData.feed_num_all ? checkData.feed_num_all : userExtraInfo.workNums}}" bindblur='noPointLimit'></input>
   </view>
   <text class="wx-info">你所在平台的作品总和</text>
 

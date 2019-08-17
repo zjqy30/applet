@@ -48,7 +48,7 @@ Page({
  getUserInfo: function() {
   var _this = this;
   var params = {
-   userId: app.globalData.userId || ""
+   userId: app.globalData.userId || "5a27e12f0f3544fba4eb53f387ebfffd"
   }
   app.fetch('/hone/applet/userBasic/userStarInfo', params).then((response) => {
    // 数据返回成功
@@ -124,7 +124,7 @@ Page({
   // console.log(platFormId + '平台的id')
   var _this = this;
   var params = {
-   userId: app.globalData.userId || "",
+   userId: app.globalData.userId || "5a27e12f0f3544fba4eb53f387ebfffd",
    platId: _this.data.userExtraInfo.platformId, // 20 b站
    platUserId: platFormId
   }
@@ -206,11 +206,11 @@ Page({
 
    app.globalData.saveWhDetail = {
     openId: app.globalData.openid || 'o562H5Cz3QpYBiD4uhnDSQQqUzWA',
-    userId: app.globalData.userId || '95f7e4e8574149c0a4affe89b34fcd54',
+    userId: app.globalData.userId || '5a27e12f0f3544fba4eb53f387ebfffd',
     platFormId: _this.data.userExtraInfo.platformId,
     platFormUserId: e.detail.value.platFormUserId,
     fansNums: e.detail.value.fansNum,
-    age: _this.data.userBasicInfo.age,
+    age: e.detail.value.age,
     thumbUpNums: e.detail.value.thumpUpNums,
     workNums: e.detail.value.workNums,
     hasShop: _this.data.userBasicInfo.hasShop,

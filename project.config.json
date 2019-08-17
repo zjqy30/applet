@@ -48,7 +48,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 21,
+			"current": 25,
 			"list": [
 				{
 					"id": -1,
@@ -215,6 +215,20 @@
 					"id": -1,
 					"name": "个人资料1",
 					"pathName": "pages/mine/personfile/personfile",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "个人资料2",
+					"pathName": "pages/mine/personfile2/personfile2",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "个人资料3",
+					"pathName": "pages/mine/personfile3/personfile3",
 					"query": "",
 					"scene": null
 				}

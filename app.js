@@ -66,7 +66,7 @@ App({
   }, // 网红个人信息，可修改提交
   saveWhDetail0:{}, // 网红个人信息原始的
   withdrawData: {}, // 提现的数据
-  uploadPath: 'https://hongonew.com', // 图片上传的路径http://l1838324x8.imwork.net|||||http://192.168.0.166:8080
+  uploadPath: 'http://192.168.0.166:8080', // 图片上传的路径http://l1838324x8.imwork.net|||||http://192.168.0.166:8080
  },
  fetch: fetch,
  string: string,

@@ -66,7 +66,7 @@
       <view class="wx-blue" bindtap="skipModel" data-type="pingtai">查看模板</view>
     </view>
    <view class="wx-btn">
-    <button form-type="submit">提交审核</button>
+    <button form-type="submit">修改资料</button>
    </view>
   </view>
  </form>

@@ -4,24 +4,21 @@
   描述：首页
 -->
 <view class="wx-container" style="overflow:{{isMove}}">
- <view class="wx-nav" style="height:{{mainTop}}px;top:0;;line-height:{{mainTop + 30}}px">
-  入驻
-  <text class="wx-number" wx:for='{{arrPerson}}' wx:key='index'>{{item}}</text>
-  <!-- <text class="wx-number">0</text> -->
-  <!-- <text class="wx-number">8</text> -->
-  <!-- <text class="wx-number">9</text> -->
-  <!-- <text class="wx-number">1</text>  -->
-  达人
- </view>
-
- <view class="wx-top" style="top:{{mainTop}}px;position:fixed;">
-  <view class="wx-top-info">
+ <view class="wx-nav" style="height:{{mainTop}}px;top:0;">
+  <view class="wx-top-info" style="top:{{statusBarHeight}}px;bottom:10px;">
    <image src="../image/wx-logo1.png"></image>
    <text style="color:#fff;">汇聚全网达人资源 助力企业推广需求</text>
   </view>
+ 
+ </view>
+
+ <view class="wx-top" style="top:{{mainTop}}px;position:fixed;">
+  入驻     
+  <text class="wx-number" wx:for='{{arrPerson}}' wx:key='index'>{{item}}</text>
+  达人
  </view>
  <!-- 顶部轮播图 -->
- <view class="mw-swiper" style="margin-top:{{mainTop + 55}}px">
+ <view class="mw-swiper" style="margin-top:{{mainTop + 44}}px">
   <swiper class="wx-swiper-box" indicator-dots="true" circular="true" autoplay="true" interval="3000" duration="500" bindchange="cardSwiper" indicator-color="#8799a3" indicator-active-color="#0081ff" bindtap="clickBanner">
    <!-- 当前显示的图片的样式 -->
    <swiper-item wx:for="{{bannerImg}}" wx:key>
@@ -48,7 +45,7 @@
    <image class="wx-info-common" src="../image/wx-logo.png"></image>
   </view>
   <!-- 最新的消息(不要滑动，只显示3条) -->
-  <swiper class="announ swiper_container1" vertical="true" autoplay="false" circular="false" interval="0" display-multiple-items='3' previousMargin='0' nextMargin='0'>
+  <swiper class="announ swiper_container1" vertical="true" autoplay="false" circular="false" interval="0" display-multiple-items='{{items ? items : 3}}' previousMargin='0' nextMargin='0' style="height:{{swiperHeight}}px;">
    <swiper-item wx:for="{{newslist}}" wx:key='index' wx:if='{{index < 3}}'>
     <view class="swiper_item" catchtouchmove="stopTouchMove">
      <text class="wx-news-content">• {{item.content}}  </text>

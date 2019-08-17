@@ -2,7 +2,7 @@
 <view class="wx-container">
  <!--  轮播图 -->
  <swiper indicator-dots="" autoplay="true" interval="3000" duration="800" bindchange="changePic">
-  <swiper-item wx:for="{{personalImgs}}" wx:key='index'>
+  <swiper-item wx:for="{{personalImgs}}" wx:key='index' wx:if="{{item != ''}}">
    <image  mode='aspectFit' src="{{item}}" bindtap="perviewPic" data-pic="{{item}}"></image>
   </swiper-item>
  </swiper>
@@ -75,7 +75,7 @@
     <text class="wx-label">点赞数</text>
    </view>
    <view class="wx-model">
-    <text>{{userBasicInfo.hasShop == '1.0' ? '有':'无'}}</text>
+    <text>{{userBasicInfo.hasShop == '1' ? '有':'无'}}</text>
     <text class="wx-label">商铺</text>
    </view>
    <view class="wx-model">

@@ -20,9 +20,9 @@ Page({
   test: '<button>123</button>',
   inviteCode: '',
   isShow: false,
-  arrPerson:[],
-  initPerson:10000,
-  isShow:false
+  arrPerson: [],
+  initPerson: 10000,
+  isShow: false
  },
  /**
   * 生命周期函数--监听页面加载
@@ -30,7 +30,7 @@ Page({
  onLoad: function(options) {
   var _this = this;
   // 如果有邀请码
-  if(options.id){
+  if (options.id) {
    app.globalData.inviteCode = decodeURIComponent(options.id);
   }
   _this.getWhNum();
@@ -40,9 +40,9 @@ Page({
     console.log(JSON.stringify(res));
     var titleBarHeight = 0
     if (res.model.indexOf('iPhone') !== -1) {
-     titleBarHeight = 44
+     titleBarHeight = 44;
     } else {
-     titleBarHeight = 48
+     titleBarHeight = 48;
     }
     _this.setData({
      statusBarHeight: res.statusBarHeight,
@@ -346,6 +346,19 @@ Page({
     if (response.data.messageList.length != 0) {
      _this.setData({
       newslist: response.data.messageList
+     })
+    }
+
+    if (_this.data.newslist.length == 1) {
+     _this.setData({
+      swiperHeight: '20',
+      items:1
+     })
+    } else if (_this.data.newslist.length == 2) {
+     _this.setData({
+      swiperHeight: '40',
+      items: 2
+
      })
     }
 

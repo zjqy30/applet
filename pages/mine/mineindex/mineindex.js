@@ -14,7 +14,7 @@ Page({
   userPic: '../../image/wx-testhead.jpg', // 用户头像--微信
   isLogin: false, // 是否登录
   isShow: false,
-  isShowApproved: true, // 是否审核
+  isShowApproved: false, // 是否审核
   selectType: '0'
  },
 

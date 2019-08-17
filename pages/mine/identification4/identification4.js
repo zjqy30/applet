@@ -8,7 +8,8 @@ Page({
  data: {
   isAgree: [], // 是否同意条款
   serviceArr: [], // 已选择的服务类型
-  isShow:false
+  isShow: false,
+  imagNum: 0, // 已上传的图片的个数
  },
  /**
   * 生命周期函数--监听页面加载
@@ -50,7 +51,7 @@ Page({
   // 修改下数组格式
   var unArr = app.globalData.stepOneData.serviceArr;
   app.globalData.stepOneData.serviceTemplateIds = '';
-  if (unArr){
+  if (unArr) {
    for (var i = 0, len = unArr.length; i < len; i++) {
     app.globalData.stepOneData.serviceTemplateIds = unArr[i].id + '-' + unArr[i].price + ',' + app.globalData.stepOneData.serviceTemplateIds;
    }
@@ -90,7 +91,7 @@ Page({
    return false;
   }
   console.error(app.globalData.stepOneData);
- // 弹出提示信息
+  // 弹出提示信息
   _this.setData({
    isShow: !_this.data.isShow
   })
@@ -103,36 +104,84 @@ Page({
    icon: 'none'
   })
  },
- // 提交认证的资料
- submitYourInfo: function() {
-  app.globalData.stepOneData.serviceArr = '';
+ // 形象照上传
+ fileUpLoad: function (path, num) {
+  // console.error(path + '这是上传图片路径');
   var _this = this;
-  app.globalData.stepOneData.serviceTemplateIds = app.globalData.stepOneData.serviceTemplateIds.substr(0, app.globalData.stepOneData.serviceTemplateIds.lastIndexOf(','));
-  app.globalData.stepOneData.personalImgs = app.globalData.stepOneData.personalImgs.substr(0, app.globalData.stepOneData.personalImgs.lastIndexOf(','));
-  var params = app.globalData.stepOneData;
-  console.error(JSON.stringify(params));
-  app.fetch('/hone/applet/userBasic/star/applyApproved', params).then((response) => {
-   // 数据返回成功
-   if (response.errorCode == '0') {
-    wx.showToast({
-     title: '提交成功',
-     duration: 2000
-    })
-    // 保存一下
-    app.globalData.ifApproved = '0';
+  var params = {};
+  wx.uploadFile({
+   url: app.globalData.uploadPath + '/hone/applet/cos/uploadFile', // 附件上传
+   filePath: path,
+   name: 'file',
+   formData: params,
+   header: {
+    'Content-Type': 'multipart/form-data'
+   },
+   success(response) {
+    // console.error(JSON.stringify(response));
+    var response = JSON.parse(response.data);
+    // 数据返回成功
+    if (response.errorCode == '0') {
+     // 上传成功
+     wx.showToast({
+      title: '上传成功',
+      icon: 'none'
+     })
+     _this.data.imagNum++;
+     app.globalData.stepOneData.personalImgs = response.data.fileName + ',' + app.globalData.stepOneData.personalImgs;
+     console.log(app.globalData.stepOneData)
+     if (_this.data.imagNum == num) {
+      console.error(app.globalData.stepOneData.personalImgs+'形象照有咩有undefind');
+      // 全部上传，初始化
+      app.globalData.stepOneData.personalImgArr = '';
+      app.globalData.stepOneData.personalImgs = app.globalData.stepOneData.personalImgs.substr(0, app.globalData.stepOneData.personalImgs.lastIndexOf(','));
+      var params = app.globalData.stepOneData;
+      console.error(JSON.stringify(params));
+      app.fetch('/hone/applet/userBasic/star/applyApproved', params).then((response) => {
+       // 数据返回成功
+       if (response.errorCode == '0') {
+        wx.showToast({
+         title: '提交成功',
+         duration: 2000
+        })
+        // 保存一下
+        app.globalData.ifApproved = '0';
 
-    // 发送支付的模板消息
-    _this.sendModelMsg();
+        // 发送支付的模板消息
+        _this.sendModelMsg();
 
-
-   } else {
-    // 数据返回失败
-    wx.showToast({
-     title: '数据获取失败' || '',
-     icon: 'none'
-    })
+       } else {
+        // 数据返回失败
+        wx.showToast({
+         title: '数据获取失败' || '',
+         icon: 'none'
+        })
+       }
+      })
+     }
+    } else {
+     // 数据返回失败
+     wx.showToast({
+      title: response.msg || '',
+      icon: 'none'
+     })
+    }
    }
   })
+ },
+ // 提交认证的资料
+ submitYourInfo: function() {
+  var _this = this;
+  app.globalData.stepOneData.serviceArr = '';
+  app.globalData.stepOneData.serviceTemplateIds = app.globalData.stepOneData.serviceTemplateIds.substr(0, app.globalData.stepOneData.serviceTemplateIds.lastIndexOf(','));
+
+  // 形象照上传
+  // 显示后进行上传(微信小程序只能单个文件上传)
+  _this.data.imagNum = 0;
+  for (var i = 0, len = app.globalData.stepOneData.personalImgArr.length; i < len; i++) {
+   _this.fileUpLoad(app.globalData.stepOneData.personalImgArr[i], app.globalData.stepOneData.personalImgArr.length);
+  }
+  
  },
  // 发送模板消息
  sendModelMsg: function() {
@@ -161,7 +210,7 @@ Page({
   })
  },
  // 关闭
- closePop: function () {
+ closePop: function() {
   this.setData({
    isShow: !this.data.isShow
   })

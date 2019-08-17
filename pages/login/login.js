@@ -17,7 +17,7 @@ Page({
   * 生命周期函数--监听页面加载
   */
  onLoad: function(options) {
-  this.data.inviteCode = options.inviteCode || '';
+  this.data.inviteCode = app.globalData.inviteCode || '';
   console.log(app.globalData.openid);
   console.log(app.globalData.session_key);
 
@@ -28,8 +28,29 @@ Page({
   // 根据button进行用户授权
   wx.getUserInfo({
    withCredentials: true,
-   lang: 'zh',
+   lang: 'zh_CN',
    success: function(res) {
+
+    _this.getLocation(res);
+    
+
+   }
+  })
+ },
+ // 获取用户定位数据
+ getLocation: function (res){
+  var _this = this
+  wx.request({
+   url: 'https://apis.map.qq.com/ws/location/v1/ip?key=BGLBZ-JWIWV-LM5PQ-U427R-DLLZQ-HUFWH',
+   method: 'GET',
+   dataType: 'json',
+   responseType: 'text',
+   success: function (e) {
+    console.log(JSON.stringify(e));
+    var userloc = e.data.result.ad_info.province + e.data.result.ad_info.city + e.data.result.ad_info.district
+    var userip = e.data.result.ip
+    console.log('地址：' + userloc + '当前ip:' + userip);
+    res.userInfo.country = userloc;
     wx.setStorage({
      key: 'userInfo',
      data: JSON.stringify(res.userInfo),
@@ -38,8 +59,11 @@ Page({
     _this.data.userInfo = res.userInfo;
     // 登录一下
     _this.userLogin();
+   },
+   fail: function (res) {
 
-   }
+   },
+   complete: function (res) { },
   })
  },
  // 用户登录

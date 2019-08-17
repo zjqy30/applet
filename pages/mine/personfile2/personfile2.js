@@ -34,6 +34,7 @@ Page({
  },
  dealInitData: function() {
   var _this = this;
+
   if (_this.data.userExtraInfo.personalImgs.indexOf(',') == -1) {
    console.log('无，1张');
    _this.data.offerPicArr.push({
@@ -41,16 +42,23 @@ Page({
    });
   } else {
    var offerPicArrs = _this.data.userExtraInfo.personalImgs.split(',');
-   for (var i in offerPicArrs) {
-    _this.data.offerPicArr.push({
-     path: offerPicArrs[i]
-    })
-   }
+   _this.data.offerPicArr = offerPicArrs;
+   // for (var i in offerPicArrs) {
+   //  _this.data.offerPicArr.push({
+   //   path: offerPicArrs[i]
+   //  })
+   // }
   }
-  _this.setData({
-   personImgs: _this.data.personImgs.concat(_this.data.offerPicArr),
-  })
-  app.globalData.saveWhDetail.personalImgs = app.globalData.saveWhDetail0.userExtraInfo.personalImgs;
+
+  if (_this.data.userExtraInfo.personalImgs != '') {
+   _this.setData({
+    personImgs: _this.data.personImgs.concat(_this.data.offerPicArr),
+   })
+   // app.globalData.saveWhDetail.personalImgs = app.globalData.saveWhDetail0.userExtraInfo.personalImgs;
+  }
+  console.error(_this.data.personImgs + '已有的图片');
+
+
  },
  // 获取网红平台/标签
  getWhLabel: function() {
@@ -126,17 +134,31 @@ Page({
  // 上传形象照
  uploadImg: function() {
   var _this = this;
+  if (_this.data.personImgs.length > 6) {
+   console.log(_this.data.personImgs)
+   _this.popToast('最多上传6张图片！');
+   return false;
+  }
+
   wx.chooseImage({
    sourceType: ['album', 'camera'], // 可选择性开放访问相册、相机
    count: 6, // 仅能上传6张
    success(res) {
+    console.error(JSON.stringify(res));
     // 返回的数数组，可多选
     var tempFilePath = res.tempFilePaths;
 
     _this.setData({
-     personImgs: _this.data.personImgs.concat(res.tempFiles),
-     personImgAll: _this.data.personImgAll.concat(tempFilePath)
+     // personImgs: _this.data.personImgs.concat(tempFilePath),
+     personImgAll: tempFilePath
     })
+    // 上传图片
+    // 显示后进行上传(微信小程序只能单个文件上传)
+    _this.data.imagNum = 0;
+    for (var i = 0, len = _this.data.personImgAll.length; i < len; i++) {
+     _this.fileUpLoad(_this.data.personImgAll[i], _this.data.personImgAll.length);
+    }
+
    }
   })
  },
@@ -175,11 +197,17 @@ Page({
       icon: 'none'
      })
      _this.data.imagNum++;
-     app.globalData.saveWhDetail.personalImgs = response.data.fileName + ',' + app.globalData.saveWhDetail.personalImgs;
 
+     // app.globalData.saveWhDetail.personalImgs = response.data.fileName + ',' + app.globalData.saveWhDetail.personalImgs;
+     _this.data.personImgs.push(response.data.fileName);
      if (_this.data.imagNum == num) {
-      wx.navigateTo({
-       url: '../personfile3/personfile3',
+      _this.setData({
+       personImgs: _this.data.personImgs,
+      })
+
+      console.error(_this.data.personImgs);
+      wx.showToast({
+       title: '上传完成',
       })
      }
     } else {
@@ -218,19 +246,24 @@ Page({
   app.globalData.saveWhDetail.tagIds = abilityIds;
 
   // 形象照未更改
-  if (_this.data.personImgAll.length == 0) {
-   // 下一步
-   wx.navigateTo({
-    url: '../personfile3/personfile3',
-   })
-   return false;
+  // if (_this.data.personImgAll.length == 0) {
+  // 下一步
+  var tempArr = '';
+  for (var i in _this.data.personImgs) {
+   tempArr = _this.data.personImgs[i] + ',' + tempArr;
   }
+  app.globalData.saveWhDetail.personalImgs = tempArr.substr(0, tempArr.lastIndexOf(','));
+  wx.navigateTo({
+   url: '../personfile3/personfile3',
+  })
+  // return false;
+  // }
 
-  // 显示后进行上传(微信小程序只能单个文件上传)
-  _this.data.imagNum = 0;
-  for (var i = 0, len = _this.data.personImgAll.length; i < len; i++) {
-   _this.fileUpLoad(_this.data.personImgAll[i], _this.data.personImgAll.length);
-  }
+  // // 显示后进行上传(微信小程序只能单个文件上传)
+  // _this.data.imagNum = 0;
+  // for (var i = 0, len = _this.data.personImgAll.length; i < len; i++) {
+  //  _this.fileUpLoad(_this.data.personImgAll[i], _this.data.personImgAll.length);
+  // }
 
  },
  // 提示语
@@ -252,11 +285,11 @@ Page({
    personImgs: _this.data.personImgs,
    // personImgAll: _this.data.personImgAll
   })
-  var tempArr = '';
-  for (var i in _this.data.personImgs) {
-   tempArr = _this.data.personImgs[i].path + ',' + tempArr;
-  }
-  app.globalData.saveWhDetail.personalImgs = tempArr.substr(0, tempArr.lastIndexOf(','))
+  // var tempArr = '';
+  // for (var i in _this.data.personImgs) {
+  //  tempArr = _this.data.personImgs[i] + ',' + tempArr;
+  // }
+  // app.globalData.saveWhDetail.personalImgs = tempArr.substr(0, tempArr.lastIndexOf(','))
   wx.showToast({
    title: '删除成功',
    icon: 'none'

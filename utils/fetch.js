@@ -3,9 +3,9 @@
 // 直接通过文件名调用
 module.exports = function(path, params) {
   // 1正式
-  var isTest = '1';
+  var isTest = '0';
 
-  // 测试：apiTest
+  // 测试：apiTests
   // 正式：api
  var api = 'https://hongonew.com';
   var apiTest = 'http://192.168.0.166:8080'; // 测试服务器，映射http://l1838324x8.imwork.net

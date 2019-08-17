@@ -31,7 +31,7 @@
       <text class="wx-label1">形象照</text>
       <view class="wx-images">
         <image bindtap='uploadImg' src="{{defaultImg}}"></image>
-        <image bindtap="perviewPic" mode='aspectFit' bindlongpress="deleteImage"  wx:for='{{personImgs}}' wx:key='path' src="{{item.path}}" data-pic='{{item.path}}' data-index='{{index}}'></image>
+        <image bindtap="perviewPic" mode='aspectFit' bindlongpress="deleteImage"  wx:for='{{personImgs}}' wx:key='index' wx:if="{{item != ''}}" src="{{item}}" data-pic='{{item}}' data-index='{{index}}'></image>
       </view>
     </view>
     <view class="wx-info">上传形象照可以让更多的人看到你，所以尽可能的上传（最多6张）

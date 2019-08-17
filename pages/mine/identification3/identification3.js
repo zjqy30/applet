@@ -108,47 +108,6 @@ Page({
    urls: urls,
   })
  },
- // 图片上传
- fileUpLoad: function(path, num) {
-  // console.error(path + '这是上传图片路径');
-  var _this = this;
-  var params = {};
-  wx.uploadFile({
-   url: app.globalData.uploadPath + '/hone/applet/cos/uploadFile', // 附件上传
-   filePath: path,
-   name: 'file',
-   formData: params,
-   header: {
-    'Content-Type': 'multipart/form-data'
-   },
-   success(response) {
-    // console.error(JSON.stringify(response));
-    var response = JSON.parse(response.data);
-    // 数据返回成功
-    if (response.errorCode == '0') {
-     // 上传成功
-     wx.showToast({
-      title: '上传成功',
-      icon: 'none'
-     })
-     _this.data.imagNum++;
-     app.globalData.stepOneData.personalImgs = response.data.fileName + ',' + app.globalData.stepOneData.personalImgs;
-     console.log(app.globalData.stepOneData)
-     if (_this.data.imagNum == num) {
-      wx.navigateTo({
-       url: '../identification4/identification4',
-      })
-     }
-    } else {
-     // 数据返回失败
-     wx.showToast({
-      title: response.msg || '',
-      icon: 'none'
-     })
-    }
-   }
-  })
- },
  // 下一步
  skipNext: function() {
   var _this = this;
@@ -173,12 +132,20 @@ Page({
   }
   // 存储已选的标签
   app.globalData.stepOneData.abilityIds = abilityIds;
+  // 形象照存储
+  app.globalData.stepOneData.personalImgArr = [];
+  app.globalData.stepOneData.personalImgArr = _this.data.personImgAll;
+
+  // 下一步
+  wx.navigateTo({
+   url: '../identification4/identification4',
+  })
 
   // 显示后进行上传(微信小程序只能单个文件上传)
-  _this.data.imagNum = 0;
-  for (var i = 0, len = _this.data.personImgAll.length; i < len; i++) {
-   _this.fileUpLoad(_this.data.personImgAll[i], _this.data.personImgAll.length);
-  }
+  // _this.data.imagNum = 0;
+  // for (var i = 0, len = _this.data.personImgAll.length; i < len; i++) {
+  //  _this.fileUpLoad(_this.data.personImgAll[i], _this.data.personImgAll.length);
+  // }
 
  },
  // 提示语

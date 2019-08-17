@@ -87,8 +87,16 @@ Page({
       imgsArr = unDeal.userExtraInfo.personalImgs.split(',');
       // imgsArr.splice(imgsArr.length - 1, 1);
      }
+
+
     } else {
      imgsArr = ['../../image/wx_nopic.jpg'];
+    }
+
+    for (var i in imgsArr){
+     if (imgsArr[i] == ''){
+      imgsArr.splice(i,1)
+     }
     }
 
     // 个人简介
